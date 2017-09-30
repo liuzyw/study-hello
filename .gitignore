@@ -1,10 +1,8 @@
 .DS_Store
-.idea/*
 spring-web/logs/*
 .settings
 .project
 .idea
-*.iml
 **/.settings
 **/.classpath
 **/.eclipse
