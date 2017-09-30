@@ -1,0 +1,4 @@
+2017-09-29 21:33:54.538 CST [ERROR] com.study.spring.controller.BaseController testLog 36: ------test error------java.lang.ArithmeticException: / by zero
+2017-09-29 21:33:54.539 CST [ERROR] com.study.spring.controller.BaseController testLog 44: my error log4j2 -- 日志 -- error
+2017-09-29 21:44:02.892 CST [ERROR] com.study.spring.controller.BaseController testLog 36: ------test error------java.lang.ArithmeticException: / by zero
+2017-09-29 21:44:02.895 CST [ERROR] com.study.spring.controller.BaseController testLog 44: my error log4j2 -- 日志 -- error

@@ -1,0 +1,6 @@
+2017-09-29 21:33:54.536 CST [INFO ] com.study.spring.controller.BaseController testLog 30: ------test info------
+2017-09-29 21:33:54.539 CST [INFO ] com.study.spring.controller.BaseController testLog 42: my info log4j2 -- 日志 -- info
+2017-09-29 21:34:24.941 CST [INFO ] com.study.spring.controller.FruitController findFruitById 31: model add fruit : Fruit{name='苹果', price=3, weight=4.0}
+2017-09-29 21:44:02.891 CST [INFO ] com.study.spring.controller.BaseController testLog 30: ------test info------
+2017-09-29 21:44:02.892 CST [INFO ] com.study.spring.controller.BaseController testLog 42: my info log4j2 -- 日志 -- info
+2017-09-29 21:45:48.906 CST [INFO ] com.study.spring.controller.FruitController findFruitById 31: model add fruit : Fruit{name='苹果', price=3, weight=4.0}

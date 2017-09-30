@@ -1,0 +1,38 @@
+2017-09-30 01:07:56.888 CST [INFO ] com.study.spring.controller.BaseController testLog 30: ------test info------
+2017-09-30 01:07:56.893 CST [WARN ] com.study.spring.controller.BaseController testLog 31: ------test warn------
+2017-09-30 01:07:56.898 CST [ERROR] com.study.spring.controller.BaseController testLog 36: ------test error------java.lang.ArithmeticException: / by zero
+2017-09-30 01:07:56.904 CST [INFO ] com.study.spring.controller.BaseController testLog 42: my info log4j2 -- 日志 -- info
+2017-09-30 01:07:56.904 CST [WARN ] com.study.spring.controller.BaseController testLog 43: my warn log4j2 -- 日志 -- warn
+2017-09-30 01:07:56.905 CST [ERROR] com.study.spring.controller.BaseController testLog 44: my error log4j2 -- 日志 -- error
+2017-09-30 01:08:35.380 CST [INFO ] com.study.spring.controller.UserController findUserById 32: model add user : User{id=10, name='鲁班七号', pass='bbbb', age=11, address='bbbb', sex=Sex{code=1, name='男'}}
+2017-09-30 01:24:38.757 CST [INFO ] com.study.spring.controller.BaseController testLog 30: ------test info------
+2017-09-30 01:24:38.760 CST [WARN ] com.study.spring.controller.BaseController testLog 31: ------test warn------
+2017-09-30 01:24:38.761 CST [ERROR] com.study.spring.controller.BaseController testLog 36: ------test error------java.lang.ArithmeticException: / by zero
+2017-09-30 01:24:38.762 CST [INFO ] com.study.spring.controller.BaseController testLog 42: my info log4j2 -- 日志 -- info
+2017-09-30 01:24:38.762 CST [WARN ] com.study.spring.controller.BaseController testLog 43: my warn log4j2 -- 日志 -- warn
+2017-09-30 01:24:38.763 CST [ERROR] com.study.spring.controller.BaseController testLog 44: my error log4j2 -- 日志 -- error
+2017-09-30 21:40:09.772 CST [INFO ] com.study.spring.controller.FruitController showFruitByParam 42: model add fruit : Fruit{name='香蕉', price=3, weight=4.0}
+2017-09-30 21:40:14.315 CST [INFO ] com.study.spring.controller.FruitController showFruitByPath 50: model add fruit : Fruit{name='苹果', price=3, weight=4.0}
+2017-09-30 21:40:19.504 CST [INFO ] com.study.spring.controller.FruitController showFruitByParam 42: model add fruit : Fruit{name='香蕉', price=3, weight=4.0}
+2017-09-30 21:40:42.398 CST [INFO ] com.study.spring.controller.FruitController showFruitByPath 50: model add fruit : Fruit{name='苹果', price=3, weight=4.0}
+2017-09-30 21:40:45.273 CST [INFO ] com.study.spring.controller.FruitController showFruitByParam 42: model add fruit : Fruit{name='香蕉', price=5, weight=2.0}
+2017-09-30 21:42:13.806 CST [INFO ] com.study.spring.controller.FruitController findFruitById 34: model add fruit : Fruit{name='苹果', price=3, weight=4.0}
+2017-09-30 21:42:17.399 CST [INFO ] com.study.spring.controller.FruitController showFruitByParam 42: model add fruit : Fruit{name='香蕉', price=5, weight=2.0}
+2017-09-30 21:55:14.158 CST [INFO ] com.study.spring.controller.FruitController findFruitById 34: model add fruit : Fruit{name='dasdsad', price=3, weight=2.0}
+2017-09-30 21:55:53.076 CST [INFO ] com.study.spring.controller.BookController saveBook 39: model add book : Book(id=null, name=数学, type=小学, price=40)
+2017-09-30 21:59:14.808 CST [INFO ] com.study.spring.controller.BookController saveBook 41: model add book : Book(id=null, name=数学, type=小学, price=43)
+2017-09-30 22:04:32.691 CST [INFO ] com.study.spring.controller.BookController showBookByPath 51: model add book : Book(id=null, name=数学, type=小学, price=43)
+2017-09-30 22:13:49.941 CST [INFO ] com.study.spring.controller.BookController findFruitById 34: model find book : Book(id=null, name=语文, type=小学, price=30)
+2017-09-30 22:14:07.145 CST [INFO ] com.study.spring.controller.BookController showBookByPath 51: model add book : Book(id=null, name=数学, type=小学, price=43)
+2017-09-30 22:32:43.714 CST [INFO ] com.study.spring.controller.BookController findBookById 34: model find book : Book{name='语文', type='小学', price=30}
+2017-09-30 22:32:47.031 CST [INFO ] com.study.spring.controller.BookController findBookById 34: model find book : Book{name='语文', type='小学', price=30}
+2017-09-30 22:33:03.213 CST [INFO ] com.study.spring.controller.BookController showBookByPath 51: model add book : Book{name='数学', type='小学', price=43}
+2017-09-30 22:33:08.783 CST [INFO ] com.study.spring.controller.BookController showBookByPath 51: model add book : Book{name='数学', type='小学', price=43}
+2017-09-30 22:44:26.737 CST [INFO ] com.study.spring.controller.AjaxController ajaxMessage 40: response ajax: [Bus{name='BWM', color='red'}, Bus{name='Havav', color='blue'}, Bus{name='BWMaaa', color='red'}]
+2017-09-30 22:44:39.570 CST [INFO ] com.study.spring.controller.AjaxController JsonServlet11 101: response ajax get: [Bus{name='BWM', color='red'}, Bus{name='Havav', color='blue'}]
+2017-09-30 22:44:45.170 CST [INFO ] com.study.spring.controller.AjaxController ajaxMessage 40: response ajax: [Bus{name='BWM', color='red'}, Bus{name='Havav', color='blue'}, Bus{name='BWMabba', color='red'}]
+2017-09-30 22:44:50.810 CST [INFO ] com.study.spring.controller.AjaxController JsonServlet1 81: response ajax post: [Bus{name='BWM', color='red'}, Bus{name='Havav', color='blue'}]
+2017-09-30 22:44:55.989 CST [INFO ] com.study.spring.controller.AjaxController JsonServlet11 101: response ajax get: [Bus{name='BWM', color='red'}, Bus{name='Havav', color='blue'}]
+2017-09-30 22:46:45.246 CST [INFO ] com.study.spring.controller.AjaxController ajaxMessage1 61: response ajax: [Bus{name='BWM', color='red'}, Bus{name='Havav', color='blue'}, Bus{name='BWMaaa1', color='redd'}]
+2017-09-30 22:46:51.105 CST [INFO ] com.study.spring.controller.AjaxController ajaxMessage 40: response ajax: [Bus{name='BWM', color='red'}, Bus{name='Havav', color='blue'}, Bus{name='BWMaaa', color='red'}]
+2017-09-30 22:46:59.326 CST [INFO ] com.study.spring.controller.UserController findUserById 32: model add user : User{id=10, name='鲁班七号', pass='bbbb', age=11, address='bbbb', sex=Sex{code=1, name='男'}}
