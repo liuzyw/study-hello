@@ -28,7 +28,7 @@ private static Logger logger = LogManager.getLogger(class);
   <!-- configuration 节点只有三种子节点 -->
   <Properties>
     <Property name="fileName">myLog.log</Property>
-    <Property name="backupFilePatch">/Users/liuzhaoyuan/IdeaProjects/study-hello/spring-web/logs</Property>
+    <Property name="backupFilePatch">/Users/liuzhaoyuan/gitwork/study-hello/spring-web/logs</Property>
   </Properties>
   <!--先定义所有的appender-->
   <appenders>
