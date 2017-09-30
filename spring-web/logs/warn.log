@@ -1,4 +1,0 @@
-2017-09-30 01:07:56.893 CST [WARN ] com.study.spring.controller.BaseController testLog 31: ------test warn------
-2017-09-30 01:07:56.904 CST [WARN ] com.study.spring.controller.BaseController testLog 43: my warn log4j2 -- 日志 -- warn
-2017-09-30 01:24:38.760 CST [WARN ] com.study.spring.controller.BaseController testLog 31: ------test warn------
-2017-09-30 01:24:38.762 CST [WARN ] com.study.spring.controller.BaseController testLog 43: my warn log4j2 -- 日志 -- warn

@@ -6,9 +6,9 @@
     <title>index</title>
 </head>
 <body>
-<h2>Hello World</h2>
-<p align="center">
+<p align="">
 <h2>spring-mvc-web</h2></p>
+<hr/>
 <br/>
 <br/>
 
