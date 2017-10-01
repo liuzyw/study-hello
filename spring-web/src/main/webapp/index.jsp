@@ -28,7 +28,7 @@
 <<a href="/testLog">跳转到测试日志页面</a>>
 <br/>
 <br/>
-
+<<a href="/goUploadFile">跳转到文件上传页面</a>>
 <br/>
 <br/>
 

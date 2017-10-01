@@ -60,4 +60,9 @@ public class BaseController {
         return "book/book";
     }
 
+    @RequestMapping("/goUploadFile")
+    public String goUploadFile(){
+        return "upLoadFile";
+    }
+
 }
