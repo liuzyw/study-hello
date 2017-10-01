@@ -13,7 +13,8 @@ test ajax
 <br/>
 <br/>
 
-<script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<%--<script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>--%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script>
   $(function () {
     $("#click").click(function () {

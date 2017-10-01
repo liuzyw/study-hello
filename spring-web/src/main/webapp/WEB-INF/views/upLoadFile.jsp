@@ -34,5 +34,11 @@
     <br/>
     <input type="submit" value="上传"/>
 </form>
+
+<br/>
+<br/>
+文件下载
+<br/>
+<<<a href="/fileDownload">文件 testDownload.pdf 下载</a>>
 </body>
 </html>
