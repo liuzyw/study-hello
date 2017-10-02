@@ -65,4 +65,9 @@ public class BaseController {
         return "upLoadFile";
     }
 
+    @RequestMapping("/goRedis")
+    public String goRedis(){
+        return "redis/redis";
+    }
+
 }

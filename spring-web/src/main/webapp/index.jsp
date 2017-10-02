@@ -32,7 +32,7 @@
     <<a href="/goUploadFile">跳转到文件上传页面</a>>
     <br/>
     <br/>
-
+    <<a href="/goRedis">跳转到测试redis页面</a>>
     <br/>
     <br/>
 
