@@ -6,6 +6,7 @@
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <dependency>web application context</dependency>
           <file>file://$MODULE_DIR$/src/main/resources/spring-redis.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/mail/spring-mail.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -60,6 +61,8 @@
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-redis:1.7.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-keyvalue:1.1.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:1.12.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: javax.mail:mail:1.4.7" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.2.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.2.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.2.9.RELEASE" level="project" />

@@ -13,9 +13,9 @@
 <body>
 redis cache:
 <br/>
-name:${redisKey}
 <br/>
+name --> ${redisKey}
 <br/>
-value:${redisValue}
+value --> ${redisValue}
 </body>
 </html>

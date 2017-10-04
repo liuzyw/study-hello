@@ -178,6 +178,12 @@
       <version>1.7.7.RELEASE</version>
     </dependency>
 
+    <!-- mail dependency -->
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>1.4.7</version>
+    </dependency>
 
 
   </dependencies>
@@ -185,5 +191,21 @@
 
   <build>
     <finalName>spring-web</finalName>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <webResources>
+            <resource>
+              <directory>src/main/webapp</directory>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+
+    </plugins>
   </build>
 </project>

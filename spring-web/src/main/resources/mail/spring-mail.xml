@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+  <!-- qq邮箱太坑爹，还是用网易吧 -->
+  <bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="javaMailSender">
+     <!--<property name="host" value="smtp.qq.com"/>-->
+    <property name="host" value="smtp.126.com"/>
+    <property name="port" value="465"/>
+    <!--         <property name="username" value="xxxxx@qq.com"/> -->
+    <property name="username" value="user@126.com"/>
+    <!-- qq邮箱的授权码，如果是企业邮箱，则使用登录密码 -->
+    <property name="password" value="password"/>
+    <property name="javaMailProperties">
+      <props>
+        <prop key="mail.smtp.auth">true</prop>
+        <prop key="mail.debug">true</prop>
+        <prop key="mail.smtp.ssl.enable">true</prop>
+        <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+      </props>
+    </property>
+  </bean>
+
+
+</beans>
