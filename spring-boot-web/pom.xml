@@ -14,7 +14,7 @@
   <artifactId>spring-boot-web</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>spring-boot-web Maven Webapp</name>
+  <name>spring-boot-web</name>
   <url>http://maven.apache.org</url>
 
   <properties>
