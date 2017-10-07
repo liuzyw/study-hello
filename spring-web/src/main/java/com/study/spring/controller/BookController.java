@@ -42,7 +42,7 @@ public class BookController {
         System.out.println("save book : " + re);
 //        LOGGER.info("model add book : " + book);
 //        model.addAttribute("book", book);
-        return "redirect:/showBook/2";
+        return "redirect:/showBook/11";
     }
 
     @RequestMapping(value = "/showBook/{bookId}",method = RequestMethod.GET)

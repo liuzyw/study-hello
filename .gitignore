@@ -1,5 +1,6 @@
 .DS_Store
 spring-web/logs/*
+spring-boot-web/log/*
 .settings
 .project
 .idea

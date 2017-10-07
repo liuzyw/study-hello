@@ -31,7 +31,7 @@
 </form>
 <br/>
 <br/>
-<<a href="/showBook/2">通过路径参数接受输入/showBook/{fruitId}</a>>
+<<a href="/showBook/2">通过路径参数接受输入/showBook/{bookId}</a>>
 
 </body>
 </html>

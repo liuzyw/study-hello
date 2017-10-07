@@ -13,6 +13,7 @@
   <modules>
     <module>spring-aop</module>
     <module>spring-web</module>
+    <module>spring-boot-web</module>
   </modules>
   <!-- archetypeCatalog=internal -->
   <properties>
@@ -158,7 +159,6 @@
         <version>3.0.1</version>
         <configuration>
           <attach>true</attach>
-          <encoding>UTF-8</encoding>
         </configuration>
         <executions>
           <execution>

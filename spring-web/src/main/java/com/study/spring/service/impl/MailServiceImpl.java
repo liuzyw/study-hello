@@ -61,7 +61,7 @@ public class MailServiceImpl implements MailService {
             messageHelper.setFrom(MAIL_FROM);
             messageHelper.setSubject("测试HTML邮件");
             //true 表示启动HTML格式的邮件
-            messageHelper.setText("<html><head></head><body><h1>hello!!spring html Mail中文不乱码</h1></body></html>", true);
+            messageHelper.setText("<html><head></head><body><h1>hello spring html Mail中文不乱码</h1></body></html>", true);
             javaMailSender.send(mimeMessage);
 
             return true;
@@ -124,7 +124,7 @@ public class MailServiceImpl implements MailService {
             messageHelper.setFrom(MAIL_FROM);
             messageHelper.setSubject("测试附件邮件");
             //true 表示启动HTML格式的邮件
-            messageHelper.setText("<html><head></head><body><h1>hello!!spring html Mail要有编码</h1>"
+            messageHelper.setText("<html><head></head><body><h1>hello spring html Mail 要有编码</h1>"
                 + "有附件</body></html>", true);
 
             FileSystemResource img = new FileSystemResource(
