@@ -1,5 +1,8 @@
 package com.study.spring.po;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.util.Date;
+
 /**
  * Created on 2017-09-24
  *
@@ -10,6 +13,17 @@ public class Bus {
 
     private String name;
     private String color;
+    // spring ajax 默认返回 long 类似的时间，使用此注解可以自定义时间类型
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public Bus() {
     }
@@ -32,10 +46,10 @@ public class Bus {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Bus{");
-        sb.append("name='").append(name).append('\'');
-        sb.append(", color='").append(color).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "Bus{" +
+            "name='" + name + '\'' +
+            ", color='" + color + '\'' +
+            ", date=" + date +
+            '}';
     }
 }

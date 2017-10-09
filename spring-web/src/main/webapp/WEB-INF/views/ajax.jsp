@@ -27,10 +27,11 @@ test ajax
         success: function (msg) {
           alert(msg);
           var buss = eval(msg);
+          var str = "";
           for (var i = 0; i < buss.length; i++) {
-            alert(buss[i].name + "," + buss[i].color);
+            str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
           }
-          document.getElementById("aaa").innerHTML = buss;
+          document.getElementById("aaa").innerHTML = str;
         }
       });
     });
@@ -53,10 +54,11 @@ test ajax
         success: function (msg) {
           alert(msg);
           var buss = eval(msg);
+          var str = "";
           for (var i = 0; i < buss.length; i++) {
-            alert(buss[i].name + "," + buss[i].color);
+            str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
           }
-          document.getElementById("adaa").innerHTML = buss;
+          document.getElementById("adaa").innerHTML = str;
         }
       });
     });
@@ -80,10 +82,11 @@ test ajax
         success: function (msg) {
           alert(msg);
           var buss = eval(msg);
+          var str = "";
           for (var i = 0; i < buss.length; i++) {
-            alert(buss[i].name + "," + buss[i].color);
+            str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
           }
-          document.getElementById("bbb").innerHTML = buss;
+          document.getElementById("bbb").innerHTML = str;
         }
       });
     });
@@ -104,10 +107,11 @@ test ajax
     success: function (result) {
       alert(result);
       var buss = eval(result);
+      var str = "";
       for (var i = 0; i < buss.length; i++) {
-        alert(buss[i].name + "," + buss[i].color);
+        str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
       }
-      document.getElementById("ccc").innerHTML = buss;
+      document.getElementById("ccc").innerHTML = str;
     }
   };
 
@@ -142,10 +146,12 @@ test ajax
           document.getElementById("ddd").innerHTML = text;
           ///////////解析后台发送的Json数据///////////////
           //js中eval方法():校验参数文本串符合js中哪一种数据类型，并把其转换成对应的类型----这里将会转换成json
-          var buss = eval(text);//得到一个json对象
+          var buss = eval(msg);
+          var str = "";
           for (var i = 0; i < buss.length; i++) {
-            alert(buss[i].name + "," + buss[i].color);
+            str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
           }
+          alert(str);
         }
       }
     }
@@ -179,10 +185,13 @@ test ajax
           document.getElementById("eee").innerHTML = text;
           ///////////解析后台发送的Json数据///////////////
           //js中eval方法():校验参数文本串符合js中哪一种数据类型，并把其转换成对应的类型----这里将会转换成json
-          var buss = eval(text);//得到一个json对象
+//          var buss = eval(text);//得到一个json对象
+          var buss = eval(msg);
+          var str = "";
           for (var i = 0; i < buss.length; i++) {
-            alert(buss[i].name + "," + buss[i].color);
+            str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
           }
+          alert(str);
         }
       }
     }
