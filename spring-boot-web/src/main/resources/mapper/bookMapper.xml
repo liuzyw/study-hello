@@ -16,7 +16,7 @@
   </select>
 
   <select id="findBookByType" parameterType="java.lang.String" resultMap="bookMap">
-    SELECT name, price, type FROM fruit WHERE type = #{type}
+    SELECT name, price, type FROM book WHERE type = #{type}
   </select>
 
   <insert id="saveBook" parameterType="com.study.spring.boot.web.po.Book">
