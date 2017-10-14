@@ -1,79 +1,84 @@
-2017-10-13 23:11:06.294 CST [INFO ] org.springframework.boot.StartupInfoLogger logStarting 48: Starting Application on lzyMacPro.local with PID 28609 (/Users/liuzhaoyuan/gitwork/study-hello/spring-boot-web/target/classes started by liuzhaoyuan in /Users/liuzhaoyuan/gitwork/study-hello)
-2017-10-13 23:11:06.296 CST [INFO ] org.springframework.boot.SpringApplication logStartupProfileInfo 593: No active profile set, falling back to default profiles: default
-2017-10-13 23:11:06.654 CST [INFO ] org.hibernate.validator.internal.util.Version <clinit> 30: HV000001: Hibernate Validator 5.3.5.Final
-2017-10-13 23:11:06.725 CST [INFO ] org.springframework.context.support.AbstractApplicationContext prepareRefresh 583: Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4278284b: startup date [Fri Oct 13 23:11:06 CST 2017]; root of context hierarchy
-2017-10-13 23:11:08.108 CST [INFO ] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer initialize 89: Tomcat initialized with port(s): 8080 (http)
-2017-10-13 23:11:08.119 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting service [Tomcat]
-2017-10-13 23:11:08.121 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting Servlet Engine: Apache Tomcat/8.5.20
-2017-10-13 23:11:08.191 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing Spring embedded WebApplicationContext
-2017-10-13 23:11:08.298 CST [INFO ] org.springframework.boot.web.servlet.ServletRegistrationBean onStartup 190: Mapping servlet: 'dispatcherServlet' to [/]
-2017-10-13 23:11:08.305 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'characterEncodingFilter' to: [/*]
-2017-10-13 23:11:08.305 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2017-10-13 23:11:08.305 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2017-10-13 23:11:08.305 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'requestContextFilter' to: [/*]
-2017-10-13 23:11:08.723 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Stopping service [Tomcat]
-2017-10-13 23:11:35.846 CST [INFO ] org.springframework.boot.StartupInfoLogger logStarting 48: Starting Application on lzyMacPro.local with PID 28616 (/Users/liuzhaoyuan/gitwork/study-hello/spring-boot-web/target/classes started by liuzhaoyuan in /Users/liuzhaoyuan/gitwork/study-hello)
-2017-10-13 23:11:35.847 CST [INFO ] org.springframework.boot.SpringApplication logStartupProfileInfo 593: No active profile set, falling back to default profiles: default
-2017-10-13 23:11:35.963 CST [INFO ] org.hibernate.validator.internal.util.Version <clinit> 30: HV000001: Hibernate Validator 5.3.5.Final
-2017-10-13 23:11:36.223 CST [INFO ] org.springframework.context.support.AbstractApplicationContext prepareRefresh 583: Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4278284b: startup date [Fri Oct 13 23:11:36 CST 2017]; root of context hierarchy
-2017-10-13 23:11:37.421 CST [INFO ] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer initialize 89: Tomcat initialized with port(s): 8080 (http)
-2017-10-13 23:11:37.431 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting service [Tomcat]
-2017-10-13 23:11:37.432 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting Servlet Engine: Apache Tomcat/8.5.20
-2017-10-13 23:11:37.495 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing Spring embedded WebApplicationContext
-2017-10-13 23:11:37.654 CST [INFO ] org.springframework.boot.web.servlet.ServletRegistrationBean onStartup 190: Mapping servlet: 'dispatcherServlet' to [/]
-2017-10-13 23:11:37.658 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'characterEncodingFilter' to: [/*]
-2017-10-13 23:11:37.659 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2017-10-13 23:11:37.661 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2017-10-13 23:11:37.661 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'requestContextFilter' to: [/*]
-2017-10-13 23:11:39.284 CST [INFO ] org.springframework.jmx.export.MBeanExporter afterSingletonsInstantiated 431: Registering beans for JMX exposure on startup
-2017-10-13 23:11:39.285 CST [INFO ] org.springframework.jmx.export.MBeanExporter autodetect 916: Bean with name 'dataSource' has been autodetected for JMX exposure
-2017-10-13 23:11:39.290 CST [INFO ] org.springframework.jmx.export.MBeanExporter registerBeanInstance 671: Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
-2017-10-13 23:11:39.318 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing ProtocolHandler ["http-nio-8080"]
-2017-10-13 23:11:39.330 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting ProtocolHandler ["http-nio-8080"]
-2017-10-13 23:11:39.355 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Using a shared selector for servlet write/read
-2017-10-13 23:11:39.376 CST [INFO ] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer start 201: Tomcat started on port(s): 8080 (http)
-2017-10-13 23:11:39.381 CST [INFO ] org.springframework.boot.StartupInfoLogger logStarted 57: Started Application in 4.169 seconds (JVM running for 6.274)
-2017-10-13 23:11:39.382 CST [INFO ] com.study.spring.boot.web.Application main 55: =========== SpringBoot Start Success ===========
-2017-10-13 23:11:57.888 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing Spring FrameworkServlet 'dispatcherServlet'
-2017-10-13 23:11:58.229 CST [INFO ] com.alibaba.druid.pool.DruidDataSource init 914: {dataSource-1} inited
-2017-10-13 23:12:10.069 CST [INFO ] org.thymeleaf.TemplateEngine initialize 825: [THYMELEAF] INITIALIZING TEMPLATE ENGINE
-2017-10-13 23:12:10.125 CST [INFO ] org.thymeleaf.templateresolver.AbstractTemplateResolver initialize 99: [THYMELEAF] INITIALIZING TEMPLATE RESOLVER: org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver
-2017-10-13 23:12:10.125 CST [INFO ] org.thymeleaf.templateresolver.AbstractTemplateResolver initialize 110: [THYMELEAF] TEMPLATE RESOLVER INITIALIZED OK
-2017-10-13 23:12:10.125 CST [INFO ] org.thymeleaf.messageresolver.AbstractMessageResolver initialize 72: [THYMELEAF] INITIALIZING MESSAGE RESOLVER: org.thymeleaf.spring4.messageresolver.SpringMessageResolver
-2017-10-13 23:12:10.126 CST [INFO ] org.thymeleaf.messageresolver.AbstractMessageResolver initialize 78: [THYMELEAF] MESSAGE RESOLVER INITIALIZED OK
-2017-10-13 23:12:10.144 CST [INFO ] org.thymeleaf.TemplateEngine initialize 838: [THYMELEAF] TEMPLATE ENGINE INITIALIZED
-2017-10-13 23:13:09.497 CST [INFO ] org.springframework.context.support.AbstractApplicationContext doClose 984: Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4278284b: startup date [Fri Oct 13 23:11:36 CST 2017]; root of context hierarchy
-2017-10-13 23:17:52.877 CST [INFO ] org.springframework.boot.StartupInfoLogger logStarting 48: Starting Application on lzyMacPro.local with PID 28641 (/Users/liuzhaoyuan/gitwork/study-hello/spring-boot-web/target/classes started by liuzhaoyuan in /Users/liuzhaoyuan/gitwork/study-hello)
-2017-10-13 23:17:52.882 CST [INFO ] org.springframework.boot.SpringApplication logStartupProfileInfo 593: No active profile set, falling back to default profiles: default
-2017-10-13 23:17:53.078 CST [INFO ] org.hibernate.validator.internal.util.Version <clinit> 30: HV000001: Hibernate Validator 5.3.5.Final
-2017-10-13 23:17:53.287 CST [INFO ] org.springframework.context.support.AbstractApplicationContext prepareRefresh 583: Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4278284b: startup date [Fri Oct 13 23:17:53 CST 2017]; root of context hierarchy
-2017-10-13 23:17:54.579 CST [INFO ] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer initialize 89: Tomcat initialized with port(s): 8080 (http)
-2017-10-13 23:17:54.590 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting service [Tomcat]
-2017-10-13 23:17:54.592 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting Servlet Engine: Apache Tomcat/8.5.20
-2017-10-13 23:17:54.672 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing Spring embedded WebApplicationContext
-2017-10-13 23:17:54.894 CST [INFO ] org.springframework.boot.web.servlet.ServletRegistrationBean onStartup 190: Mapping servlet: 'dispatcherServlet' to [/]
-2017-10-13 23:17:54.904 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'characterEncodingFilter' to: [/*]
-2017-10-13 23:17:54.905 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2017-10-13 23:17:54.905 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2017-10-13 23:17:54.906 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'requestContextFilter' to: [/*]
-2017-10-13 23:17:56.625 CST [INFO ] org.springframework.jmx.export.MBeanExporter afterSingletonsInstantiated 431: Registering beans for JMX exposure on startup
-2017-10-13 23:17:56.627 CST [INFO ] org.springframework.jmx.export.MBeanExporter autodetect 916: Bean with name 'dataSource' has been autodetected for JMX exposure
-2017-10-13 23:17:56.634 CST [INFO ] org.springframework.jmx.export.MBeanExporter registerBeanInstance 671: Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
-2017-10-13 23:17:56.672 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing ProtocolHandler ["http-nio-8080"]
-2017-10-13 23:17:56.691 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting ProtocolHandler ["http-nio-8080"]
-2017-10-13 23:17:56.721 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Using a shared selector for servlet write/read
-2017-10-13 23:17:56.741 CST [INFO ] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer start 201: Tomcat started on port(s): 8080 (http)
-2017-10-13 23:17:56.746 CST [INFO ] org.springframework.boot.StartupInfoLogger logStarted 57: Started Application in 4.322 seconds (JVM running for 7.118)
-2017-10-13 23:17:56.746 CST [INFO ] com.study.spring.boot.web.Application main 55: =========== SpringBoot Start Success ===========
-2017-10-13 23:18:09.309 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing Spring FrameworkServlet 'dispatcherServlet'
-2017-10-13 23:18:09.345 CST [INFO ] com.study.spring.boot.web.controller.BookController getBookList 42: getBookList
-2017-10-13 23:18:09.659 CST [INFO ] com.alibaba.druid.pool.DruidDataSource init 914: {dataSource-1} inited
-2017-10-13 23:18:21.812 CST [INFO ] com.study.spring.boot.web.controller.ThymeleafController getBookList 31: getBookList[Book{name='语文', type='小学', price=30}, Book{name='数学', type='小学', price=43}, Book{name='英语', type='小学', price=33}, Book{name='科学', type='小学', price=78}]
-2017-10-13 23:18:21.824 CST [INFO ] org.thymeleaf.TemplateEngine initialize 825: [THYMELEAF] INITIALIZING TEMPLATE ENGINE
-2017-10-13 23:18:21.893 CST [INFO ] org.thymeleaf.templateresolver.AbstractTemplateResolver initialize 99: [THYMELEAF] INITIALIZING TEMPLATE RESOLVER: org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver
-2017-10-13 23:18:21.893 CST [INFO ] org.thymeleaf.templateresolver.AbstractTemplateResolver initialize 110: [THYMELEAF] TEMPLATE RESOLVER INITIALIZED OK
-2017-10-13 23:18:21.894 CST [INFO ] org.thymeleaf.messageresolver.AbstractMessageResolver initialize 72: [THYMELEAF] INITIALIZING MESSAGE RESOLVER: org.thymeleaf.spring4.messageresolver.SpringMessageResolver
-2017-10-13 23:18:21.894 CST [INFO ] org.thymeleaf.messageresolver.AbstractMessageResolver initialize 78: [THYMELEAF] MESSAGE RESOLVER INITIALIZED OK
-2017-10-13 23:18:21.905 CST [INFO ] org.thymeleaf.TemplateEngine initialize 838: [THYMELEAF] TEMPLATE ENGINE INITIALIZED
-2017-10-13 23:19:34.746 CST [INFO ] org.springframework.context.support.AbstractApplicationContext doClose 984: Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4278284b: startup date [Fri Oct 13 23:17:53 CST 2017]; root of context hierarchy
-2017-10-13 23:19:34.748 CST [INFO ] org.springframework.jmx.export.MBeanExporter destroy 449: Unregistering JMX-exposed beans on shutdown
+2017-10-14 10:16:25.895 CST [INFO ] org.springframework.boot.StartupInfoLogger logStarting 48: Starting Application on lzyMacPro.local with PID 29154 (/Users/liuzhaoyuan/gitwork/study-hello/spring-boot-web/target/classes started by liuzhaoyuan in /Users/liuzhaoyuan/gitwork/study-hello)
+2017-10-14 10:16:25.912 CST [INFO ] org.springframework.boot.SpringApplication logStartupProfileInfo 593: No active profile set, falling back to default profiles: default
+2017-10-14 10:16:26.239 CST [INFO ] org.hibernate.validator.internal.util.Version <clinit> 30: HV000001: Hibernate Validator 5.3.5.Final
+2017-10-14 10:16:26.427 CST [INFO ] org.springframework.context.support.AbstractApplicationContext prepareRefresh 583: Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3e74829: startup date [Sat Oct 14 10:16:26 CST 2017]; root of context hierarchy
+2017-10-14 10:16:27.800 CST [INFO ] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer initialize 89: Tomcat initialized with port(s): 8080 (http)
+2017-10-14 10:16:27.811 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting service [Tomcat]
+2017-10-14 10:16:27.813 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting Servlet Engine: Apache Tomcat/8.5.20
+2017-10-14 10:16:27.888 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing Spring embedded WebApplicationContext
+2017-10-14 10:16:28.056 CST [INFO ] org.springframework.boot.web.servlet.ServletRegistrationBean onStartup 190: Mapping servlet: 'dispatcherServlet' to [/]
+2017-10-14 10:16:28.064 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-10-14 10:16:28.064 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-10-14 10:16:28.065 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-10-14 10:16:28.065 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'requestContextFilter' to: [/*]
+2017-10-14 10:16:29.781 CST [INFO ] org.springframework.jmx.export.MBeanExporter afterSingletonsInstantiated 431: Registering beans for JMX exposure on startup
+2017-10-14 10:16:29.783 CST [INFO ] org.springframework.jmx.export.MBeanExporter autodetect 916: Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-10-14 10:16:29.791 CST [INFO ] org.springframework.jmx.export.MBeanExporter registerBeanInstance 671: Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-10-14 10:16:29.826 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing ProtocolHandler ["http-nio-8080"]
+2017-10-14 10:16:29.839 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting ProtocolHandler ["http-nio-8080"]
+2017-10-14 10:16:29.866 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Using a shared selector for servlet write/read
+2017-10-14 10:16:29.897 CST [INFO ] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer start 201: Tomcat started on port(s): 8080 (http)
+2017-10-14 10:16:29.903 CST [INFO ] org.springframework.boot.StartupInfoLogger logStarted 57: Started Application in 4.549 seconds (JVM running for 7.153)
+2017-10-14 10:16:29.903 CST [INFO ] com.study.spring.boot.web.Application main 55: =========== SpringBoot Start Success ===========
+2017-10-14 10:16:36.179 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-10-14 10:16:36.220 CST [INFO ] com.study.spring.boot.web.controller.BookController getBookList 42: getBookList
+2017-10-14 10:16:36.635 CST [INFO ] com.alibaba.druid.pool.DruidDataSource init 914: {dataSource-1} inited
+2017-10-14 10:16:47.313 CST [INFO ] org.springframework.context.support.AbstractApplicationContext doClose 984: Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3e74829: startup date [Sat Oct 14 10:16:26 CST 2017]; root of context hierarchy
+2017-10-14 10:16:47.315 CST [INFO ] org.springframework.jmx.export.MBeanExporter destroy 449: Unregistering JMX-exposed beans on shutdown
+2017-10-14 10:16:47.316 CST [INFO ] org.springframework.jmx.support.MBeanRegistrationSupport unregisterBeans 241: Unregistering JMX-exposed beans
+2017-10-14 10:26:41.295 CST [INFO ] org.springframework.boot.StartupInfoLogger logStarting 48: Starting Application on lzyMacPro.local with PID 29385 (/Users/liuzhaoyuan/gitwork/study-hello/spring-boot-web/target/classes started by liuzhaoyuan in /Users/liuzhaoyuan/gitwork/study-hello)
+2017-10-14 10:26:41.297 CST [INFO ] org.springframework.boot.SpringApplication logStartupProfileInfo 593: No active profile set, falling back to default profiles: default
+2017-10-14 10:26:41.597 CST [INFO ] org.hibernate.validator.internal.util.Version <clinit> 30: HV000001: Hibernate Validator 5.3.5.Final
+2017-10-14 10:26:41.637 CST [INFO ] org.springframework.context.support.AbstractApplicationContext prepareRefresh 583: Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4278284b: startup date [Sat Oct 14 10:26:41 CST 2017]; root of context hierarchy
+2017-10-14 10:26:42.983 CST [INFO ] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer initialize 89: Tomcat initialized with port(s): 8080 (http)
+2017-10-14 10:26:42.994 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting service [Tomcat]
+2017-10-14 10:26:42.996 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting Servlet Engine: Apache Tomcat/8.5.20
+2017-10-14 10:26:43.067 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing Spring embedded WebApplicationContext
+2017-10-14 10:26:43.170 CST [INFO ] org.springframework.boot.web.servlet.ServletRegistrationBean onStartup 190: Mapping servlet: 'dispatcherServlet' to [/]
+2017-10-14 10:26:43.178 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-10-14 10:26:43.179 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-10-14 10:26:43.179 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-10-14 10:26:43.179 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'requestContextFilter' to: [/*]
+2017-10-14 10:26:44.743 CST [INFO ] org.springframework.jmx.export.MBeanExporter afterSingletonsInstantiated 431: Registering beans for JMX exposure on startup
+2017-10-14 10:26:44.745 CST [INFO ] org.springframework.jmx.export.MBeanExporter autodetect 916: Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-10-14 10:26:44.751 CST [INFO ] org.springframework.jmx.export.MBeanExporter registerBeanInstance 671: Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-10-14 10:26:44.793 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing ProtocolHandler ["http-nio-8080"]
+2017-10-14 10:26:44.806 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting ProtocolHandler ["http-nio-8080"]
+2017-10-14 10:26:44.833 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Using a shared selector for servlet write/read
+2017-10-14 10:26:44.863 CST [INFO ] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer start 201: Tomcat started on port(s): 8080 (http)
+2017-10-14 10:26:44.868 CST [INFO ] org.springframework.boot.StartupInfoLogger logStarted 57: Started Application in 4.011 seconds (JVM running for 6.538)
+2017-10-14 10:26:44.868 CST [INFO ] com.study.spring.boot.web.Application main 55: =========== SpringBoot Start Success ===========
+2017-10-14 10:26:51.731 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-10-14 10:26:52.188 CST [INFO ] com.alibaba.druid.pool.DruidDataSource init 914: {dataSource-1} inited
+2017-10-14 10:26:52.468 CST [INFO ] com.study.spring.boot.web.controller.ThymeleafController getBookList 31: getBookList[Book{name='语文', type='小学', price=30}, Book{name='数学', type='小学', price=43}, Book{name='英语', type='小学', price=33}, Book{name='科学', type='小学', price=78}]
+2017-10-14 10:26:52.483 CST [INFO ] org.thymeleaf.TemplateEngine initialize 825: [THYMELEAF] INITIALIZING TEMPLATE ENGINE
+2017-10-14 10:26:52.546 CST [INFO ] org.thymeleaf.templateresolver.AbstractTemplateResolver initialize 99: [THYMELEAF] INITIALIZING TEMPLATE RESOLVER: org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver
+2017-10-14 10:26:52.546 CST [INFO ] org.thymeleaf.templateresolver.AbstractTemplateResolver initialize 110: [THYMELEAF] TEMPLATE RESOLVER INITIALIZED OK
+2017-10-14 10:26:52.547 CST [INFO ] org.thymeleaf.messageresolver.AbstractMessageResolver initialize 72: [THYMELEAF] INITIALIZING MESSAGE RESOLVER: org.thymeleaf.spring4.messageresolver.SpringMessageResolver
+2017-10-14 10:26:52.547 CST [INFO ] org.thymeleaf.messageresolver.AbstractMessageResolver initialize 78: [THYMELEAF] MESSAGE RESOLVER INITIALIZED OK
+2017-10-14 10:26:52.563 CST [INFO ] org.thymeleaf.TemplateEngine initialize 838: [THYMELEAF] TEMPLATE ENGINE INITIALIZED
+2017-10-14 10:27:16.977 CST [INFO ] org.springframework.context.support.AbstractApplicationContext doClose 984: Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4278284b: startup date [Sat Oct 14 10:26:41 CST 2017]; root of context hierarchy
+2017-10-14 10:27:16.981 CST [INFO ] org.springframework.jmx.export.MBeanExporter destroy 449: Unregistering JMX-exposed beans on shutdown
+2017-10-14 10:29:52.252 CST [INFO ] org.springframework.boot.StartupInfoLogger logStarting 48: Starting Application on lzyMacPro.local with PID 29401 (/Users/liuzhaoyuan/gitwork/study-hello/spring-boot-web/target/classes started by liuzhaoyuan in /Users/liuzhaoyuan/gitwork/study-hello)
+2017-10-14 10:29:52.259 CST [INFO ] org.springframework.boot.SpringApplication logStartupProfileInfo 593: No active profile set, falling back to default profiles: default
+2017-10-14 10:29:52.522 CST [INFO ] org.hibernate.validator.internal.util.Version <clinit> 30: HV000001: Hibernate Validator 5.3.5.Final
+2017-10-14 10:29:52.729 CST [INFO ] org.springframework.context.support.AbstractApplicationContext prepareRefresh 583: Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@302f7971: startup date [Sat Oct 14 10:29:52 CST 2017]; root of context hierarchy
+2017-10-14 10:29:54.514 CST [INFO ] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer initialize 89: Tomcat initialized with port(s): 8080 (http)
+2017-10-14 10:29:54.547 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting service [Tomcat]
+2017-10-14 10:29:54.549 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting Servlet Engine: Apache Tomcat/8.5.20
+2017-10-14 10:29:54.717 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing Spring embedded WebApplicationContext
+2017-10-14 10:29:54.907 CST [INFO ] org.springframework.boot.web.servlet.ServletRegistrationBean onStartup 190: Mapping servlet: 'dispatcherServlet' to [/]
+2017-10-14 10:29:54.911 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-10-14 10:29:54.912 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-10-14 10:29:54.912 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-10-14 10:29:54.912 CST [INFO ] org.springframework.boot.web.servlet.AbstractFilterRegistrationBean configure 258: Mapping filter: 'requestContextFilter' to: [/*]
+2017-10-14 10:29:57.183 CST [INFO ] org.springframework.jmx.export.MBeanExporter afterSingletonsInstantiated 431: Registering beans for JMX exposure on startup
+2017-10-14 10:29:57.184 CST [INFO ] org.springframework.jmx.export.MBeanExporter autodetect 916: Bean with name 'dataSource' has been autodetected for JMX exposure
+2017-10-14 10:29:57.190 CST [INFO ] org.springframework.jmx.export.MBeanExporter registerBeanInstance 671: Located MBean 'dataSource': registering with JMX server as MBean [com.alibaba.druid.pool:name=dataSource,type=DruidDataSource]
+2017-10-14 10:29:57.228 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Initializing ProtocolHandler ["http-nio-8080"]
+2017-10-14 10:29:57.241 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Starting ProtocolHandler ["http-nio-8080"]
+2017-10-14 10:29:57.269 CST [INFO ] org.apache.juli.logging.DirectJDKLog log 179: Using a shared selector for servlet write/read
+2017-10-14 10:29:57.308 CST [INFO ] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer start 201: Tomcat started on port(s): 8080 (http)
+2017-10-14 10:29:57.317 CST [INFO ] org.springframework.boot.StartupInfoLogger logStarted 57: Started Application in 5.618 seconds (JVM running for 8.175)
+2017-10-14 10:29:57.318 CST [INFO ] com.study.spring.boot.web.Application main 55: =========== SpringBoot Start Success ===========
+2017-10-14 10:30:03.066 CST [INFO ] org.springframework.context.support.AbstractApplicationContext doClose 984: Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@302f7971: startup date [Sat Oct 14 10:29:52 CST 2017]; root of context hierarchy

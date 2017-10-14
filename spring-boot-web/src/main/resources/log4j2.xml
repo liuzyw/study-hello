@@ -63,7 +63,7 @@ private static Logger logger = LogManager.getLogger(class);
          则每小时生成一个压缩文件， 如果filePattern配置的日期格式为 %d{yyyy-MM-dd} ，则天生成一个压缩文件-->
         <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
         <!-- 基于文件大小的分割 -->
-        <SizeBasedTriggeringPolicy size="100MB"/>
+        <!--<SizeBasedTriggeringPolicy size="100MB"/>-->
       </Policies>
       <!--最多保留文件数-->
       <DefaultRolloverStrategy max="31"/>
@@ -90,7 +90,7 @@ private static Logger logger = LogManager.getLogger(class);
          则每小时生成一个压缩文件， 如果filePattern配置的日期格式为 %d{yyyy-MM-dd} ，则天生成一个压缩文件-->
         <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
         <!-- 基于文件大小的分割 -->
-        <SizeBasedTriggeringPolicy size="100MB"/>
+        <!--<SizeBasedTriggeringPolicy size="100MB"/>-->
       </Policies>
       <!--最多保留文件数-->
       <DefaultRolloverStrategy max="31"/>
@@ -113,7 +113,7 @@ private static Logger logger = LogManager.getLogger(class);
          则每小时生成一个压缩文件， 如果filePattern配置的日期格式为 %d{yyyy-MM-dd} ，则天生成一个压缩文件-->
         <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
         <!-- 基于文件大小的分割 -->
-        <SizeBasedTriggeringPolicy size="100MB"/>
+        <!--<SizeBasedTriggeringPolicy size="100MB"/>-->
       </Policies>
       <!--最多保留文件数-->
       <DefaultRolloverStrategy max="31"/>
@@ -133,7 +133,7 @@ private static Logger logger = LogManager.getLogger(class);
          则每小时生成一个压缩文件， 如果filePattern配置的日期格式为 %d{yyyy-MM-dd} ，则天生成一个压缩文件-->
         <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
         <!-- 基于文件大小的分割 -->
-        <SizeBasedTriggeringPolicy size="100MB"/>
+        <!--<SizeBasedTriggeringPolicy size="100MB"/>-->
       </Policies>
       <!--最多保留文件数-->
       <DefaultRolloverStrategy max="31"/>
@@ -153,7 +153,7 @@ private static Logger logger = LogManager.getLogger(class);
          则每小时生成一个压缩文件， 如果filePattern配置的日期格式为 %d{yyyy-MM-dd} ，则天生成一个压缩文件-->
         <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
         <!-- 基于文件大小的分割 -->
-        <SizeBasedTriggeringPolicy size="100MB"/>
+        <!--<SizeBasedTriggeringPolicy size="100MB"/>-->
       </Policies>
       <!--最多保留文件数-->
       <DefaultRolloverStrategy max="31"/>
