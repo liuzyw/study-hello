@@ -16,6 +16,7 @@
     <module>spring-boot-web</module>
     <module>spring-quartz</module>
     <module>study-util</module>
+    <module>spring-shiro</module>
   </modules>
   <!-- archetypeCatalog=internal -->
   <properties>
