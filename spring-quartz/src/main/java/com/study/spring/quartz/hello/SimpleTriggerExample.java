@@ -19,18 +19,22 @@ public class SimpleTriggerExample {
     public static void main(String[] args) throws Exception {
 
         JobDetail job = JobBuilder.newJob(HelloJob.class)
-            .withIdentity("dummyJobName", "group1").build();
+            .withIdentity("dummyJobName", "group1")
+            .usingJobData("message", "data job").
+                usingJobData("int", 3).build();
 
         // 每隔 5s 触发一次
 
 //        Trigger trigger = TriggerBuilder.newTrigger()
 //            .withIdentity("dummyTriggerName", "group1")
 //            .withSchedule(SimpleScheduleBuilder.simpleSchedule()
-//                    .withIntervalInSeconds(5).repeatForever()).build();
+//                    .withIntervalInSeconds(2).repeatForever()).build();
 
         Trigger trigger = TriggerBuilder.newTrigger()
             .withIdentity("dummyTriggerName", "group1")
-            .withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?"))
+            .withSchedule(CronScheduleBuilder.cronSchedule("0/2 * * * * ?"))
+            .usingJobData("message", "data trigger").
+                usingJobData("Long", 5L)
             .build();
 
         Scheduler scheduler = new StdSchedulerFactory().getScheduler();
