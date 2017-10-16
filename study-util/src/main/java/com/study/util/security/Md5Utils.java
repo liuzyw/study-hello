@@ -16,45 +16,7 @@ public class Md5Utils {
     private Md5Utils() {
     }
 
-    //    private static final String HEX_NUMS_STR = "0123456789ABCDEF";
     private static final Integer SALT_LENGTH = 12;
-    private static final char[] HEX_NUMS_CAHR = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-        'A', 'B', 'C', 'D', 'E', 'F'};
-
-    /**
-     * 将16进制字符串转换成字节数组
-     *
-     * @return
-     */
-    public static byte[] hexStringToByte(String hex) {
-        int len = (hex.length() / 2);
-        byte[] result = new byte[len];
-        char[] hexChars = hex.toCharArray();
-        for (int i = 0; i < len; i++) {
-            int pos = i * 2;
-            result[i] = (byte) (HEX_NUMS_CAHR[hexChars[pos]] << 4
-                | HEX_NUMS_CAHR[hexChars[pos + 1]]);
-        }
-        return result;
-    }
-
-
-    /**
-     * 将指定byte数组转换成16进制字符串
-     *
-     * @return
-     */
-    public static String byteToHexString(byte[] b) {
-        StringBuffer hexString = new StringBuffer();
-        for (int i = 0; i < b.length; i++) {
-            String hex = Integer.toHexString(b[i] & 0xFF);
-            if (hex.length() == 1) {
-                hex = '0' + hex;
-            }
-            hexString.append(hex.toUpperCase());
-        }
-        return hexString.toString();
-    }
 
     /**
      * 验证口令是否合法
@@ -64,7 +26,7 @@ public class Md5Utils {
     public static boolean valid(String password, String passwordInDb)
         throws NoSuchAlgorithmException, UnsupportedEncodingException {
         //将16进制字符串格式口令转换成字节数组
-        byte[] pwdInDb = hexStringToByte(passwordInDb);
+        byte[] pwdInDb = HexUtil.decodeHex(passwordInDb);
         //声明盐变量
         byte[] salt = new byte[SALT_LENGTH];
         //将盐从数据库中保存的口令字节数组中提取出来
@@ -126,7 +88,7 @@ public class Md5Utils {
         //将消息摘要拷贝到加密口令字节数组从第13个字节开始的字节
         System.arraycopy(digest, 0, pwd, SALT_LENGTH, digest.length);
         //将字节数组格式加密后的口令转化为16进制字符串格式的口令
-        return byteToHexString(pwd);
+        return HexUtil.encodeHexStr(pwd);
     }
 
     public static String getMd5Str(String str) {
@@ -140,7 +102,7 @@ public class Md5Utils {
             // 加密结果
             byte[] md = mdTemp.digest();
             // return byteArrayToString(md);
-            return byteToHexString(md);
+            return HexUtil.encodeHexStr(md);
         } catch (Exception e) {
             return null;
         }

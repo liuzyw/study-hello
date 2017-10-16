@@ -22,9 +22,9 @@ public class ExcelXlsTest {
         titles.add("idaaaaaa");
         titles.add("name");
 
-        List<List<String>> data = new ArrayList<>();
+        List<List<Object>> data = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            List<String> row = new ArrayList<>();
+            List<Object> row = new ArrayList<>();
             row.add((i + 1) + "");
             row.add((i + 1) + "name");
             data.add(row);
@@ -41,9 +41,9 @@ public class ExcelXlsTest {
         titles.add("idaaaaaa");
         titles.add("name");
 
-        List<List<String>> data = new ArrayList<>();
+        List<List<Object>> data = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            List<String> row = new ArrayList<>();
+            List<Object> row = new ArrayList<>();
             row.add((i + 1) + "");
             row.add((i + 1) + "name");
             data.add(row);

@@ -24,7 +24,7 @@ public class ExcelXlsxUtils {
     private ExcelXlsxUtils() {
     }
 
-    public static boolean writeToStream(OutputStream outputStream, List<String> titles, List<List<String>> data) {
+    public static boolean writeToStream(OutputStream outputStream, List<String> titles, List<List<Object>> data) {
 
         if (outputStream == null || CollectionUtils.isEmpty(titles) || CollectionUtils.isEmpty(data)) {
             return false;
@@ -48,13 +48,13 @@ public class ExcelXlsxUtils {
             cell.setCellValue(titles.get(i));
         }
 
-        List<String> rowData = null;
+        List<Object> rowData = null;
         for (int i = 0, len = data.size(); i < len; i++) {
             row = sheet.createRow(i + 1);
             rowData = data.get(i);
             for (int j = 0; j < rowData.size(); j++) {
                 cell = row.createCell(j);
-                cell.setCellValue(rowData.get(j) + "");
+                cell.setCellValue(rowData.get(j).toString());
             }
 
         }
@@ -85,25 +85,24 @@ public class ExcelXlsxUtils {
         return true;
     }
 
-    public static List<List<String>> readFromStream(InputStream inputStream) {
+    public static List<List<Object>> readFromStream(InputStream inputStream) {
         if (inputStream == null) {
             return Collections.EMPTY_LIST;
         }
         XSSFWorkbook workbook = null;
         try {
-            List<List<String>> data = new ArrayList<>();
+            List<List<Object>> data = new ArrayList<>();
             workbook = new XSSFWorkbook(inputStream);
             XSSFSheet sheet = workbook.getSheetAt(0);
             int lastRowNum = sheet.getLastRowNum();
             for (int i = 0; i <= lastRowNum; i++) {
                 XSSFRow row = sheet.getRow(i);
                 if (row != null) {
-                    List<String> rowData = new ArrayList<>();
+                    List<Object> rowData = new ArrayList<>();
                     for (int j = 0; j < row.getLastCellNum(); j++) {
-                        rowData.add(String.valueOf(getCellValue(row.getCell(j))));
+                        rowData.add(getCellValue(row.getCell(j)));
                     }
                     data.add(rowData);
-
                 }
 
             }
