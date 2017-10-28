@@ -20,6 +20,14 @@
 
   <dependencies>
 
+    <!-- google -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>23.0</version>
+    </dependency>
+
+
     <!-- json support -->
     <dependency>
       <groupId>com.alibaba</groupId>

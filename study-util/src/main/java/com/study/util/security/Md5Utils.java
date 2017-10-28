@@ -91,7 +91,12 @@ public class Md5Utils {
         return HexUtil.encodeHexStr(pwd);
     }
 
-    public static String getMd5Str(String str) {
+    /**
+     * 将字符串进行 MD5加密，输出十六进制字符串
+     * @param str
+     * @return
+     */
+    public static String encodeStr(String str) {
         try {
             // 将字符串转为字节数组
             byte[] strTemp = str.getBytes();

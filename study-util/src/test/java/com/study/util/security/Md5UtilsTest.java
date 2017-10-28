@@ -51,5 +51,13 @@ public class Md5UtilsTest {
 
     }
 
+    @Test
+    public void testBase64(){
+        String aa = Base64.encode("abcdefg");
+        System.out.println(aa);
+        String bb = Base64.decodeStr(aa);
+        System.out.println(bb);
+    }
+
 
 }
