@@ -18,6 +18,8 @@
     <module>study-util</module>
     <module>spring-shiro</module>
     <module>spring-cloud-eureka</module>
+    <module>spring-cloud-eureka-producer</module>
+    <module>spring-cloud-eureka-consume</module>
   </modules>
   <!-- archetypeCatalog=internal -->
   <properties>
