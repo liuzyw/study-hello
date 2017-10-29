@@ -18,7 +18,7 @@ public class ApplicationProducer {
         System.out.println();
         System.out.println();
         System.out.println();
-        System.out.println("--- Hello Spring Cloud ---");
+        System.out.println("--- Hello Spring Cloud ApplicationProducer ---");
         System.out.println();
         System.out.println();
         System.out.println();

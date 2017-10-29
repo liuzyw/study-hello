@@ -18,7 +18,7 @@ public class Application {
         System.out.println();
         System.out.println();
         System.out.println();
-        System.out.println("--- Hello Spring Cloud ---");
+        System.out.println("--- Hello Spring Cloud Application---");
         System.out.println();
         System.out.println();
         System.out.println();

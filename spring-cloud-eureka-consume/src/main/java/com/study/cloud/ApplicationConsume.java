@@ -28,7 +28,7 @@ public class ApplicationConsume {
         System.out.println();
         System.out.println();
         System.out.println();
-        System.out.println("--- Hello Spring Cloud ---");
+        System.out.println("--- Hello Spring Cloud ApplicationConsume ---");
         System.out.println();
         System.out.println();
         System.out.println();
