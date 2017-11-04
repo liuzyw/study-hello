@@ -17,7 +17,7 @@ public class FruitServiceImpl implements FruitService {
     @Autowired
     private FruitDao fruitDao;
 
-
+    @Override
     public Fruit getFruitById(Integer id){
         return fruitDao.getFruitById(id);
     }
