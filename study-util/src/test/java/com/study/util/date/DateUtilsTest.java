@@ -25,6 +25,8 @@ public class DateUtilsTest {
         System.out.println(DateUtils.getDay(new Date()));
 
         System.out.println(IdcardUtil.isvalidCard18("321088199210315942"));
+
+
     }
 
 }
