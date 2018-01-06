@@ -18,7 +18,7 @@
 
   <!-- 配置枚举类型 -->
   <typeHandlers>
-    <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.study.spring.po.Sex"/>
+    <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.study.spring.entity.Sex"/>
   </typeHandlers>
 
 

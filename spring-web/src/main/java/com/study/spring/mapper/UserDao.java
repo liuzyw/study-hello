@@ -1,6 +1,6 @@
 package com.study.spring.mapper;
 
-import com.study.spring.po.User;
+import com.study.spring.entity.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

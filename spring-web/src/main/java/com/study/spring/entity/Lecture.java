@@ -1,4 +1,4 @@
-package com.study.spring.po;
+package com.study.spring.entity;
 
 import java.io.Serializable;
 

@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.spring.mapper.StudentLectureDao">
 
-  <resultMap id="studentLectureMap" type="com.study.spring.po.StudentLecture">
+  <resultMap id="studentLectureMap" type="com.study.spring.entity.StudentLecture">
     <id column="id" property="id"/>
     <result column="student_id" property="studentId"/>
     <result column="grade" property="grade" javaType="BigDecimal" jdbcType="DECIMAL"/>

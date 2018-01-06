@@ -2,6 +2,7 @@
 spring-web/logs/*
 spring-boot-web/logs/*
 spring-boot-sso/logs/*
+spring-boot-shiro/logs*
 spring-cloud-eureka/logs/*
 .settings
 .project

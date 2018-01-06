@@ -1,6 +1,6 @@
 package com.study.spring.controller;
 
-import com.study.spring.po.User;
+import com.study.spring.entity.User;
 import com.study.spring.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created on 2017-08-17 23:39

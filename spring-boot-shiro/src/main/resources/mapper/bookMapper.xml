@@ -16,14 +16,11 @@
   </select>
 
   <select id="findBookByType" parameterType="java.lang.String" resultMap="bookMap">
-    SELECT name, price, type FROM fruit WHERE type = #{type}
+    SELECT name, price, type FROM book WHERE type = #{type}
   </select>
 
-  <insert id="saveBook" keyProperty="id" parameterType="com.study.spring.entity.Book" useGeneratedKeys="true">
+  <insert id="saveBook" parameterType="com.study.spring.entity.Book">
     INSERT INTO book(name, price, type) VALUES (#{name}, #{price}, #{type})
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT @@IDENTITY AS id
-    </selectKey>
   </insert>
 
   <delete id="deleteBook" parameterType="java.lang.Integer">

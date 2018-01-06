@@ -1,6 +1,6 @@
 package com.study.spring.mapper;
 
-import com.study.spring.po.Student;
+import com.study.spring.entity.Student;
 
 /**
  * Created on 2017-08-10 21:51

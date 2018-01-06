@@ -1,7 +1,7 @@
 package com.study.spring.service.impl;
 
 import com.study.spring.mapper.FruitDao;
-import com.study.spring.po.Fruit;
+import com.study.spring.entity.Fruit;
 import com.study.spring.service.FruitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

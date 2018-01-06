@@ -1,6 +1,6 @@
 package com.study.spring.service;
 
-import com.study.spring.po.User;
+import com.study.spring.entity.User;
 
 /**
  * Created on 2017-08-17 23:37

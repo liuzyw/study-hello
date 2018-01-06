@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Login</title>
+</head>
+<body>
+<p align="center"> study sso login</p>
+<br/>
+<p align="center"></p>
+<br/>
+<div align="center">
+  <form action="/login" method="post">
+    <table>
+      <tr>Name: <input type="text" name="username" value="liu"/></tr>
+      <br/>
+      <tr>Pass: <input type="text" name="password" value="123"/></tr>
+      <br/>
+      <tr><input type="text" hidden="hidden" name="goUrl" th:value='${goUrl}'/></tr>
+      <br/>
+      <input type="submit" value="submit"/>
+    </table>
+  </form>
+</div>
+
+</body>
+</html>

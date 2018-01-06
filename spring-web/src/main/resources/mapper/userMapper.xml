@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.spring.mapper.UserDao">
 
-  <resultMap id="userMap" type="com.study.spring.po.User">
+  <resultMap id="userMap" type="com.study.spring.entity.User">
     <id column="id" property="id"/>
     <result column="name" property="name"/>
     <result column="pass" property="pass"/>
@@ -21,7 +21,7 @@
     SELECT id, name, pass, age, address, sex FROM user WHERE name = #{name} AND pass = #{pass}
   </select>
 
-  <select id="finUserByChoose" parameterType="com.study.spring.po.User" resultMap="userMap">
+  <select id="finUserByChoose" parameterType="com.study.spring.entity.User" resultMap="userMap">
     SELECT id, name, pass, age, address, sex FROM user WHERE 1 = 1
     <choose>
       <when test="id != null and id != 0">
@@ -37,7 +37,7 @@
   </select>
 
 
-  <insert id="saveUser" parameterType="com.study.spring.po.User">
+  <insert id="saveUser" parameterType="com.study.spring.entity.User">
     INSERT INTO user(name, pass, age, address, sex) VALUES (#{name}, #{pass}, #{age}, #{address}, #{sex})
   </insert>
 

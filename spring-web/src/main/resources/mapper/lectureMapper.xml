@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.study.spring.mapper.LectureDao">
 
-  <resultMap id="lectureMap" type="com.study.spring.po.Lecture">
+  <resultMap id="lectureMap" type="com.study.spring.entity.Lecture">
     <id column="id" property="id"/>
     <result column="lecture_name" property="lectureName"/>
     <result column="note" property="note"/>

@@ -1,6 +1,6 @@
 package com.study.spring.controller;
 
-import com.study.spring.po.Fruit;
+import com.study.spring.entity.Fruit;
 import com.study.spring.service.FruitService;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;

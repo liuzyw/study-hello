@@ -1,6 +1,6 @@
 package com.study.spring.mapper;
 
-import com.study.spring.po.Fruit;
+import com.study.spring.entity.Fruit;
 import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.stereotype.Repository;

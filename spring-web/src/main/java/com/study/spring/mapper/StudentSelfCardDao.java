@@ -1,6 +1,6 @@
 package com.study.spring.mapper;
 
-import com.study.spring.po.StudentSelfCard;
+import com.study.spring.entity.StudentSelfCard;
 
 /**
  * Created on 2017-08-10 22:09

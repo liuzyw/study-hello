@@ -1,6 +1,6 @@
 package com.study.spring.mapper;
 
-import com.study.spring.po.Book;
+import com.study.spring.entity.Book;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

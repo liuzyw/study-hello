@@ -1,4 +1,4 @@
-package com.study.spring.po;
+package com.study.spring.entity;
 
 /**
  * Created by liuzhaoyuan on 2017/7/23.

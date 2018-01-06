@@ -1,6 +1,6 @@
 package com.study.spring.controller;
 
-import com.study.spring.po.Bus;
+import com.study.spring.entity.Bus;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

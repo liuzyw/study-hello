@@ -21,6 +21,7 @@
     <module>spring-cloud-eureka-producer</module>
     <module>spring-cloud-eureka-consume</module>
     <module>spring-boot-sso</module>
+    <module>spring-boot-shiro</module>
   </modules>
   <!-- archetypeCatalog=internal -->
   <properties>

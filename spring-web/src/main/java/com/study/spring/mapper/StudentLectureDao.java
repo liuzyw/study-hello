@@ -1,6 +1,6 @@
 package com.study.spring.mapper;
 
-import com.study.spring.po.StudentLecture;
+import com.study.spring.entity.StudentLecture;
 import java.util.List;
 
 /**

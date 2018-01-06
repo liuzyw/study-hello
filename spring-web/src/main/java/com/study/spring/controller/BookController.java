@@ -1,7 +1,6 @@
 package com.study.spring.controller;
 
-import com.study.spring.po.Book;
-import com.study.spring.po.Fruit;
+import com.study.spring.entity.Book;
 import com.study.spring.service.BookService;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
