@@ -18,6 +18,12 @@ public class CookieUtils {
     }
 
 
+    /**
+     * 同域的cookie
+     * @param response
+     * @param name
+     * @param value
+     */
     public static void addCookie(HttpServletResponse response, String name, String value) {
         Cookie cookie = new Cookie(name, value);
         cookie.setPath("/");

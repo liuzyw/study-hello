@@ -1,0 +1,14 @@
+流程：
+   判断 cookie 是否存在，不存在前去登录，并加入cookie, 的判断应该在sso认证服务器， 重定向地址最好都是绝对地址
+
+一、 完全同域的 sso
+    1、localhost/sameDomain1、  localhost/sameDomain2 、localhost/login
+    2、page1 和 page2 在一个系统中， login page也在同一个系统中，这时候 cookie 只要加在当前域下就可以了
+
+二、 同父域的 sso
+    1、sameFatherDomain1.liu.com/sameFatherDomain1、  sameDomain2.liu.com/sameFatherDomain2 、login.liu.com/login
+    2、 cookie 必须要设置到当前父域的顶级  cookie.setDomain(".liu.com"); cookie.setPath("/");
+
+三、 跨域 sso
+    1、crossDomain1.a.com/crossDomain1、  crossDomain2.b.com/crossDomain2 、login.c.com/login
+    2、cookie 只能写到当前域,需要在认证的时候，一次性全部写入
