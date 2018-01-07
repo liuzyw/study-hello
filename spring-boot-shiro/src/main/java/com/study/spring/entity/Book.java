@@ -1,13 +1,16 @@
 package com.study.spring.entity;
 
 
+import java.io.Serializable;
+
 /**
  * Created on 2017-09-30
  *
  * @author liuzhaoyuan
  */
 
-public class Book {
+public class Book implements Serializable{
+    private static final long serialVersionUID = 8553750401338176857L;
 
     private Integer id;
     private String name;

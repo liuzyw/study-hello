@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.spring.mapper.SysPermissionDao">
+
+  <resultMap id="permissionMap" type="com.study.spring.entity.SysPermission">
+    <result column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="available" property="available"/>
+    <result column="resourceType" property="resourceType"/>
+    <result column="url" property="url"/>
+    <result column="permission" property="permission"/>
+    <result column="parentId" property="parentId"/>
+    <result column="parentIds" property="parentIds"/>
+  </resultMap>
+
+  <select id="findPermissionsByIds" resultMap="permissionMap">
+    SELECT id, name, available, resourceType, url, permission, parentId, parentIds FROM sys_permission
+    WHERE id IN
+    <foreach close=")" collection="ids" index="index" item="id" open="(" separator=",">
+      #{id}
+    </foreach>
+  </select>
+
+
+</mapper>
