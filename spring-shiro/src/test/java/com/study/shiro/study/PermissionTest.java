@@ -1,5 +1,6 @@
-package com.study.shiro;
+package com.study.shiro.study;
 
+import com.study.shiro.BaseTest;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.authz.permission.WildcardPermission;
 import org.junit.Assert;

@@ -1,5 +1,6 @@
-package com.study.shiro;
+package com.study.shiro.study;
 
+import com.study.shiro.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 

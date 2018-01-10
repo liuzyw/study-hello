@@ -1,9 +1,10 @@
-package com.study.shiro;
+package com.study.shiro.study;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
@@ -20,7 +21,7 @@ public class ShiroHelloTest {
     @Test
     public void testHelloShiro() {
         //1、获取 SecurityManager 工厂，此处使用 Ini 配置文件初始化SecurityManager
-        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:study/shiro.ini");
 
         //2、得到 SecurityManager 实例 并绑定给 SecurityUtils org.apache.shiro.mgt.
         SecurityManager securityManager = factory.getInstance();
@@ -39,6 +40,19 @@ public class ShiroHelloTest {
 
         //断言用户已经登录
         System.out.println(subject.isAuthenticated());
+
+        if (subject.hasRole("role1")){
+            System.out.println("current has role1 ");
+        }
+
+        if (subject.isPermitted("view:aa")){
+            System.out.println("current has permitted view");
+        }
+
+        Object s = "123";
+        Object re = new SimpleHash("MD5",s,null);
+        System.out.println(re);
+
         //6、退出
         subject.logout();
     }
