@@ -14,48 +14,43 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author liuzhaoyuan
  */
 @Controller
-@RequestMapping("/userInfo")
+//@RequestMapping("/userInfo")
 public class UserInfoController {
 
     @Autowired
     private UserInfoService userService;
 
-//    @RequestMapping("/findUserByPage")
-//    @RequiresPermissions("userInfo:view") // 权限管理;
-//    @ResponseBody
-//    public Page<UserInfo> getStudents(Pageable pageInfo) {
-//        return userService.findUserByPage(pageInfo);
-//    }
 
     @RequestMapping("/getUserInfoById")
     @RequiresPermissions("userInfo:view")
     @ResponseBody
-    protected UserInfo getUserInfoById(Long id) {
+    public UserInfo getUserInfoById() {
+        long id = 1L;
         return userService.findUserInfoById(id);
     }
 
     @RequestMapping("/getUserInfoByAccount")
     @RequiresPermissions("userInfo:view") // 权限管理;
     @ResponseBody
-    protected UserInfo getUserInfoByAccount(String account) {
+    public UserInfo getUserInfoByAccount(String account) {
         return userService.findUserInfoByAccount(account);
     }
 
     @RequestMapping("/deleteUserInfoByAccount")
     @RequiresPermissions("userInfo:del") // 权限管理;
-    protected void deleteUserInfoByAccount(String account) {
+    public void deleteUserInfoByAccount(String account) {
         userService.deleteUserInfoByAccount(account);
     }
 
     @RequestMapping(value = "/saveUserInfo")
     @RequiresPermissions("userInfo:add") // 权限管理;
     @ResponseBody
-    protected Long saveUserInfo(UserInfo user) {
+    public Long saveUserInfo(UserInfo user) {
         return userService.saveUserInfo(user);
     }
 
     @RequestMapping(value = "/view")
-    protected String view() {
+    public String view() {
         return "userInfo";
     }
 }

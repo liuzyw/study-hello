@@ -2,6 +2,9 @@ package com.study.spring.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -29,7 +32,17 @@ public class LoginController {
         String pass = request.getParameter("password");
         LOGGER.info("login request, username:{}, password:{}", name, pass);
 
-        return "success";
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(name, pass);
+
+        subject.login(token);
+
+        if (subject.isAuthenticated()) {
+            return "success";
+        } else {
+            return "login";
+        }
+
     }
 
 }

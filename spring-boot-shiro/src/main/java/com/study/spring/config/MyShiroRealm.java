@@ -12,7 +12,6 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +49,8 @@ public class MyShiroRealm extends AuthorizingRealm {
             return null;
         }
 
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(userInfo, userInfo.getPassword(),
-            ByteSource.Util.bytes(userInfo.getCredentialsSalt()), getName());
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(account, userInfo.getPassword(),
+            getName());
 
         return authenticationInfo;
     }
@@ -62,7 +61,8 @@ public class MyShiroRealm extends AuthorizingRealm {
         System.out.println("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
 
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        UserInfo userInfo = (UserInfo) principals.getPrimaryPrincipal();
+        String account = (String) principals.getPrimaryPrincipal();
+        UserInfo userInfo = userInfoService.findUserInfoByAccount(account);
 
         for (SysRole role : userInfo.getRoleList()) {
             authorizationInfo.addRole(role.getRole());
