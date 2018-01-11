@@ -14,4 +14,6 @@ public interface HelloService {
     void hello2();
 
     void hello3();
+
+    String session();
 }

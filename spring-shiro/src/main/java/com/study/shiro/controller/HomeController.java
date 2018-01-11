@@ -1,9 +1,10 @@
 package com.study.shiro.controller;
 
 import com.study.shiro.service.HelloService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
-import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,16 @@ public class HomeController {
     @RequestMapping("/view/admin")
     public String toAdminr() {
         return "views/admin";
+    }
+
+    @RequestMapping("/session")
+    @ResponseBody
+    public String session(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.setAttribute("key_aaa", "abcdefghijk");
+        // service 层可以用 shiro 的session 功能获取session
+        return helloService.session();
+
     }
 
 }

@@ -32,6 +32,7 @@
   <!-- Shiro's main business-tier object for web-enabled applications
        (use DefaultSecurityManager instead when there is no web environment)-->
   <bean class="org.apache.shiro.web.mgt.DefaultWebSecurityManager" id="securityManager">
+    <!-- 配置缓存的目的是让 realm 只执行一次 -->
     <property name="cacheManager" ref="cacheManager"/>
     <!-- Single realm app.  If you have multiple realms, use the 'realms' property instead. -->
     <!--<property name="sessionMode" value="native"/>-->
@@ -191,6 +192,11 @@
     id="filterChainDefinitionMap"/>
   <bean class="com.study.shiro.factory.FilterChainDefinitionMapBuilder" id="filterChainDefinitionMapBuilder"/>
 
+  <bean class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator" id="sessionIdGenerator"/>
+
+  <bean class="org.apache.shiro.session.mgt.DefaultSessionManager" id="sessionManager">
+
+  </bean>
 
   <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
     <property name="exceptionMappings">

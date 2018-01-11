@@ -26,7 +26,8 @@ public class LoginController {
         try {
             subject.login(token);
             System.out.println("login success");
-            token.setRememberMe(true);
+
+//            token.setRememberMe(true);
             return "views/success";
         } catch (AuthenticationException e) {
             //5、身份验证失败

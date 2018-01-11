@@ -1,6 +1,8 @@
 package com.study.shiro.service.impl;
 
 import com.study.shiro.service.HelloService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
 import org.springframework.stereotype.Service;
 
 /**
@@ -32,5 +34,12 @@ public class HelloServiceImpl implements HelloService {
     public void hello3() {
         System.out.println(getClass().getName() + " hello3");
 
+    }
+
+    @Override
+    public String session() {
+        Session session = SecurityUtils.getSubject().getSession();
+
+        return (String) session.getAttribute("key_aaa");
     }
 }
