@@ -2,6 +2,7 @@ package com.study.util.tree;
 
 import java.util.ArrayDeque;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Stack;
 
 /**
@@ -510,7 +511,7 @@ public class BinaryTree<T> {
             return false;
         }
 
-        if (bt.getData() != sub.getData()) {
+        if (!Objects.equals(bt.getData(), sub.getData())) {
             return false;
         }
         return doesTree1HaveTree2(bt.getLeftChild(), sub.getLeftChild())
