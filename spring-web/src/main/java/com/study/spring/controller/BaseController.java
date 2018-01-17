@@ -70,4 +70,13 @@ public class BaseController {
         return "redis/redis";
     }
 
+    @RequestMapping("/goFilter")
+    public String goFilter(){
+        return "success";
+    }
+    @RequestMapping("/goInter")
+    public String goIntec(){
+        return "success";
+    }
+
 }

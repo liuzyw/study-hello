@@ -4,11 +4,11 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://www.springframework.org/schema/beans"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
-                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
                         http://www.springframework.org/schema/context
-                        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                        http://www.springframework.org/schema/context/spring-context-3.2.xsd
                         http://www.springframework.org/schema/mvc
-                        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+                        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
   <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
   <!--<context:annotation-config/>-->
   <mvc:annotation-driven/>
@@ -46,12 +46,29 @@
       </list>
     </property>
   </bean>
-  <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+  <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
     <property name="messageConverters">
       <list>
         <ref bean="jsonHttpMessageConverter"/>
       </list>
     </property>
   </bean>
+
+  <mvc:interceptors>
+    <!--  使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求   -->
+    <!-- <bean class="com.bybo.aca.web.interceptor.Login"/> -->
+    <mvc:interceptor>
+      <!-- 进行拦截：/**表示拦截所有controller -->
+      <mvc:mapping path="/**" />
+       <!-- 不进行拦截 -->
+      <mvc:exclude-mapping path="/js/*"/>
+      <mvc:exclude-mapping path="/image/*"/>
+      <mvc:exclude-mapping path="/upload/*"/>
+      <mvc:exclude-mapping path="/login.jsp"/>
+      <mvc:exclude-mapping path="/index.jsp"/>
+      <mvc:exclude-mapping path="/findBookById"/>
+      <bean class="com.study.spring.interceptor.UserAccessInterceptor"/>
+    </mvc:interceptor>
+  </mvc:interceptors>
 
 </beans>

@@ -4,6 +4,8 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
+
     @RequestMapping("/login")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
 
@@ -26,6 +30,7 @@ public class LoginController {
         try {
             subject.login(token);
             System.out.println("login success");
+            LOGGER.info(" ---------    login success   -----");
 
 //            token.setRememberMe(true);
             return "views/success";
@@ -37,7 +42,7 @@ public class LoginController {
     }
 
     @RequestMapping("/loginout")
-    public String loginout(){
+    public String loginout() {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
         return "redirect:/index.jsp";

@@ -36,4 +36,13 @@ public class UserController {
 
     }
 
+    @RequestMapping("/admin")
+    public String admin(HttpServletRequest request, Model model) {
+
+        LOGGER.info("to admin : ");
+
+        return "user/admin";
+
+    }
+
 }

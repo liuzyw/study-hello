@@ -89,6 +89,13 @@
       <version>2.9.9</version>
     </dependency>
 
+    <!-- httpUtil -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
