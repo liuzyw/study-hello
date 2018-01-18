@@ -22,10 +22,10 @@ public class SameDomainController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SameDomainController.class);
 
-    @RequestMapping("/hello")
+    @RequestMapping("/home")
     @ResponseBody
     public String home() {
-        LOGGER.info(" spring boot web log hello");
+        LOGGER.info(" spring boot web log home");
         return "--- Hello Spring Boot sso Test --- \n" + DateUtils.getCurTimeStr();
     }
 
