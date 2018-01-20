@@ -67,12 +67,30 @@
       <version>${spring.boot.version}</version>
       <optional>true</optional>
     </dependency>
+    <!--<dependency>-->
+    <!--<groupId>org.springframework.boot</groupId>-->
+    <!--<artifactId>spring-boot-starter-data-redis</artifactId>-->
+    <!--<version>${spring.boot.version}</version>-->
+    <!--</dependency>-->
     <!-- 监控模块 可关闭 -->
     <!--<dependency>-->
       <!--<groupId>org.springframework.boot</groupId>-->
       <!--<artifactId>spring-boot-starter-actuator</artifactId>-->
       <!--<version>${spring.boot.version}</version>-->
     <!--</dependency>-->
+
+    <!-- aspect -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>1.8.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.8.11</version>
+    </dependency>
+
 
     <!-- mybatis dependency  -->
     <dependency>
@@ -164,6 +182,13 @@
             <phase>compile</phase>
           </execution>
         </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.shared</groupId>
+            <artifactId>maven-filtering</artifactId>
+            <version>1.3</version>
+          </dependency>
+        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -207,11 +232,8 @@
         <configuration>
           <fork>true</fork>
         </configuration>
-
       </plugin>
-
     </plugins>
-
   </build>
 
   <!-- Add Spring repositories -->

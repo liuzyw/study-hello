@@ -11,12 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author liuzhaoyuan
  */
 @SpringBootApplication
-public class Application {
+public class SpringBootSsoApplication {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootSsoApplication.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(SpringBootSsoApplication.class, args);
         System.out.println();
         LOGGER.info("=========== SpringBoot SSO Start Success ===========");
         System.out.println();

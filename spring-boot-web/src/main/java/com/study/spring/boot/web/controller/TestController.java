@@ -20,7 +20,7 @@ public class TestController {
     @RequestMapping("/hello")
     public String home() {
         LOGGER.info(" spring boot web log hello");
-        return "--- Hello My First Spring Boot Web Test --- \n" + DateUtils.getCurTimeStr();
+        return "--- Hello My First Spring Boot Web Test dev --- \n" + DateUtils.getCurTimeStr();
     }
 
 

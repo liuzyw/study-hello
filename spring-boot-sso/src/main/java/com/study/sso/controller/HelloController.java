@@ -1,11 +1,14 @@
 package com.study.sso.controller;
 
+import com.study.sso.dao.RedisBaseDao;
 import com.study.sso.prop.MyProperties;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +27,9 @@ public class HelloController {
 
     @Resource
     private MyProperties myProperties;
+
+//    @Autowired
+    private RedisBaseDao redisBaseDao;
 
     @RequestMapping("/hello")
     @ResponseBody
@@ -51,5 +57,20 @@ public class HelloController {
         model.addAttribute("list", list);
         return "model";
     }
+
+    @RequestMapping("/addRedis")
+    @ResponseBody
+    public String addRedis() {
+        redisBaseDao.addValue("liu", "123");
+        return "1234";
+    }
+
+    @RequestMapping("/getRedis")
+    @ResponseBody
+    public String getRedis() {
+
+        return redisBaseDao.getValue("liu");
+    }
+
 
 }

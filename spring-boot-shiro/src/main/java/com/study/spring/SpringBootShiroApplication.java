@@ -22,9 +22,9 @@ import org.springframework.transaction.PlatformTransactionManager;
  */
 @SpringBootApplication
 @MapperScan("com.study.spring.mapper")
-public class Application {
+public class SpringBootShiroApplication {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootShiroApplication.class);
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
@@ -55,7 +55,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(SpringBootShiroApplication.class, args);
         System.out.println();
         LOGGER.info("============ SpringBoot Shiro Start Success ===========");
         System.out.println();

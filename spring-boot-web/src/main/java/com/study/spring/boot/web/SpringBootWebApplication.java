@@ -17,9 +17,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @SpringBootApplication
 @MapperScan("com.study.spring.boot.web.mapper")
-public class Application {
+public class SpringBootWebApplication {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootWebApplication.class);
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
@@ -50,7 +50,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(SpringBootWebApplication.class, args);
         System.out.println();
         LOGGER.info("=========== SpringBoot Start Success ===========");
         System.out.println();
