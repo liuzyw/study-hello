@@ -22,7 +22,9 @@
     <module>spring-cloud-eureka-consume</module>
     <module>spring-boot-sso</module>
     <module>spring-boot-shiro</module>
+    <module>spring-mybatis</module>
   </modules>
+
   <!-- archetypeCatalog=internal -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -6,44 +6,37 @@
 
   <settings>
     <setting name="lazyLoadingEnabled" value="true"/>
+    <setting name="defaultStatementTimeout" value="3000"/>
   </settings>
 
 
-  <!--<typeAliases>-->
+  <typeAliases>
     <!--<typeAlias alias="user" type="com.po.User"></typeAlias>-->
     <!--<typeAlias alias="fruit" type="com.liu.po.Fruit"/>-->
-    <!-- 也可以简化为这种方式 -->
-    <!--<package name="com.liu.po"/>-->
-  <!--</typeAliases>-->
+    <!--也可以简化为这种方式-->
+    <package name="com.study.spring.entity"/>
+  </typeAliases>
 
   <!-- 配置枚举类型 -->
   <typeHandlers>
     <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.study.spring.entity.Sex"/>
   </typeHandlers>
 
-
-  <!--<environments default="development">-->
-    <!--<environment id="development">-->
-      <!--<transactionManager type="JDBC">-->
-        <!--<property name="autoCommit" value="false"/>-->
-      <!--</transactionManager>-->
-      <!--<dataSource type="POOLED">-->
-        <!--<property name="driver" value="com.mysql.jdbc.Driver"/>-->
-        <!--<property name="url" value="jdbc:mysql://localhost:3306/aaa?useUnicode=true&amp;characterEncoding=UTF-8"/>-->
-        <!--<property name="username" value="liu"/>-->
-        <!--<property name="password" value="123456"/>-->
-      <!--</dataSource>-->
-    <!--</environment>-->
-  <!--</environments>-->
-
-
-
-  <!--<mappers>-->
+  <mappers>
     <!--<mapper resource="com/mapper/userMapper.xml"/>-->
     <!--<mapper resource="classpath:mapper/*.xml"/>-->
 
+    <mapper resource="mapper/bookMapper.xml"/>
+    <mapper resource="mapper/fruitMapper.xml"/>
+    <mapper resource="mapper/lectureMapper.xml"/>
+    <mapper resource="mapper/studentLectureMapper.xml"/>
+    <mapper resource="mapper/studentMapper.xml"/>
+    <mapper resource="mapper/studentSelfCardMapper.xml"/>
+    <mapper resource="mapper/userMapper.xml"/>
+
     <!-- 需要将mapper接口类名和mapper.xml映射文件名称保持一致且在同一个目录中，要使用的是mapper代理 -->
     <!--<package name="com.liu.mapper"/>-->
-  <!--</mappers>-->
+  </mappers>
+
 
 </configuration>

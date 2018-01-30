@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.mybatis.mapper.UserMapper">
+
+  <resultMap id="userSimple" type="com.study.mybatis.entity.UserSimple">
+    <result column="name" property="name"/>
+    <result column="age" property="age"/>
+  </resultMap>
+
+  <resultMap id="userMap" type="com.study.mybatis.entity.User">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="pass" property="pass"/>
+    <result column="age" property="age"/>
+    <result column="adress" property="address"/>
+    <result column="sex" property="sex" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+  </resultMap>
+
+  <select id="getUserById" parameterType="java.lang.Integer" resultMap="userMap">
+    SELECT id, name, pass, age, address, sex FROM user WHERE id = #{id}
+  </select>
+
+  <select id="findUserByNameAndPass" resultMap="userMap">
+    SELECT id, name, pass, age, address, sex FROM user WHERE name = #{name} AND pass = #{pass}
+  </select>
+
+  <select id="finUserByChoose" parameterType="com.study.mybatis.entity.User" resultMap="userMap">
+    SELECT id, name, pass, age, address, sex FROM user WHERE 1 = 1
+    <choose>
+      <when test="id != null and id != 0">
+        AND id = #{id}
+      </when>
+      <when test="name != null and name != ''">
+        AND name = #{name}
+      </when>
+      <otherwise>
+        AND pass IS NOT null
+      </otherwise>
+    </choose>
+  </select>
+
+  <select id="getUserSimpleById" parameterType="java.lang.Integer" resultMap="userSimple">
+    SELECT name, age FROM user WHERE id = #{id}
+  </select>
+
+  <insert id="saveUser" parameterType="com.study.mybatis.entity.User">
+    INSERT INTO user(name, pass, age, address, sex) VALUES (#{name}, #{pass}, #{age}, #{address}, #{sex})
+  </insert>
+
+  <delete id="deleteUser" parameterType="java.lang.Integer">
+    DELETE FROM user WHERE id = #{id}
+  </delete>
+
+
+</mapper>

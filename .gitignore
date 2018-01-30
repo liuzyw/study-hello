@@ -6,6 +6,7 @@ spring-boot-shiro/logs*
 spring-cloud-eureka/logs/*
 spring-shiro/cache/*
 spring-shiro/logs/*
+spring-mybatis/logs/*
 .settings
 .project
 .idea
