@@ -20,9 +20,10 @@ public class StudentMapperDemo {
             StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
             MyUtils.pringBegin();
             Student student = mapper.getStudentById(10002);
+            System.out.println("----------1---------" + student);
 
             student.getStudentSelfCard();
-            System.out.println("-------------------");
+            System.out.println("----------2---------"+student);
             Student student1 = mapper.getStudentById(10002);
 
             System.out.println(student);

@@ -9,6 +9,6 @@ import com.study.mybatis.entity.StudentSelfCard;
  */
 public interface StudentSelfCardMapper {
 
-    StudentSelfCard findStudentSelfCardByStudentId(Integer id);
+    StudentSelfCard findStudentSelfCardByStudentId(Integer studentId);
 
 }

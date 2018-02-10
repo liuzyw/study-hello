@@ -35,12 +35,9 @@
     DELETE FROM user_info WHERE account = #{account}
   </delete>
 
-  <insert id="saveUserInfo" parameterType="com.study.spring.entity.UserInfo" useGeneratedKeys="true">
+  <insert id="saveUserInfo" keyProperty="id" parameterType="com.study.spring.entity.UserInfo" useGeneratedKeys="true">
     INSERT INTO user_info(username, password, account, salt, state)
     VALUES (#{username}, #{password}, #{account}, #{salt}, #{state})
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
-      SELECT @@IDENTITY AS id
-    </selectKey>
   </insert>
 
 </mapper>

@@ -50,7 +50,9 @@
 
   <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
   <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <!-- 可使用逗号分隔，或者分号 -->
     <property name="basePackage" value="com.study.spring.mapper"/>
+    <!-- 这里指定了注解，只有是这个注解类，才会被扫描 -->
     <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
     <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
   </bean>

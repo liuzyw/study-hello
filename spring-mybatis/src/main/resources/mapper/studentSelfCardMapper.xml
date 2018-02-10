@@ -13,7 +13,7 @@
   </resultMap>
 
   <select id="findStudentSelfCardByStudentId" parameterType="java.lang.Integer" resultMap="studentSelfCardMap">
-    SELECT id, student_id, adress, birthday, note FROM t_student_self_card WHERE student_id = #{id}
+    SELECT id, student_id, adress, birthday, note FROM t_student_self_card WHERE student_id = #{studentId}
   </select>
 
 

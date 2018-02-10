@@ -19,13 +19,16 @@
     SELECT name, price, weight FROM fruit WHERE price = #{price}
   </select>
 
-  <insert id="saveFruit" parameterType="com.study.mybatis.entity.Fruit">
+  <insert id="saveFruit" parameterType="com.study.mybatis.entity.Fruit" useGeneratedKeys="true" keyProperty="id">
     INSERT INTO fruit(name, price, weight) VALUES (#{name}, #{price}, #{weight})
   </insert>
 
   <delete id="deleteFruit" parameterType="java.lang.Integer">
     DELETE FROM fruit WHERE id = #{id}
   </delete>
-
+  
+  <select id="listFruitByPage" resultMap="fruitMap">
+    SELECT name, price, weight FROM fruit
+  </select>
 
 </mapper>

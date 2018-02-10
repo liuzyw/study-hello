@@ -10,7 +10,9 @@
     <result column="sex" property="sex" jdbcType="INTEGER" javaType="com.study.mybatis.entity.Sex" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
     <result column="note" property="note"/>
     <!-- column 表示用该表的哪一列作为参数去另一个表进行查询 -->
+    <!-- 使用 result 的 association 进行一对一映射 -->
     <association property="studentSelfCard" column="id" select="com.study.mybatis.mapper.StudentSelfCardMapper.findStudentSelfCardByStudentId" fetchType="lazy"/>
+    <!-- 使用 result 的 collection 进行一对多映射 -->
     <collection property="studentLectures" column="id" select="com.study.mybatis.mapper.StudentLectureMapper.findStudentLectureByStudentId" fetchType="lazy"/>
   </resultMap>
 

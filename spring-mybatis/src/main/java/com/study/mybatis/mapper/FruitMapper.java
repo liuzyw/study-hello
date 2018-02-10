@@ -9,12 +9,14 @@ import java.util.List;
  */
 public interface FruitMapper {
 
-  Fruit getFruitById(Integer id);
+    Fruit getFruitById(Integer id);
 
-  Integer saveFruit(Fruit fruit);
+    Integer saveFruit(Fruit fruit);
 
-  Integer deleteFruit(Integer id);
+    Integer deleteFruit(Integer id);
 
-  List<Fruit> findFruitsByPrice(BigDecimal price);
+    List<Fruit> findFruitsByPrice(BigDecimal price);
+
+    List<Fruit> listFruitByPage();
 
 }
