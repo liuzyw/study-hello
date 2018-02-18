@@ -13,8 +13,10 @@ public class ApplicationProducer {
 
     public static void main(String[] args) {
 
+//        Scanner scanner = new Scanner(System.in);
+//        String port = scanner.nextLine();
         SpringApplication.run(ApplicationProducer.class, args);
-//        new SpringApplicationBuilder(ApplicationClient.class).web(true).run(args);
+//        new SpringApplicationBuilder(ApplicationProducer.class).properties("server.port=" + port).run(args);
         System.out.println();
         System.out.println();
         System.out.println();

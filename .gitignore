@@ -7,6 +7,9 @@ spring-cloud-eureka/logs/*
 spring-shiro/cache/*
 spring-shiro/logs/*
 spring-mybatis/logs/*
+spring-cloud-eureka-consume/logs/*
+spring-cloud-eureka-producer/logs/*
+spring-cloud-feign-consume/logs/*
 .settings
 .project
 .idea

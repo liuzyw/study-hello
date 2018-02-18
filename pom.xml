@@ -11,11 +11,11 @@
   <version>1.0-SNAPSHOT</version>
 
   <modules>
+    <module>study-util</module>
     <module>spring-aop</module>
     <module>spring-web</module>
     <module>spring-boot-web</module>
     <module>spring-quartz</module>
-    <module>study-util</module>
     <module>spring-shiro</module>
     <module>spring-cloud-eureka</module>
     <module>spring-cloud-eureka-producer</module>
@@ -23,6 +23,7 @@
     <module>spring-boot-sso</module>
     <module>spring-boot-shiro</module>
     <module>spring-mybatis</module>
+    <module>spring-cloud-feign-consume</module>
   </modules>
 
   <!-- archetypeCatalog=internal -->
