@@ -24,6 +24,7 @@
     <module>spring-boot-shiro</module>
     <module>spring-mybatis</module>
     <module>spring-cloud-feign-consume</module>
+    <module>spring-cloud-feign-producer</module>
   </modules>
 
   <!-- archetypeCatalog=internal -->

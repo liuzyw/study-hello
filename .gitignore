@@ -10,6 +10,7 @@ spring-mybatis/logs/*
 spring-cloud-eureka-consume/logs/*
 spring-cloud-eureka-producer/logs/*
 spring-cloud-feign-consume/logs/*
+spring-cloud-feign-producer/logs/*
 .settings
 .project
 .idea

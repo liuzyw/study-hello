@@ -1,21 +1,16 @@
 package com.study.cloud.feign.entity;
 
 import java.io.Serializable;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Created on 2018-02-18
  *
  * @author liuzhaoyuan
  */
-@XmlRootElement
 public class User implements Serializable {
 
     private static final Long serialVersionUID = 2132131231L;
 
-    @XmlElement
     private String name;
 
     private Integer age;
@@ -25,7 +20,6 @@ public class User implements Serializable {
     public User() {
     }
 
-    @XmlTransient
     public String getName() {
         return name;
     }

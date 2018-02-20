@@ -1,7 +1,6 @@
-package com.study.spring.cloud.controller;
+package com.study.cloud.feign.controller;
 
-import com.study.spring.cloud.entity.User;
-import com.study.util.date.DateUtils;
+import com.study.cloud.feign.entity.User;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,18 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @author liuzhaoyuan
  */
 @RestController
-public class ProducerController {
+public class FeignProducerController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProducerController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FeignProducerController.class);
 
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @RequestMapping(value = "hello", method = RequestMethod.GET)
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String helloClient(HttpServletRequest request) {
         ServiceInstance serviceInstance = discoveryClient.getLocalServiceInstance();
         LOGGER.info("host:" + serviceInstance.getHost() + " , serviceId:" + serviceInstance.getServiceId());
-        return "hello " + "--spring-cloud-eureka-producer--" + request.getRequestURL() + DateUtils.getCurTimeStr();
+        return "hello " + "--spring-cloud-feign-producer--";
     }
 
 
@@ -40,7 +39,7 @@ public class ProducerController {
     public User restUser() {
 
         User user = new User();
-        user.setAge(12);
+        user.setAge(121);
         user.setName("kangbazi");
         user.setSex("man");
 
