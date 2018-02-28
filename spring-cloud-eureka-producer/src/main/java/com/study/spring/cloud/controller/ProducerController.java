@@ -28,11 +28,23 @@ public class ProducerController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @RequestMapping(value = "hello", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index() {
+        return "hello index" + DateUtils.getCurTimeStr();
+    }
+
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String helloClient(HttpServletRequest request) {
         ServiceInstance serviceInstance = discoveryClient.getLocalServiceInstance();
         LOGGER.info("host:" + serviceInstance.getHost() + " , serviceId:" + serviceInstance.getServiceId());
-        return "hello " + "--spring-cloud-eureka-producer--" + request.getRequestURL() + DateUtils.getCurTimeStr();
+        return "hello " + "--spring-cloud-eureka-producer--" + DateUtils.getCurTimeStr();
+    }
+
+    @RequestMapping(value = "/errorHello", method = RequestMethod.GET)
+    public String errorHello(HttpServletRequest request) throws Exception {
+
+        Thread.sleep(10000);
+        return "errorHello" + DateUtils.getCurTimeStr();
     }
 
 
@@ -47,7 +59,7 @@ public class ProducerController {
         return user;
     }
 
-    @RequestMapping(value = "/getUserAge/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getUserAge/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public int getUserAge(@PathVariable("name") String name) {
         LOGGER.info("getUserAge by name:{}", name);
         return 23;
