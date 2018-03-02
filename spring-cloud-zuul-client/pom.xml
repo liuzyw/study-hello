@@ -1,4 +1,4 @@
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -7,12 +7,12 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.study.hello</groupId>
-  <artifactId>spring-cloud-hystrix-client</artifactId>
+  <groupId>com.study.spring.zuul</groupId>
+  <artifactId>spring-cloud-zuul</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>spring-cloud-hystrix-client</name>
+  <name>spring-cloud-zuul</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -78,11 +78,11 @@
       <version>${spring.boot.version}</version>
       <optional>true</optional>
     </dependency>
-    <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-actuator</artifactId>
-    <version>${spring.boot.version}</version>
-    </dependency>
+    <!--<dependency>-->
+    <!--<groupId>org.springframework.boot</groupId>-->
+    <!--<artifactId>spring-boot-starter-actuator</artifactId>-->
+    <!--<version>${spring.boot.version}</version>-->
+    <!--</dependency>-->
 
     <!-- sprcom.study.hello.cloudloud dependency -->
     <dependency>
@@ -103,24 +103,18 @@
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-ribbon</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-zuul</artifactId>
+    </dependency>
 
+    <!-- groovy -->
     <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-openfeign</artifactId>
+      <groupId>org.codehaus.groovy</groupId>
+      <artifactId>groovy-all</artifactId>
+      <version>2.4.13</version>
     </dependency>
-    <dependency>
-      <groupId>io.github.openfeign</groupId>
-      <artifactId>feign-gson</artifactId>
-      <version>9.5.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-hystrix</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
-    </dependency>
+
 
     <!-- mybatis dependency  -->
     <!--<dependency>-->
@@ -145,11 +139,6 @@
       <groupId>com.study.spring</groupId>
       <artifactId>study-util</artifactId>
       <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.5.5</version>
     </dependency>
 
     <!-- Test dependency-->
