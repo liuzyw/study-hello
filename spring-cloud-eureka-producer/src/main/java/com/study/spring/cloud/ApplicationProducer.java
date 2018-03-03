@@ -15,8 +15,9 @@ public class ApplicationProducer {
 
 //        Scanner scanner = new Scanner(System.in);
 //        String port = scanner.nextLine();
+        //        new SpringApplicationBuilder(ApplicationProducer.class).properties("server.port=" + port).run(args);
+
         SpringApplication.run(ApplicationProducer.class, args);
-//        new SpringApplicationBuilder(ApplicationProducer.class).properties("server.port=" + port).run(args);
         System.out.println();
         System.out.println();
         System.out.println();

@@ -28,6 +28,7 @@
     <module>spring-cloud-hystrix-client</module>
     <module>spring-cloud-zuul-client</module>
     <module>spring-cloud-mq-producer</module>
+    <module>spring-cloud-mq-consume</module>
   </modules>
 
   <!-- archetypeCatalog=internal -->
