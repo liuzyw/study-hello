@@ -2,12 +2,12 @@ package com.study.spring.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * <p这个是客户端</p>
  */
-@EnableDiscoveryClient
+@EnableEurekaClient
 @SpringBootApplication
 public class ApplicationProducer {
 

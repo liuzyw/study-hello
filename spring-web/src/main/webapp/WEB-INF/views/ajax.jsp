@@ -206,5 +206,35 @@ test ajax
 <br/>
 
 
+<script>
+  $(function () {
+    $("#postTree").click(function () {
+      $.ajax({
+        type: "POST",
+        url: "/postTree",
+        data: JSON.stringify({name: "tree", age: 12, lefts:["bule","black"]}),
+        dataType: 'json',
+        contentType: 'application/json;charset=UTF-8',
+        success: function (msg) {
+          alert(msg);
+          var buss = eval(msg);
+          var str = "";
+          for (var i = 0; i < buss.length; i++) {
+            str = str +"["+ buss[i].name + "," + buss[i].age+","+buss[i].lefts+"]";
+          }
+          str = str +"["+ msg.name + "," + msg.age+","+msg.lefts+"]";
+
+          document.getElementById("fff").innerHTML = str;
+        }
+      });
+    });
+  });
+</script>
+<br/><input id="postTree" type="button" value="postTree" onclick="postTree()"/>
+/postTree  list
+<div id="fff"></div>
+<br/>
+
+
 </body>
 </html>

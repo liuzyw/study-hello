@@ -17,7 +17,7 @@ public class EurekaServerApplication {
         System.out.println();
         System.out.println();
         System.out.println();
-        System.out.println("--- Hello Spring Cloud Application---");
+        System.out.println("--- Hello Spring Cloud EurekaServerApplication---");
         System.out.println();
         System.out.println();
         System.out.println();

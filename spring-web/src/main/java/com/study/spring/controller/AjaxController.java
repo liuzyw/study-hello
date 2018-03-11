@@ -1,6 +1,7 @@
 package com.study.spring.controller;
 
 import com.study.spring.entity.Bus;
+import com.study.spring.entity.Tree;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class AjaxController {
 
     private static List<Bus> buses = new ArrayList<>();
+
     static {
         Bus bus1 = new Bus();
         bus1.setColor("red");
@@ -41,6 +43,14 @@ public class AjaxController {
     }
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AjaxController.class);
+
+
+    @RequestMapping(value = "/postTree", method = RequestMethod.POST)
+    @ResponseBody
+    public Tree postList(@RequestBody Tree tree) {
+        tree.getLefts().add("one");
+        return tree;
+    }
 
     @RequestMapping(value = "/getAjaxMessage", method = RequestMethod.POST)
     @ResponseBody
@@ -78,7 +88,6 @@ public class AjaxController {
     @ResponseBody
     public List<Bus> JsonServlet11() {
         System.out.println("------- getBuss GET --------");
-
 
         LOGGER.info("response ajax get: " + buses);
         System.out.println(buses);
