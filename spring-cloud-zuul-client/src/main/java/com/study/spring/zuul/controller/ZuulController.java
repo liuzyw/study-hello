@@ -24,5 +24,10 @@ public class ZuulController {
         return "hello " + "--spring-cloud-zuul-- " + name;
     }
 
+    @RequestMapping(value = "/bb/hello", method = RequestMethod.GET)
+    public String zuul1() {
+        return "hello " + "--spring-cloud-zuul-- ";
+    }
+
 
 }
