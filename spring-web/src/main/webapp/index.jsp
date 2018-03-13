@@ -35,7 +35,7 @@
     <<a href="/goRedis">跳转到测试redis页面</a>>
     <br/>
     <br/>
-
+    <<a href="/goLogin">跳转到登录页面</a>>
     <br/>
     <br/>
 
