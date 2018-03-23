@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper nameSpace="com.my.code.mapper.MyUserMapper">
+  <select id="getUserById" resultType="com.my.code.MyUser">
+    SELECT id, name, age FROM user WHERE id = ?
+  </select>
+</mapper>
