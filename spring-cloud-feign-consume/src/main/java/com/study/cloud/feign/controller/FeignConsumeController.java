@@ -1,5 +1,6 @@
 package com.study.cloud.feign.controller;
 
+import com.study.cloud.feign.FeignConsumeClient;
 import com.study.cloud.feign.HelloClient;
 import com.study.cloud.feign.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,13 @@ public class FeignConsumeController {
     @Autowired
     private HelloClient helloClient;
 
+//    @Autowired
+//    private FeignConsumeClient feignConsumeClient;
+
     @RequestMapping(method = RequestMethod.GET, value = "/hello")
     public String hello() {
         String result = helloClient.hello();
+//        System.out.println(feignConsumeClient.hello());
         return result;
     }
 
@@ -30,6 +35,7 @@ public class FeignConsumeController {
         produces = MediaType.APPLICATION_JSON_VALUE)
     public int getUserAge(@PathVariable("name") String name) {
         int p = helloClient.getUserAge(name);
+//        System.out.println(feignConsumeClient.getUserAge(name));
         return p;
     }
 

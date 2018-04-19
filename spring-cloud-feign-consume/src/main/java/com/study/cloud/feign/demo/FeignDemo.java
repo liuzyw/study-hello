@@ -56,8 +56,8 @@ public class FeignDemo {
         p.setName("angus");
         p.setAge(33);
         // 调用接口并返回结果
-        User result = client.createXMLUser(p);
-        System.out.println(result.getName());
+//        User result = client.createXMLUser(p);
+//        System.out.println(result.getName());
 
     }
 }

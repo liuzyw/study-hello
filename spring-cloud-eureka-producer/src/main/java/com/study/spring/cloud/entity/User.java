@@ -1,23 +1,37 @@
 package com.study.spring.cloud.entity;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
- * Created on 2018-02-18
- *
- * @author liuzhaoyuan
+ * Created by liuzhaoyuan on 2017/7/22.
  */
+@Entity
 public class User implements Serializable {
 
-    private static final Long serialVersionUID = 2132131231L;
+    private static final Long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer id;
     private String name;
-
+    private String pass;
     private Integer age;
-
-    private String sex;
+    private String address;
+    private Integer sex;
 
     public User() {
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 
     public String getName() {
@@ -28,6 +42,22 @@ public class User implements Serializable {
         this.name = name;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     public Integer getAge() {
         return age;
     }
@@ -36,20 +66,23 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    public String getSex() {
-        return sex;
+    public String getAddress() {
+        return address;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
         return "User{" +
-            "name='" + name + '\'' +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", pass='" + pass + '\'' +
             ", age=" + age +
-            ", sex='" + sex + '\'' +
+            ", address='" + address + '\'' +
+            ", sex=" + sex +
             '}';
     }
 }

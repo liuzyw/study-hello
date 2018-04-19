@@ -1,5 +1,6 @@
 package com.study.spring.cloud.controller;
 
+import com.study.spring.cloud.dao.UserDao;
 import com.study.spring.cloud.entity.User;
 import com.study.util.date.DateUtils;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,9 @@ public class ProducerController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @Autowired
+    private UserDao userDao;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
         return "hello index" + DateUtils.getCurTimeStr();
@@ -36,7 +40,7 @@ public class ProducerController {
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String helloClient(HttpServletRequest request) {
         ServiceInstance serviceInstance = discoveryClient.getLocalServiceInstance();
-        LOGGER.info("host:" + serviceInstance.getHost() + " , serviceId:" + serviceInstance.getServiceId());
+        LOGGER.info("host:" + serviceInstance.getHost() + " , serviceId:" + serviceInstance.getServiceId() + ", port:" + serviceInstance.getPort());
         return "hello " + "--spring-cloud-eureka-producer--" + DateUtils.getCurTimeStr();
     }
 
@@ -54,7 +58,7 @@ public class ProducerController {
         User user = new User();
         user.setAge(12);
         user.setName("kangbazi");
-        user.setSex("man");
+//        user.setSex("man");
 
         return user;
     }
@@ -75,5 +79,10 @@ public class ProducerController {
     public String userXML(@RequestBody User user) {
         LOGGER.info("userXML:{}", user);
         return "<user><name>tom</name></user>";
+    }
+
+    @RequestMapping(value = "/getUserById/{id}", method = RequestMethod.GET)
+    public User getUserById(@PathVariable("id") Integer id) {
+        return userDao.findOne(id);
     }
 }
