@@ -8,6 +8,10 @@ import feign.Contract;
 @Configuration
 public class MyConfig {
 
+	/**
+	 * config.feign 中 FooConfiguration 用一个
+	 * @return
+	 */
 	@Bean
 	public Contract feignContract() {
 		return new MyContract();

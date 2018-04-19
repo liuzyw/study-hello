@@ -9,11 +9,15 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author liuzhaoyuan
  */
-@Configuration
+//@Configuration
 public class FooConfiguration {
 
-    @Bean
-    public Contract feignContract() {
-        return new feign.Contract.Default();
-    }
+    /**
+     * 一个类只能有一个
+     */
+
+//    @Bean
+//    public Contract feignContract() {
+//        return new feign.Contract.Default();
+//    }
 }
