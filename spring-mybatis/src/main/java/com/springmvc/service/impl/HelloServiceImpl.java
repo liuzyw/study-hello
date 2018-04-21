@@ -8,7 +8,7 @@ import com.springmvc.service.HelloService;
  *
  * @author liuzhaoyuan
  */
-@MyService
+@MyService("helloService")
 public class HelloServiceImpl implements HelloService {
 
     @Override

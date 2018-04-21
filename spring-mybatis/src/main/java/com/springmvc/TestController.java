@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 @MyController
 public class TestController {
 
-    @MyAutowrited
+    @MyAutowrited("helloService")
     private HelloService helloService;
 
     @MyRequestMapping("/aaa")
@@ -20,7 +20,7 @@ public class TestController {
         @MyRequestParam("param") String param) {
         System.out.println(param);
         try {
-            response.getWriter().write("doTest method success! param: " + param);
+            response.getWriter().write(" TestController doTest method success! param: " + param);
         } catch (IOException e) {
             e.printStackTrace();
         }

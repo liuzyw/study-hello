@@ -158,7 +158,7 @@ public class ConsumeDispatcherServlet extends HttpServlet {
         if (CollectionUtils.isNotEmpty(classNames)) {
             try {
                 for (String className : classNames) {
-                    Class<? extends Object> clazz = Class.forName(className);
+                    Class<?> clazz = Class.forName(className);
 
                     if (clazz.isAnnotationPresent(MyController.class)) {
                         char[] chars = clazz.getSimpleName().toCharArray();
@@ -190,23 +190,60 @@ public class ConsumeDispatcherServlet extends HttpServlet {
         try {
             if (MapUtils.isNotEmpty(ioc)) {
                 for (Entry<String, Object> entry : ioc.entrySet()) {
+
+                    // 取出全部的属性
                     Field[] fields = entry.getValue().getClass().getDeclaredFields();
+
+                    // 循环属性校验哪些是加了@autowired注解的
                     for (Field field : fields) {
-                        field.setAccessible(true);
+                        field.setAccessible(true);// 可访问私有属性
+
+                        // 有注解的时候
                         if (field.isAnnotationPresent(MyAutowrited.class)) {
-                            MyAutowrited autowrited = field.getAnnotation(MyAutowrited.class);
-                            String beanName = autowrited.value();
-                            if (StringUtils.isEmpty(beanName)) {
-                                beanName = field.getName();
-//                                char[] chars = beanName.toCharArray();
-//                                chars[0] += 32;
-//                                beanName = String.valueOf(chars);
+
+                            // 没有配别名注入的时候
+                            if (field.getAnnotation(MyAutowrited.class).value().isEmpty()) {
+                                // 直接获取
+                                try {
+                                    // 根据类型来获取他的实现类
+                                    Object object = ioc.get(field.getName());
+                                    field.set(entry.getValue(), object);
+                                } catch (IllegalArgumentException | IllegalAccessException e) {
+                                    // TODO Auto-generated catch block
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                try {
+                                    // 将被注入的对象
+                                    Object object = ioc.get(field.getAnnotation(MyAutowrited.class).value());
+                                    System.out.println("autowrited: " + field.getAnnotation(MyAutowrited.class).value());
+
+                                    field.set(entry.getValue(), object);
+                                } catch (Exception e) {
+                                    throw new RuntimeException("开始注入时出现了异常");
+                                }
                             }
-                            System.out.println("autowrited: " + beanName);
-                            field.set(entry.getValue(), ioc.get(beanName));
                         }
                     }
                 }
+//                for (Entry<String, Object> entry : ioc.entrySet()) {
+//                    Field[] fields = entry.getValue().getClass().getDeclaredFields();
+//                    for (Field field : fields) {
+//                        field.setAccessible(true);
+//                        if (field.isAnnotationPresent(MyAutowrited.class)) {
+//                            MyAutowrited autowrited = field.getAnnotation(MyAutowrited.class);
+//                            String beanName = autowrited.value();
+//                            if (StringUtils.isEmpty(beanName)) {
+//                                beanName = field.getName();
+////                                char[] chars = beanName.toCharArray();
+////                                chars[0] += 32;
+////                                beanName = String.valueOf(chars);
+//                            }
+//                            System.out.println("autowrited: " + beanName);
+//                            field.set(entry.getValue(), ioc.get(beanName));
+//                        }
+//                    }
+//                }
             }
         } catch (Exception e) {
             e.printStackTrace();
