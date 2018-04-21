@@ -1,19 +1,15 @@
 package com.springmvc;
 
-import com.springmvc.annotation.MyAutowrited;
 import com.springmvc.annotation.MyController;
 import com.springmvc.annotation.MyRequestMapping;
 import com.springmvc.annotation.MyRequestParam;
-import com.springmvc.service.HelloService;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @MyController
-public class TestController {
-
-    @MyAutowrited
-    private HelloService helloService;
+@MyRequestMapping("/test")
+public class TestControllerAAA {
 
     @MyRequestMapping("/aaa")
     public void test1(HttpServletRequest request, HttpServletResponse response,
@@ -21,26 +17,6 @@ public class TestController {
         System.out.println(param);
         try {
             response.getWriter().write("doTest method success! param: " + param);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @MyRequestMapping("/bbb")
-    public void test1(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            helloService.sayHello();
-            response.getWriter().write("doTest method hello");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @MyRequestMapping("/")
-    public void testd1(HttpServletResponse response) {
-        System.out.println("index");
-        try {
-            response.getWriter().write("hello my ssm index");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -8,7 +8,7 @@
 
   <servlet>
     <servlet-name>MySpringMVC</servlet-name>
-    <servlet-class>com.springmvc.servlet.MyDispatcherServlet</servlet-class>
+    <servlet-class>com.springmvc.servlet.ConsumeDispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>application.properties</param-value>
