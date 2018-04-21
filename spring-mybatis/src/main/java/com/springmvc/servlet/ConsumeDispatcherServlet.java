@@ -39,6 +39,8 @@ public class ConsumeDispatcherServlet extends HttpServlet {
 
     private Map<String, Object> ioc = new HashMap<>();
 
+    private Map<Class<?>, Object> instanceTypeMap = new HashMap<>();
+
     private Map<String, Method> handlerMapping = new HashMap<>();
     private Map<String, Object> controllerMap = new HashMap<>();
 
@@ -176,6 +178,14 @@ public class ConsumeDispatcherServlet extends HttpServlet {
                             beanName = String.valueOf(chars, 0, chars.length - 4);
                             ioc.put(beanName, clazz.newInstance());
                         }
+
+                        Class<?>[] interfaces = clazz.getInterfaces();
+                        for (Class<?> class1 : interfaces) {
+                            if (instanceTypeMap.get(class1) != null) {
+                                throw new RuntimeException(class1.getName() + "接口不能被多个类实现！");
+                            }
+                            instanceTypeMap.put(class1, clazz.newInstance());
+                        }
                     }
                 }
             } catch (ClassNotFoundException e) {
@@ -200,23 +210,24 @@ public class ConsumeDispatcherServlet extends HttpServlet {
 
                         // 有注解的时候
                         if (field.isAnnotationPresent(MyAutowrited.class)) {
-
+                            String beanName = field.getAnnotation(MyAutowrited.class).value();
                             // 没有配别名注入的时候
-                            if (field.getAnnotation(MyAutowrited.class).value().isEmpty()) {
+                            if (beanName.isEmpty()) {
                                 // 直接获取
                                 try {
                                     // 根据类型来获取他的实现类
-                                    Object object = ioc.get(field.getName());
+                                    Object object = instanceTypeMap.get(field.getType());
+                                    System.out.println("autowrited: t " + field.getType());
+
                                     field.set(entry.getValue(), object);
                                 } catch (IllegalArgumentException | IllegalAccessException e) {
-                                    // TODO Auto-generated catch block
                                     e.printStackTrace();
                                 }
                             } else {
                                 try {
                                     // 将被注入的对象
-                                    Object object = ioc.get(field.getAnnotation(MyAutowrited.class).value());
-                                    System.out.println("autowrited: " + field.getAnnotation(MyAutowrited.class).value());
+                                    Object object = ioc.get(beanName);
+                                    System.out.println("autowrited: " + beanName);
 
                                     field.set(entry.getValue(), object);
                                 } catch (Exception e) {
