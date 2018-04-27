@@ -31,6 +31,6 @@ public class CacheController {
         cacheService.removeCache(1);
         System.out.println("#########  分隔线   ###########");
         cacheService.getCache(1);
-        return "";
+        return "request rc";
     }
 }

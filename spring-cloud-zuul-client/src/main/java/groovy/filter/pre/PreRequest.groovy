@@ -1,7 +1,10 @@
 package groovy.filter.pre
 
 import com.netflix.zuul.ZuulFilter
+import com.netflix.zuul.context.RequestContext
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants
+
+import javax.servlet.http.HttpServletRequest
 
 /**
  *
@@ -27,7 +30,7 @@ class PreRequest extends ZuulFilter {
 
     @Override
     Object run() {
-        println("pre filter")
+       println("pre filter")
         return null
     }
 

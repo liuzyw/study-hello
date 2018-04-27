@@ -1,18 +1,13 @@
 package com.study.hystrix.feign;
 
-import com.study.hystrix.factory.HystrixClientFactory;
-import special.config.FooConfiguration;
+import special.config.FooConfiguration2;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * fallback & fallbackFactory 只能用一个
- */
-@FeignClient(name = "spring-cloud-eureka-producer",configuration = FooConfiguration.class,
-    /*fallback = HelloHystrixClient.class*/fallbackFactory = HystrixClientFactory.class)
-public interface HelloClient {
+@FeignClient(name = "spring-cloud-feign-producer",configuration = FooConfiguration2.class, fallback = HelloHystrixClient2.class)
+public interface HelloClient2 {
 
     @RequestMapping(method = RequestMethod.GET, value = "/hello")
     String hello();

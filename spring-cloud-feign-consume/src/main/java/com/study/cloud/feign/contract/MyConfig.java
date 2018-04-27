@@ -9,7 +9,9 @@ import feign.Contract;
 public class MyConfig {
 
 	/**
-	 * config.feign 中 FooConfiguration 用一个
+	 * 和 config.feign 中 FooConfiguration 只能用一个
+	 *
+	 * 这个用的是 SpringMvcContract
 	 * @return
 	 */
 	@Bean

@@ -33,6 +33,7 @@
     <module>spring-cloud-config-server</module>
     <module>study-nio</module>
     <module>study-kafka</module>
+    <module>spring-cloud-config-client-bus</module>
   </modules>
 
   <!-- archetypeCatalog=internal -->

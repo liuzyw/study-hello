@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.netflix.zuul.filters.post.LocationRewriteFilter;
+import org.springframework.context.annotation.Bean;
 
 /**
  * Created on 2018-03-01
@@ -20,6 +22,11 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 @EnableEurekaClient
 @EnableZuulProxy
 public class SpringCloudZuulApplication {
+
+    @Bean
+    public LocationRewriteFilter locationRewriteFilter() {
+        return new LocationRewriteFilter();
+    }
 
     /**
      * 动态加载
