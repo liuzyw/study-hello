@@ -34,6 +34,7 @@
     <module>study-nio</module>
     <module>study-kafka</module>
     <module>spring-cloud-config-client-bus</module>
+    <module>study-redis</module>
   </modules>
 
   <!-- archetypeCatalog=internal -->

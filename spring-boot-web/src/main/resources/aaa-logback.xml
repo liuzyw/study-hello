@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds">
-  <property name="LOG_HOME" value="/Users/liuzhaoyuan/gitwork/study-hello/spring-boot-web/log"/>
+  <property name="LOG_HOME" value="/Users/liuzhaoyuan/gitwork/study-hello/log"/>
   <!-- Simple file output -->
   <appender class="ch.qos.logback.core.rolling.RollingFileAppender"
     name="FILE">
