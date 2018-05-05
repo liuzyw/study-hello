@@ -8,9 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created on 2017-08-17 21:48
@@ -26,8 +30,11 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private HttpServletRequest request;
+
     @RequestMapping(value = "/findBookById", method = RequestMethod.POST)
-    public String findBookById(HttpServletRequest request, Model model) {
+    public String findBookById(Model model) {
         Integer id = Integer.valueOf(request.getParameter("id"));
         Book book = bookService.getBookById(id);
         LOGGER.info("model find book : " + book);
@@ -36,19 +43,34 @@ public class BookController {
     }
 
     @RequestMapping(value = "/saveBook", method = RequestMethod.POST)
-    public String saveBook(Book book, Model model) {
+    public String saveBook(@ModelAttribute Book book, Model model) {
         Integer re = bookService.saveBook(book);
         System.out.println("save book : " + re);
 //        LOGGER.info("model add book : " + book);
 //        model.addAttribute("book", book);
-        return "redirect:/showBook/11";
+        return "redirect:/showBook/" + book.getId();
     }
 
-    @RequestMapping(value = "/showBook/{bookId}",method = RequestMethod.GET)
+    @RequestMapping(value = "/showBook/{bookId}", method = RequestMethod.GET)
     public String showBookByPath(@PathVariable("bookId") Integer bookId, Model model) {
         Book book = bookService.getBookById(bookId);
         LOGGER.info("model add book : " + book);
         model.addAttribute("book", book);
         return "book/showBook";
+    }
+
+    @RequestMapping(value = "/getMvBook", method = RequestMethod.POST)
+    public ModelAndView getMv(@RequestHeader(value = "Accept") String[] accepts, ModelAndView modelAndView,
+        @CookieValue(value = "JSESSIONID", defaultValue = "") String sessionId,
+        @RequestHeader(value = "User-Agent") String userAgent) {
+        LOGGER.info("accepts:{}", accepts);
+        LOGGER.info("sessionId:{}", sessionId);
+        LOGGER.info("userAgent:{}", userAgent);
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        Book book = bookService.getBookById(id);
+        modelAndView.addObject("book", book);
+        modelAndView.setViewName("book/showBook");
+//        ModelAndView modelAndView = new ModelAndView();
+        return modelAndView;
     }
 }

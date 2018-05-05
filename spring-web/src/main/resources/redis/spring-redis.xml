@@ -2,7 +2,7 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://www.springframework.org/schema/beans"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
-                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+                        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
 
   <!-- redis 相关配置 -->
   <!--新版的JedisPoolConfig的property name，不是maxActive而是maxTotal，而且没有maxWait属性，看一下源码。-->

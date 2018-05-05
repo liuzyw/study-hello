@@ -4,11 +4,11 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://www.springframework.org/schema/beans"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
-                        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
                         http://www.springframework.org/schema/context
-                        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                        http://www.springframework.org/schema/context/spring-context-4.2.xsd
                         http://www.springframework.org/schema/mvc
-                        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
   <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
   <!--<context:annotation-config/>-->
   <mvc:annotation-driven/>
@@ -29,10 +29,10 @@
   <!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->
   <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
     id="multipartResolver">
-    <!-- 默认编码 -->
+    <!-- 默认编码 需要和页面编码保持一致-->
     <property name="defaultEncoding" value="utf-8"/>
     <!-- 文件大小最大值 -->
-    <property name="maxUploadSize" value="10485760000"/>
+    <property name="maxUploadSize" value="104857600"/>
     <!-- 内存中的最大值 -->
     <property name="maxInMemorySize" value="40960"/>
   </bean>

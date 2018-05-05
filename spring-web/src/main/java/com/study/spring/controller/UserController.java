@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  * Created on 2017-08-17 23:39
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author liuzhaoyuan
  */
 @Controller
+@SessionAttributes("user")
 public class UserController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
@@ -61,6 +63,7 @@ public class UserController {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String code = request.getParameter("code");
+        LOGGER.info("session user:{}", request.getSession().getAttribute("user"));
         if (code.equals(request.getSession().getAttribute("code"))) {
             return "login success, " + username + ", " + password + ", " + code;
         } else {

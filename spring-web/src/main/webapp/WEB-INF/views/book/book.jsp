@@ -31,6 +31,15 @@
 </form>
 <br/>
 <br/>
+<form action="/getMvBook" method="post">
+
+    id<input type="text" name="id" value="5"/>
+    <br/>
+
+    <input type="submit" value="getMvBook"/>
+</form>
+<br/>
+<br/>
 <<a href="/showBook/2">通过路径参数接受输入/showBook/{bookId}</a>>
 
 </body>
