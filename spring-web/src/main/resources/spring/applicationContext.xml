@@ -25,13 +25,16 @@
 
   <!-- 引入配置文件 -->
   <!--如果有多个配置需要通过<context:property-placeholder管理，一定要加上ignore-unresolvable=“true"-->
-  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" id="propertyPlaceholderConfigurer">
     <property name="order" value="1"/>
+    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
     <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    <property name="ignoreResourceNotFound" value="true"/>
     <property name="locations">
       <list>
         <value>classpath:jdbc.properties</value>
         <value>classpath:redis.properties</value>
+        <value>classpath:common.properties</value>
       </list>
     </property>
   </bean>

@@ -38,7 +38,7 @@
     <<a href="/goLogin">跳转到登录页面</a>>
     <br/>
     <br/>
-
+    <<a href="/goRoom">跳转到会议室页面</a>>
     <br/>
     <br/>
 
