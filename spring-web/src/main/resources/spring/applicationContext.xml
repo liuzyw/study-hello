@@ -39,12 +39,26 @@
     </property>
   </bean>
 
+
+  <bean id="threadPoolTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+    <!-- 核心线程数 -->
+    <property name="corePoolSize" value="${core_pool_size}" />
+    <!-- 最大线程数 -->
+    <property name="maxPoolSize" value="${max_pool_size}" />
+    <!-- 队列最大长度 -->
+    <property name="queueCapacity" value="${queue_capacity}" />
+    <!-- 线程池维护线程所允许的空闲时间，默认为60s -->
+    <property name="keepAliveSeconds" value="${keep_alive_seconds}" />
+  </bean>
+
   <!-- 引入同文件夹下的spring-mybatis属性配置文件 -->
   <import resource="classpath:mybatis/spring-mybatis.xml"/>
   <!--  redis config -->
   <import resource="classpath:redis/spring-redis.xml"/>
   <!-- mail config -->
   <import resource="classpath:mail/spring-mail.xml"/>
+  <!-- 调度任务 -->
+  <import resource="classpath:quartz/spring-quartz.xml"/>
 
 
   <!--<?xml version="1.0" encoding="UTF-8"?>-->

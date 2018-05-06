@@ -18,7 +18,7 @@
 
 
   <properties>
-    <quarttz.version>2.3.0</quarttz.version>
+    <quartz.version>2.3.0</quartz.version>
     <spring.version>4.2.9.RELEASE</spring.version>
 
   </properties>
@@ -96,16 +96,16 @@
       <artifactId>spring-test</artifactId>
       <version>${spring.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.quartz-scheduler</groupId>
-      <artifactId>quartz</artifactId>
-      <version>${quarttz.version}</version>
-    </dependency>
 
     <dependency>
       <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz</artifactId>
+      <version>${quartz.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
       <artifactId>quartz-jobs</artifactId>
-      <version>${quarttz.version}</version>
+      <version>${quartz.version}</version>
     </dependency>
 
     <dependency>

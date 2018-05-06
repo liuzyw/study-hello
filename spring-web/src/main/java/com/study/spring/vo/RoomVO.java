@@ -22,4 +22,10 @@ public class RoomVO implements Serializable {
      */
     private List<RoomPair> list;
 
+    /**
+     * 已预订的时间段
+     */
+    private List<RoomPair> bookRooms;
+
+
 }

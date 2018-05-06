@@ -20,6 +20,8 @@
     <slf4j.version>1.7.22</slf4j.version>
     <jackson.version>2.9.3</jackson.version>
     <spring.version>4.2.9.RELEASE</spring.version>
+    <quartz.version>2.3.0</quartz.version>
+
 
   </properties>
 
@@ -260,6 +262,18 @@
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>
       <version>1.4.7</version>
+    </dependency>
+
+    <!-- spring quartz -->
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz</artifactId>
+      <version>${quartz.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz-jobs</artifactId>
+      <version>${quartz.version}</version>
     </dependency>
 
 

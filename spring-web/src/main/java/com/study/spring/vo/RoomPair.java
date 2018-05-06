@@ -1,15 +1,34 @@
 package com.study.spring.vo;
 
+import lombok.Data;
+
 /**
  * Created on 2018-05-05
  *
  * @author liuzhaoyuan
  */
-
+@Data
 public class RoomPair {
 
-    private int beginDate;
-    private int endDate;
+    /**
+     * 预订人
+     */
+    private String bookName;
+
+    /**
+     * 会议室编号
+     */
+    private Integer no;
+
+    /**
+     * 预订开始时间
+     */
+    private Integer beginDate;
+
+    /**
+     * 预订结束时间
+     */
+    private Integer endDate;
     /**
      * 是否使用完毕
      */
@@ -23,36 +42,4 @@ public class RoomPair {
         this.endDate = endDate;
     }
 
-    public int getBeginDate() {
-        return beginDate;
-    }
-
-    public void setBeginDate(int beginDate) {
-        this.beginDate = beginDate;
-    }
-
-    public int getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(int endDate) {
-        this.endDate = endDate;
-    }
-
-    public boolean isFree() {
-        return free;
-    }
-
-    public void setFree(boolean free) {
-        this.free = free;
-    }
-
-    @Override
-    public String toString() {
-        return "RoomPair{" +
-            "beginDate=" + beginDate +
-            ", endDate=" + endDate +
-            ", free=" + free +
-            '}';
-    }
 }
