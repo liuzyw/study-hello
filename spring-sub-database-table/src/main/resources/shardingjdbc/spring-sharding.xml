@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:rdb="http://www.dangdang.com/schema/ddframe/rdb"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-4.2.xsd
+                        http://www.springframework.org/schema/tx
+                        http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+                        http://www.dangdang.com/schema/ddframe/rdb
+                        http://www.dangdang.com/schema/ddframe/rdb/rdb.xsd">
+
+  <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="receipt_1" destroy-method="close">
+    <!-- 配置连接池属性 -->
+    <property name="driverClass" value="${jdbc.driver}"/>
+    <property name="jdbcUrl" value="${jdbc.url.receipt_1}"/>
+    <property name="user" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
+    <!-- c3p0连接池的私有属性 -->
+    <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+    <property name="minPoolSize" value="${jdbc.minPoolSize}"/>
+    <!--初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间,Default: 3 -->
+    <property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
+    <!-- 关闭连接后不自动commit -->
+    <property name="autoCommitOnClose" value="${jdbc.autoCommitOnClose}"/>
+    <!-- 获取连接超时时间 -->
+    <property name="checkoutTimeout" value="${jdbc.checkoutTimeout}"/>
+    <!-- 当获取连接失败重试次数 -->
+    <property name="acquireRetryAttempts" value="${jdbc.acquireRetryAttempts}"/>
+    <!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+    <property name="maxIdleTime" value="${jdbc.maxIdleTime}"/>
+    <!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
+    <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"/>
+    <!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+    <property name="acquireIncrement" value="${jdbc.acquireIncrement}"/>
+  </bean>
+
+  <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="receipt_2" destroy-method="close">
+    <!-- 配置连接池属性 -->
+    <property name="driverClass" value="${jdbc.driver}"/>
+    <property name="jdbcUrl" value="${jdbc.url.receipt_2}"/>
+    <property name="user" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
+    <!-- c3p0连接池的私有属性 -->
+    <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+    <property name="minPoolSize" value="${jdbc.minPoolSize}"/>
+    <!--初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间,Default: 3 -->
+    <property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
+    <!-- 关闭连接后不自动commit -->
+    <property name="autoCommitOnClose" value="${jdbc.autoCommitOnClose}"/>
+    <!-- 获取连接超时时间 -->
+    <property name="checkoutTimeout" value="${jdbc.checkoutTimeout}"/>
+    <!-- 当获取连接失败重试次数 -->
+    <property name="acquireRetryAttempts" value="${jdbc.acquireRetryAttempts}"/>
+    <!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
+    <property name="maxIdleTime" value="${jdbc.maxIdleTime}"/>
+    <!--每60秒检查所有连接池中的空闲连接。Default: 0 -->
+    <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"/>
+    <!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+    <property name="acquireIncrement" value="${jdbc.acquireIncrement}"/>
+  </bean>
+
+  <bean id="receipt_22" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <property name="url" value="${jdbc.url.receipt_2}" />
+    <property name="username" value="${jdbc.username}" />
+    <property name="password" value="${jdbc.password}" />
+    <!--         <property name="driverClass" value="${jdbc_driver1}" /> -->
+    <!-- 初始化连接大小 -->
+    <property name="initialSize" value="0" />
+    <!-- 连接池最大使用连接数量 -->
+    <property name="maxActive" value="20" />
+    <!-- 连接池最小空闲 -->
+    <property name="minIdle" value="0" />
+    <!-- 获取连接最大等待时间 -->
+    <property name="maxWait" value="60000" />
+    <property name="validationQuery" value="SELECT 1" />
+    <property name="testOnBorrow" value="false" />
+    <property name="testOnReturn" value="false" />
+    <property name="testWhileIdle" value="true" />
+    <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+    <property name="timeBetweenEvictionRunsMillis" value="60000" />
+    <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+    <property name="minEvictableIdleTimeMillis" value="25200000" />
+    <!-- 打开removeAbandoned功能 -->
+    <property name="removeAbandoned" value="true" />
+    <!-- 1800秒，也就是30分钟 -->
+    <property name="removeAbandonedTimeout" value="1800" />
+    <!-- 关闭abanded连接时输出错误日志 -->
+    <property name="logAbandoned" value="true" />
+    <property name="filters" value="stat" />
+  </bean>
+
+  <!--<rdb:strategy id="idDbSharding" sharding-columns="id"-->
+    <!--algorithm-class="com.study.database.table.shardingjdbc.ReceiptSingleKeyDatabaseShardingAlgorithm"/>-->
+
+  <!--<rdb:strategy id="idTbSharding" sharding-columns="id"-->
+    <!--algorithm-class="com.study.database.table.shardingjdbc.ReceiptSingleKeyTableShardingAlgorithm"/>-->
+
+  <!--<rdb:data-source id="wholeDataSource">-->
+    <!--<rdb:sharding-rule data-sources="receipt_2,receipt_1">-->
+      <!--<rdb:table-rules>-->
+        <!--<rdb:table-rule logic-table="receipt" actual-tables="receipt_${[1,2]}"-->
+          <!--database-strategy="idDbSharding" table-strategy="idTbSharding"/>-->
+      <!--</rdb:table-rules>-->
+    <!--</rdb:sharding-rule>-->
+  <!--</rdb:data-source>-->
+
+  <bean id="dataSourceRule" class="com.dangdang.ddframe.rdb.sharding.api.rule.DataSourceRule">
+    <constructor-arg>
+      <map>
+        <entry key="receipt_2" value-ref="receipt_2"/>
+        <entry key="receipt_1" value-ref="receipt_1"/>
+      </map>
+    </constructor-arg>
+  </bean>
+
+  <bean id="receiptDatabaseShardingStrategy" class="com.dangdang.ddframe.rdb.sharding.api.strategy.database.DatabaseShardingStrategy">
+    <constructor-arg index="0" value="user_id"/>
+    <constructor-arg index="1">
+      <bean class="com.study.database.table.shardingjdbc.ReceiptSingleKeyDatabaseShardingAlgorithm" />
+    </constructor-arg>
+  </bean>
+
+  <!-- receipt_id 分表策略 -->
+  <bean id="receiptTableShardingStrategy" class="com.dangdang.ddframe.rdb.sharding.api.strategy.table.TableShardingStrategy">
+    <constructor-arg index="0" value="receipt_id"/>
+    <constructor-arg index="1">
+      <bean class="com.study.database.table.shardingjdbc.ReceiptSingleKeyTableShardingAlgorithm" />
+    </constructor-arg>
+  </bean>
+
+  <bean id="receiptTableRule" class="com.dangdang.ddframe.rdb.sharding.api.rule.TableRule">
+    <constructor-arg value="receipt" index="0"/>
+    <constructor-arg value="false" index="1"/>
+    <constructor-arg index="2">
+      <list>
+        <value>receipt_2</value>
+        <value>receipt_1</value>
+      </list>
+    </constructor-arg>
+    <constructor-arg index="3" ref="dataSourceRule"/>
+    <constructor-arg index="4">
+      <list>
+        <value>receipt_2</value>
+        <value>receipt_1</value>
+      </list>
+    </constructor-arg>
+    <constructor-arg index="5" ref="receiptDatabaseShardingStrategy"/>
+    <constructor-arg index="6" ref="receiptTableShardingStrategy"/>
+  </bean>
+
+<bean class="com.dangdang.ddframe.rdb.sharding.api.rule.BindingTableRule" id="bindingTableRule">
+  <constructor-arg index="0">
+    <list>
+      <ref bean="receiptTableRule"/>
+    </list>
+  </constructor-arg>
+</bean>
+
+  <bean id="shardingRule" class="com.dangdang.ddframe.rdb.sharding.api.rule.ShardingRule">
+    <constructor-arg index="0" ref="dataSourceRule"/>
+    <constructor-arg index="1">
+      <list>
+        <ref bean="receiptTableRule"/>
+      </list>
+    </constructor-arg>
+    <constructor-arg index="2">
+      <list>
+      </list>
+    </constructor-arg>
+    <constructor-arg index="3" ref="receiptDatabaseShardingStrategy"/>
+    <constructor-arg index="4" ref="receiptTableShardingStrategy"/>
+  </bean>
+  <bean id="shardingDataSource" class="com.dangdang.ddframe.rdb.sharding.api.ShardingDataSource">
+    <constructor-arg ref="shardingRule"/>
+  </bean>
+
+  <!--mybatis配置-->
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="configLocation" value="classpath:mapper/mybatis-config.xml"></property>
+    <property name="dataSource" ref="shardingDataSource"/>
+    <!--<property name="mapperLocations" value="classpath:mapper/receiptMapper.xml"/>-->
+  </bean>
+
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" value="com.study.database.table.mapper"/>
+    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+  </bean>
+
+  <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+  <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+    id="transactionManager">
+    <property name="dataSource" ref="shardingDataSource"/>
+  </bean>
+
+  <!-- 拦截器方式配置事物 -->
+  <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+      <tx:method name="add*" propagation="REQUIRED"/>
+      <tx:method name="append*" propagation="REQUIRED"/>
+      <tx:method name="insert*" propagation="REQUIRED"/>
+      <tx:method name="save*" propagation="REQUIRED"/>
+      <tx:method name="update*" propagation="REQUIRED"/>
+      <tx:method name="modify*" propagation="REQUIRED"/>
+      <tx:method name="edit*" propagation="REQUIRED"/>
+      <tx:method name="delete*" propagation="REQUIRED"/>
+      <tx:method name="remove*" propagation="REQUIRED"/>
+      <tx:method name="repair" propagation="REQUIRED"/>
+      <tx:method name="delAndRepair" propagation="REQUIRED"/>
+
+      <tx:method name="get*" propagation="SUPPORTS"/>
+      <tx:method name="find*" propagation="SUPPORTS"/>
+      <tx:method name="load*" propagation="SUPPORTS"/>
+      <tx:method name="search*" propagation="SUPPORTS"/>
+
+      <tx:method name="*" propagation="SUPPORTS"/>
+    </tx:attributes>
+  </tx:advice>
+  <aop:config>
+    <aop:pointcut expression="execution(* com.study.database.table.service..*Impl.*(..))" id="transactionPointcut"/>
+    <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut"/>
+  </aop:config>
+
+</beans>

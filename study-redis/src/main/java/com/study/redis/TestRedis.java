@@ -16,6 +16,7 @@ public class TestRedis {
         Jedis jedis = new Jedis("localhost");
         System.out.println("连接成功");
         System.out.println("服务正在运行: " + jedis.ping());
+        System.out.println("info" + jedis.info());
         System.out.println();
         System.out.println();
         System.out.println("--------  string  -------");
@@ -74,10 +75,12 @@ public class TestRedis {
         System.out.println();
         System.out.println();
         System.out.println("--------  Transaction  -------");
-        Transaction t = jedis.multi();// 开始事务
+
+        // 开始事务
+        Transaction t = jedis.multi();
         t.set("Mt", "mt");
         t.set("Dp", "dp");
-// 执行事务
+        // 执行事务
         t.exec();
         jedis.del("Mt");
         jedis.del("Dp");

@@ -16,8 +16,12 @@ public class OOMTest {
     public static void main(String[] args) {
 
         List<User> list = new ArrayList<>();
-
-        while (true){
+        while (true) {
+            try {
+                Thread.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             list.add(new User());
         }
     }

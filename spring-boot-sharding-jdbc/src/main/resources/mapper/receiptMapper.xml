@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.data.table.mapper.ReceiptMapper">
+
+  <resultMap id="receiptMap" type="com.study.data.table.entity.Receipt">
+    <id column="id" property="id"/>
+    <result column="userId" property="userId"/>
+    <result column="receiptId" property="receiptId"/>
+    <result column="coupon" property="coupon"/>
+  </resultMap>
+
+
+  <select id="getReceiptByUserIdReceiptId" parameterType="map" resultMap="receiptMap">
+    SELECT id, userId, receiptId, coupon FROM receipt WHERE userId = #{userId} AND receiptId = #{receiptId}
+  </select>
+
+
+  <insert id="saveReceipt" keyProperty="id" parameterType="com.study.data.table.entity.Receipt" useGeneratedKeys="true">
+    INSERT INTO receipt(userId, receiptId, coupon) VALUES (#{userId}, #{receiptId}, #{coupon})
+  </insert>
+
+  <insert id="insertReceipt" parameterType="map">
+    INSERT INTO receipt(userId, receiptId, coupon) VALUES (#{userId}, #{receiptId}, #{coupon})
+  </insert>
+
+
+</mapper>
