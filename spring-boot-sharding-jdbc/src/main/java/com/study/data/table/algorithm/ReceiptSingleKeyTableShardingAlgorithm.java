@@ -21,7 +21,7 @@ public class ReceiptSingleKeyTableShardingAlgorithm implements SingleKeyTableSha
     public String doEqualSharding(Collection<String> tableNames, ShardingValue<Long> shardingValue) {
         for (String each : tableNames) {
             if (each.endsWith(((shardingValue.getValue() % 2) + 1) + "")) {
-                System.out.println("------table------ " + each);
+                System.out.println("------find table ------> " + each);
                 return each;
             }
         }
@@ -34,8 +34,7 @@ public class ReceiptSingleKeyTableShardingAlgorithm implements SingleKeyTableSha
         for (Long value : shardingValue.getValues()) {
             for (String tableName : tableNames) {
                 if (tableName.endsWith(((value.intValue() % 2) + 1) + "")) {
-                    System.out.println("------table------ " + tableName);
-
+                    System.out.println("------find table ------> " + tableName);
                     result.add(tableName);
                 }
             }
@@ -50,8 +49,7 @@ public class ReceiptSingleKeyTableShardingAlgorithm implements SingleKeyTableSha
         for (Long i = range.lowerEndpoint(); i <= range.upperEndpoint(); i++) {
             for (String each : tableNames) {
                 if (each.endsWith(((i.intValue() % 2) + 1) + "")) {
-                    System.out.println("------table------ " + each);
-
+                    System.out.println("------find table ------> " + each);
                     result.add(each);
                 }
             }

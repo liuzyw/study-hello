@@ -1,7 +1,7 @@
 package com.study.data.table.service.impl;
 
 import com.study.data.table.entity.Receipt;
-import com.study.data.table.mapper.ReceiptMapper;
+import com.study.data.table.mapper.receipt.ReceiptMapper;
 import com.study.data.table.service.ReceiptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

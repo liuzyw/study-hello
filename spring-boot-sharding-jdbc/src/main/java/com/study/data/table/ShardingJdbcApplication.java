@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Created on 2018-05-12
  *
+ * 多数据源 加分库分表
+ *
  * @author liuzhaoyuan
  */
 @SpringBootApplication

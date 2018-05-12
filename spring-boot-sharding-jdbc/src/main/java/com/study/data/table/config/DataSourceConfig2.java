@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.sql.DataSource;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -26,7 +27,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
@@ -38,8 +38,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
  */
 @Configuration
 @ConfigurationProperties(prefix = DataSourceConstants.DATASOURCE_PREFIX)
-@MapperScan(basePackages = {DataSourceConstants.MAPPER_PACKAGE}, sqlSessionFactoryRef = "mybatisSqlSessionFactory")
-public class DataSourceConfig {
+@MapperScan(basePackages = {DataSourceConstants.MAPPER_RECEIPT_PACKAGE}, sqlSessionFactoryRef = "mybatisSqlSessionFactory2")
+public class DataSourceConfig2 {
 
     private String url;
 
@@ -47,15 +47,16 @@ public class DataSourceConfig {
 
     private String password;
 
-    @Bean(name = "mybatisDataSource")
+    @Bean(name = "mybatisDataSource2")
     public DataSource getDataSource() throws SQLException {
         //设置分库映射
         Map<String, DataSource> dataSourceMap = new HashMap<>(2);
-        dataSourceMap.put("receipt_1", mybatisDataSource("receipt_1"));
-        dataSourceMap.put("receipt_2", mybatisDataSource("receipt_2"));
+        // 分库数据源
+        dataSourceMap.put(DataSourceConstants.DATABASE_RECEEIPT_1, mybatisDataSource(DataSourceConstants.DATABASE_RECEEIPT_1));
+        dataSourceMap.put(DataSourceConstants.DATABASE_RECEEIPT_2, mybatisDataSource(DataSourceConstants.DATABASE_RECEEIPT_2));
 
         //设置默认库，两个库以上时必须设置默认库。默认库的数据源名称必须是dataSourceMap的key之一
-        DataSourceRule dataSourceRule = new DataSourceRule(dataSourceMap, "receipt_1");
+        DataSourceRule dataSourceRule = new DataSourceRule(dataSourceMap, DataSourceConstants.DATABASE_RECEEIPT_1);
 
         //设置分表映射
         TableRule userTableRule = TableRule.builder("receipt")
@@ -124,33 +125,30 @@ public class DataSourceConfig {
      * @return
      */
     @Bean(name = "mybatisTransactionManager")
-    public DataSourceTransactionManager mybatisTransactionManager(@Qualifier("mybatisDataSource") DataSource dataSource) throws SQLException {
+    public DataSourceTransactionManager mybatisTransactionManager(@Qualifier("mybatisDataSource2") DataSource dataSource) throws SQLException {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    @Bean(name = "mybatisSqlSessionFactory")
-    public SqlSessionFactory mybatisSqlSessionFactory(@Qualifier("mybatisDataSource") DataSource mybatisDataSource)
+    @Bean(name = "mybatisSqlSessionFactory2")
+    public SqlSessionFactory mybatisSqlSessionFactory(@Qualifier("mybatisDataSource2") DataSource mybatisDataSource)
         throws Exception {
-//        final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-//        sessionFactory.setDataSource(mybatisDataSource);
-//        return sessionFactory.getObject();
 
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(mybatisDataSource);
 
         // 扫描实体包
-        sqlSessionFactoryBean.setTypeAliasesPackage("com.study.data.table.entity");
+        sqlSessionFactoryBean.setTypeAliasesPackage(DataSourceConstants.ENTITY_PACKAGE);
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mapper/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources(DataSourceConstants.MAPPER_RECEIPT_XML));
 
         return sqlSessionFactoryBean.getObject();
     }
 
 
-    @Bean(name = "sqlSessionTemplate")
-    @Primary
-    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("mybatisSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    @Bean(name = "sqlSessionTemplate2")
+//    @Primary
+    public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("mybatisSqlSessionFactory2") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 

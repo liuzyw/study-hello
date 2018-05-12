@@ -23,7 +23,10 @@ public class ReceiptServiceTest {
 
     @Test
     public void getReceiptByUserIdReceiptId() {
-        System.out.println(receiptService.getReceiptByUserIdReceiptId(119,111L));
+        System.out.println(receiptService.getReceiptByUserIdReceiptId(103,108L));
+
+        // 脏数据
+        System.out.println(receiptService.getReceiptByUserIdReceiptId(112,111L));
     }
 
 
@@ -31,12 +34,12 @@ public class ReceiptServiceTest {
     public void saveReceipt() {
         Receipt receipt = new Receipt();
 
-        receipt.setUserId(119);
-        receipt.setReceiptId(109L);
-        receipt.setCoupon("66666666");
+        receipt.setUserId(121);
+        receipt.setReceiptId(121L);
+        receipt.setCoupon("66666664446");
 
         receiptService.saveReceipt(receipt);
-//        receiptService.insertReceipt(118,110L,"343434");
+        receiptService.insertReceipt(112,112L,"3434444434");
 
         System.out.println("------------ " + receipt.getId());
     }

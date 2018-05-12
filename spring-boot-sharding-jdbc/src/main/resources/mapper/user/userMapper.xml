@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.data.table.mapper.user.UserMapper">
+
+  <resultMap id="userMap" type="com.study.data.table.entity.User">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="pass" property="pass"/>
+    <result column="age" property="age"/>
+    <result column="address" property="address"/>
+  </resultMap>
+
+
+  <insert id="saveUser" keyProperty="id" parameterType="com.study.data.table.entity.User" useGeneratedKeys="true">
+    INSERT INTO user(name, pass, age, address) VALUES (#{name}, #{pass}, #{age}, #{address})
+  </insert>
+
+  <select id="findUserById" parameterType="java.lang.Integer" resultMap="userMap">
+    SELECT id, name, pass, age, address FROM user WHERE id = #{id}
+  </select>
+
+  <delete id="deleteUserById" parameterType="java.lang.Integer">
+    DELETE FROM user WHERE id = #{id}
+  </delete>
+
+
+</mapper>

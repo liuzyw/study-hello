@@ -29,8 +29,7 @@ public class ReceiptSingleKeyDatabaseShardingAlgorithm implements SingleKeyDatab
         for (String each : availableTargetNames) {
             int index = (shardingValue.getValue() % 2) + 1;
             if (each.endsWith(index + "")) {
-                System.out.println("------data------ " + each);
-
+                System.out.println("------ find database ------> " + each);
                 return each;
             }
         }
@@ -48,8 +47,7 @@ public class ReceiptSingleKeyDatabaseShardingAlgorithm implements SingleKeyDatab
         for (Integer value : shardingValue.getValues()) {
             for (String tableName : availableTargetNames) {
                 if (tableName.endsWith(((value.intValue() % 2) + 1) + "")) {
-                    System.out.println("------data------ " + tableName);
-
+                    System.out.println("------ find database ------> " + tableName);
                     result.add(tableName);
                 }
             }
@@ -69,8 +67,7 @@ public class ReceiptSingleKeyDatabaseShardingAlgorithm implements SingleKeyDatab
         for (Integer i = range.lowerEndpoint(); i <= range.upperEndpoint(); i++) {
             for (String each : availableTargetNames) {
                 if (each.endsWith(((i.intValue() % 2) + 1) + "")) {
-                    System.out.println("------data------ " + each);
-
+                    System.out.println("------ find database ------> " + each);
                     result.add(each);
                 }
             }

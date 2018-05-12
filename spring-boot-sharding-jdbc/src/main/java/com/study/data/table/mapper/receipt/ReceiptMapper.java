@@ -1,4 +1,4 @@
-package com.study.data.table.mapper;
+package com.study.data.table.mapper.receipt;
 
 import com.study.data.table.entity.Receipt;
 import org.apache.ibatis.annotations.Param;
