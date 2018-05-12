@@ -16,6 +16,13 @@
     SELECT id, userId, receiptId, coupon FROM receipt WHERE userId = #{userId} AND receiptId = #{receiptId}
   </select>
 
+  <select id="getReceiptsByUserIdReceiptIds" parameterType="map" resultMap="receiptMap">
+    SELECT id, userId, receiptId, coupon FROM receipt WHERE userId = #{userId} AND receiptId IN
+    <foreach close=")" collection="receiptIds" item="receiptId" open="(" separator=",">
+      #{receiptId}
+    </foreach>
+  </select>
+
 
   <insert id="saveReceipt" keyProperty="id" parameterType="com.study.data.table.entity.Receipt" useGeneratedKeys="true">
     INSERT INTO receipt(userId, receiptId, coupon) VALUES (#{userId}, #{receiptId}, #{coupon})

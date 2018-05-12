@@ -3,6 +3,7 @@ package com.study.data.table.service.impl;
 import com.study.data.table.entity.Receipt;
 import com.study.data.table.mapper.receipt.ReceiptMapper;
 import com.study.data.table.service.ReceiptService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,11 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Override
     public Receipt getReceiptByUserIdReceiptId(Integer userId, Long receiptId) {
         return receiptMapper.getReceiptByUserIdReceiptId(userId, receiptId);
+    }
+
+    @Override
+    public List<Receipt> getReceiptsByUserIdReceiptIds(Integer userId, List<Long> receiptIds) {
+        return receiptMapper.getReceiptsByUserIdReceiptIds(userId,receiptIds);
     }
 
     @Transactional("mybatisTransactionManager")
