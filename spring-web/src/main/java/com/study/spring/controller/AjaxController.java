@@ -2,6 +2,7 @@ package com.study.spring.controller;
 
 import com.study.spring.entity.Bus;
 import com.study.spring.entity.Tree;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -56,7 +57,6 @@ public class AjaxController {
     @ResponseBody
     public List<Bus> ajaxMessage(@RequestBody Bus bus) {
         System.out.println("----------jaxa----" + bus);
-
         buses.add(bus);
         LOGGER.info("response ajax: " + buses);
         System.out.println(buses);
@@ -67,7 +67,11 @@ public class AjaxController {
     @ResponseBody
     public List<Bus> ajaxMessage1(Bus bus) {
         System.out.println("----------ajaxa----" + bus);
-
+        try {
+            bus.setName(new String(bus.getName().getBytes("iso8859-1"), "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         buses.add(bus);
         LOGGER.info("response ajax: " + buses);
         System.out.println(buses);

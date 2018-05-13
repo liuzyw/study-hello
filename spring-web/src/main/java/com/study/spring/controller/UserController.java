@@ -61,6 +61,7 @@ public class UserController {
     @ResponseBody
     public String login(HttpServletRequest request) {
         String username = request.getParameter("username");
+        LOGGER.info("username: " + username);
         String password = request.getParameter("password");
         String code = request.getParameter("code");
         LOGGER.info("session user:{}", request.getSession().getAttribute("user"));

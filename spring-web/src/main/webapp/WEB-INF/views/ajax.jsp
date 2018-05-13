@@ -21,7 +21,7 @@ test ajax
       $.ajax({
         type: "POST",
         url: "/getAjaxMessage",
-        data: JSON.stringify({name: "BWMaaa", color: "red"}),
+        data: JSON.stringify({name: "BWMaaa奔驰", color: "red"}),
         dataType: 'json',
         contentType: 'application/json;charset=UTF-8',
         success: function (msg) {
@@ -48,7 +48,7 @@ test ajax
       $.ajax({
         type: "GET",
         url: "/getAjaxMessage1",
-        data: {name: 'BWMaaa1', color: 'redd'},
+        data: {name: 'BWMaaa1法拉利', color: 'redd'},
         dataType: 'json',
         contentType: 'application/json;charset=UTF-8',
         success: function (msg) {
@@ -101,7 +101,7 @@ test ajax
 <script>
   var cfg = {
     type: 'POST',
-    data: JSON.stringify({name: "BWMabba", color: "red"}),
+    data: JSON.stringify({name: "BWMabba宝石", color: "red"}),
     dataType: 'json',
     contentType: 'application/json;charset=UTF-8',
     success: function (result) {
@@ -212,7 +212,7 @@ test ajax
       $.ajax({
         type: "POST",
         url: "/postTree",
-        data: JSON.stringify({name: "tree", age: 12, lefts:["bule","black"]}),
+        data: JSON.stringify({name: "tree二叉树", age: 12, lefts:["bule","black"]}),
         dataType: 'json',
         contentType: 'application/json;charset=UTF-8',
         success: function (msg) {

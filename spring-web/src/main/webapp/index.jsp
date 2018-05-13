@@ -41,7 +41,7 @@
     <<a href="/goRoom">跳转到会议室页面</a>>
     <br/>
     <br/>
-
+    <<a href="/goWeather">跳转到天气页面</a>>
     <br/>
     <br/>
 
