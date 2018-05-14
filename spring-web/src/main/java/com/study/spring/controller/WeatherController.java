@@ -39,12 +39,13 @@ public class WeatherController {
         return WeatherUtil.getWeathers(cityCode);
     }
 
-    @RequestMapping(value = "/getWeatherByCityName", method = RequestMethod.GET)
+    @RequestMapping(value = "/getWeatherByCityName", method = RequestMethod.POST)
     @ResponseBody
     public WeatherVO getWeatherByCityName() throws Exception {
         String name = request.getParameter("name");
-        LOGGER.info("get weather cityName:{}", new String(name.getBytes("iso8859-1"), "UTF-8"));
-        name = new String(name.getBytes("iso8859-1"), "UTF-8");
+        // get 请求才需要编码
+//        LOGGER.info("get weather cityName:{}", new String(name.getBytes("iso8859-1"), "UTF-8"));
+//        name = new String(name.getBytes("iso8859-1"), "UTF-8");
         String cityCode = PropertyUtil.getCityCodeByName(name);
         LOGGER.info("get weather cityCode:{}", cityCode);
         if (StringUtils.isEmpty(cityCode)) {

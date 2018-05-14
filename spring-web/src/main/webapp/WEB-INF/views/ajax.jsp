@@ -29,7 +29,7 @@ test ajax
           var buss = eval(msg);
           var str = "";
           for (var i = 0; i < buss.length; i++) {
-            str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
+            str = str + "[" + buss[i].name + "," + buss[i].color + "," + buss[i].date + "]";
           }
           document.getElementById("aaa").innerHTML = str;
         }
@@ -56,7 +56,7 @@ test ajax
           var buss = eval(msg);
           var str = "";
           for (var i = 0; i < buss.length; i++) {
-            str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
+            str = str + "[" + buss[i].name + "," + buss[i].color + "," + buss[i].date + "]";
           }
           document.getElementById("adaa").innerHTML = str;
         }
@@ -84,7 +84,7 @@ test ajax
           var buss = eval(msg);
           var str = "";
           for (var i = 0; i < buss.length; i++) {
-            str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
+            str = str + "[" + buss[i].name + "," + buss[i].color + "," + buss[i].date + "]";
           }
           document.getElementById("bbb").innerHTML = str;
         }
@@ -95,6 +95,29 @@ test ajax
 <br/><input id="click1" type="button" value="get jquery"/>
 /getbuss1 get bus by jq
 <div id="bbb"></div>
+<br/>
+
+<script>
+  $(function () {
+    $("#click111").click(function () {
+      $.ajax({
+        type: "POST",
+        url: "/postOne",
+        data: {name: "中国 china"},
+//        dataType: 'json',
+        contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
+        success: function (msg) {
+          alert(msg);
+//          var buss = eval(msg);
+          document.getElementById("bbb11").innerHTML = "大手大脚" + msg;
+        }
+      });
+    });
+  });
+</script>
+<br/><input id="click111" type="button" value="get jquery post"/>
+/get one post by jq
+<div id="bbb11"></div>
 <br/>
 
 
@@ -109,7 +132,7 @@ test ajax
       var buss = eval(result);
       var str = "";
       for (var i = 0; i < buss.length; i++) {
-        str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
+        str = str + "[" + buss[i].name + "," + buss[i].color + "," + buss[i].date + "]";
       }
       document.getElementById("ccc").innerHTML = str;
     }
@@ -149,7 +172,7 @@ test ajax
           var buss = eval(msg);
           var str = "";
           for (var i = 0; i < buss.length; i++) {
-            str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
+            str = str + "[" + buss[i].name + "," + buss[i].color + "," + buss[i].date + "]";
           }
           alert(str);
         }
@@ -189,7 +212,7 @@ test ajax
           var buss = eval(msg);
           var str = "";
           for (var i = 0; i < buss.length; i++) {
-            str = str +"["+ buss[i].name + "," + buss[i].color+","+buss[i].date+"]";
+            str = str + "[" + buss[i].name + "," + buss[i].color + "," + buss[i].date + "]";
           }
           alert(str);
         }
@@ -212,7 +235,7 @@ test ajax
       $.ajax({
         type: "POST",
         url: "/postTree",
-        data: JSON.stringify({name: "tree二叉树", age: 12, lefts:["bule","black"]}),
+        data: JSON.stringify({name: "tree二叉树", age: 12, lefts: ["bule", "black"]}),
         dataType: 'json',
         contentType: 'application/json;charset=UTF-8',
         success: function (msg) {
@@ -220,9 +243,9 @@ test ajax
           var buss = eval(msg);
           var str = "";
           for (var i = 0; i < buss.length; i++) {
-            str = str +"["+ buss[i].name + "," + buss[i].age+","+buss[i].lefts+"]";
+            str = str + "[" + buss[i].name + "," + buss[i].age + "," + buss[i].lefts + "]";
           }
-          str = str +"["+ msg.name + "," + msg.age+","+msg.lefts+"]";
+          str = str + "[" + msg.name + "," + msg.age + "," + msg.lefts + "]";
 
           document.getElementById("fff").innerHTML = str;
         }
@@ -231,7 +254,7 @@ test ajax
   });
 </script>
 <br/><input id="postTree" type="button" value="postTree" onclick="postTree()"/>
-/postTree  list
+/postTree list
 <div id="fff"></div>
 <br/>
 

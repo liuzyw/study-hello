@@ -6,6 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -53,6 +54,29 @@ public class AjaxController {
         return tree;
     }
 
+    /**
+     * ajax post 单个请求
+     *
+     * application/x-www-form-urlencoded
+     *
+     * produces 防止返回给前端中文乱码
+     *
+     * @return
+     */
+    @RequestMapping(value = "/postOne", method = RequestMethod.POST, produces = {"text/html;charset=UTF-8", "application/json;charset=UTF-8"})
+    @ResponseBody
+    public String postOne(HttpServletRequest request) {
+        String name = request.getParameter("name");
+        System.out.println("----------jaxa----" + name);
+
+        return name;
+    }
+
+    /**
+     * ajax post 单个请求
+     *
+     * @return
+     */
     @RequestMapping(value = "/getAjaxMessage", method = RequestMethod.POST)
     @ResponseBody
     public List<Bus> ajaxMessage(@RequestBody Bus bus) {
@@ -63,6 +87,11 @@ public class AjaxController {
         return buses;
     }
 
+    /**
+     * ajax GET request 获取中文需要编码
+     *
+     * @return
+     */
     @RequestMapping(value = "/getAjaxMessage1", method = RequestMethod.GET)
     @ResponseBody
     public List<Bus> ajaxMessage1(Bus bus) {

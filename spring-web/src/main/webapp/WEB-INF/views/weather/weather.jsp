@@ -154,11 +154,11 @@
         var selectedText = options[index].text;
 
         $.ajax({
-          type: "GET",
+          type: "POST",
           url: "/getWeatherByCityName",
           data: {name: selectedText},
           dataType: 'json',
-          contentType: 'application/json;charset=UTF-8',
+          contentType: 'application/x-www-form-urlencoded;charset=UTF-8',
           success: function (msg) {
 //            alert(msg.data.city + " - " + msg.data.ganmao);
             document.getElementById("date").innerHTML = msg.data.forecast[0].date;

@@ -46,10 +46,15 @@
       </list>
     </property>
   </bean>
+  <bean class="org.springframework.http.converter.StringHttpMessageConverter" id="stringHttpMessageConverter">
+    <property name="supportedMediaTypes" value="text/html;charset=UTF-8">
+    </property>
+  </bean>
   <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
     <property name="messageConverters">
       <list>
         <ref bean="jsonHttpMessageConverter"/>
+        <ref bean="stringHttpMessageConverter"/>
       </list>
     </property>
   </bean>
