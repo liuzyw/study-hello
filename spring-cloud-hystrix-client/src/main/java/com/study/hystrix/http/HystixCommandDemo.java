@@ -31,4 +31,10 @@ public class HystixCommandDemo extends HystrixCommand<String> {
         HttpResponse httpResponse = closeableHttpClient.execute(httpGet);
         return EntityUtils.toString(httpResponse.getEntity());
     }
+
+    @Override
+    protected String getFallback() {
+        System.out.println("hello back");
+        return "hello r1";
+    }
 }
