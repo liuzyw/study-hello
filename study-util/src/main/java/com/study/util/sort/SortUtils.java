@@ -12,6 +12,11 @@ public class SortUtils {
 
     /**
      * 插入排序
+     *
+     * @param arr
+     * @param fromIndex
+     * @param toIndex
+     * @param <T>
      */
     public static <T extends Comparable<? super T>> void insertSort(T[] arr, int fromIndex, int toIndex) {
         int j;

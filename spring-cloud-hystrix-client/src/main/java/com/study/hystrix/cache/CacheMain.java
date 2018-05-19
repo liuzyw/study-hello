@@ -23,8 +23,10 @@ public class CacheMain {
         System.out.println("命令c2，是否读取缓存：" + c2.isResponseFromCache());
         System.out.println("命令c3，是否读取缓存：" + c3.isResponseFromCache());
 
+        // 要与 CacheCommand 在同一个 CommandKey 下
         HystrixRequestCache cache = HystrixRequestCache.getInstance(HystrixCommandKey.Factory.asKey("MyCommandKey"),
             HystrixConcurrencyStrategyDefault.getInstance());
+
         cache.clear(key);
         CacheCommand c4 = new CacheCommand(key);
         c4.execute();

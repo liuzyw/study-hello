@@ -17,6 +17,16 @@ public class MyFilter implements Filter {
         System.out.println("MyFilter init ... ");
     }
 
+    /**
+     * 用于请求合并
+     *
+     * @param request
+     * @param response
+     * @param chain
+     *
+     * @throws IOException
+     * @throws ServletException
+     */
     public void doFilter(ServletRequest request, ServletResponse response,
         FilterChain chain) throws IOException, ServletException {
         System.out.println("MyFilter doFilter ... ");
