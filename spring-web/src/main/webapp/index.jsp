@@ -14,17 +14,37 @@
     <link href="${pageContext.request.contextPath}/css/animate.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/style.css?v=4.1.0" rel="stylesheet">
 
+
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+    <!-- 背景 -->
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/canvas_bg.js"></script>
+
+
 </head>
+<style type="text/css">
+    {
+        margin: 0
+    ;
+        padding: 0
+    ;
+    }
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
 
+</style>
 <body>
+<canvas id="c" style="position: absolute;z-index: -1;text-align: center;"></canvas>
 <div align="center">
-
-    <p align="">
-    <h1>spring-mvc-web</h1></p>
     <hr/>
-    <br/>
+    <p>
+    <h1 style="font-size: 40px;font-weight: 700">spring-mvc-web</h1></p>
+    <hr/>
 
     <div align="center" style="width: 800px">
+        <p style="font-size: 30px;font-family:楷体;">陪伴是最长情的告白</p>
         <table class="table table-striped table-bordered table-hover dataTables-example">
             <thead>
             <tr>
