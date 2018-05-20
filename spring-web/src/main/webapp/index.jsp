@@ -60,6 +60,10 @@
                 <td><<a href="/goShortLink">跳转到短链接页面</a>></td>
                 <td><<a href="/goMap">跳转到地图页面</a>></td>
             </tr>
+            <tr class="grade">
+                <td><<a href="/goJavaJVM">跳转到JVM页面</a>></td>
+                <td><<a href=""></a>></td>
+            </tr>
 
 
             </tbody>
