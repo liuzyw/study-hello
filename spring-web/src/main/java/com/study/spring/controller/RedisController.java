@@ -27,7 +27,7 @@ public class RedisController {
         redisTemplate.opsForValue().set(key, value);
 
         model.addAttribute("redisKey", key);
-        model.addAttribute("redisValue", value);
+        model.addAttribute("redisValue", redisTemplate.opsForValue().get(key));
         return "redis/showRedis";
     }
 

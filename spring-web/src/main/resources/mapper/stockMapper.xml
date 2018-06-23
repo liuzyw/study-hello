@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.spring.mapper.StockDao">
+
+  <resultMap id="stockMap" type="com.study.spring.entity.Stock">
+    <id column="id" property="id"/>
+    <result column="product_id" property="productId"/>
+    <result column="count" property="count"/>
+  </resultMap>
+
+  <select id="getStockById" parameterType="java.lang.Long" resultMap="stockMap">
+    SELECT id, product_id, count FROM stock WHERE id = #{id}
+  </select>
+
+  <update id="updateStockByProductId" parameterType="map">
+    UPDATE stock SET count = #{toCount} WHERE product_id = #{productId} AND count=#{fromCount}
+  </update>
+
+
+  <select id="getStockByProductId" parameterType="java.lang.Long" resultMap="stockMap">
+    SELECT id, product_id, count FROM stock WHERE product_id = #{productId}
+  </select>
+
+  <insert id="saveStock" keyProperty="id" parameterType="com.study.spring.entity.Stock" useGeneratedKeys="true">
+    INSERT INTO stock(product_id, count) VALUES (#{productId}, #{count})
+  </insert>
+
+
+</mapper>

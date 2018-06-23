@@ -23,7 +23,7 @@ public class BookDaoTest {
     @Test
     public void testSave() {
         Book book = new Book();
-        book.setName("java优化3");
+        book.setName("java优化4");
         book.setPrice(45);
         book.setType("java");
 

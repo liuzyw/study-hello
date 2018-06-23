@@ -27,6 +27,7 @@
     <!--<mapper resource="classpath:mapper/*.xml"/>-->
 
     <mapper resource="mapper/bookMapper.xml"/>
+    <mapper resource="mapper/stockMapper.xml"/>
     <mapper resource="mapper/fruitMapper.xml"/>
     <mapper resource="mapper/lectureMapper.xml"/>
     <mapper resource="mapper/studentLectureMapper.xml"/>
