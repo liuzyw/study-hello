@@ -20,10 +20,11 @@ images:<br/>
     <br/>
 </c:forEach>
 <br/>
-<img src="${pageContext.request.contextPath}/upload/psb.jpg"/>
+直接写死的<br/>
+<img src="${pageContext.request.contextPath}/upload/psb.jpg"/><br/>
 <br/>
-aa<img src="/Users/liuzhaoyuan/Pictures/psb.jpg" />
-<br/>aa<img src="http://img2.imgtn.bdimg.com/it/u=1742626185,2547278809&fm=214&gp=0.jpg"/>
+这没显示<br/><img src="/Users/liuzhaoyuan/Pictures/psb.jpg" /><br/>
+<br/>百度的<br/><img src="http://img2.imgtn.bdimg.com/it/u=1742626185,2547278809&fm=214&gp=0.jpg"/>
 
 </body>
 </html>

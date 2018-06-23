@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://www.springframework.org/schema/beans"
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:tx="http://www.springframework.org/schema/tx"
   xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
-  http://www.springframework.org/schema/beans/spring-beans.xsd
-     http://www.springframework.org/schema/aop
-                        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+                        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-4.2.xsd
+                        http://www.springframework.org/schema/tx
+                        http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+                        http://www.springframework.org/schema/mvc
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
+
+  <context:annotation-config/>
+
+<aop:aspectj-autoproxy/>
 
 
-  <bean class="com.study.spring.service.impl.HelloServiceImpl" id="helloService"/>
+  <!--<bean class="com.study.spring.service.impl.HelloServiceImpl" id="helloService"/>-->
 
-  <bean id="myBean" class="com.study.spring.beans.MyBeanLifeCycle" lazy-init="false"/>
+  <!--<bean id="myBean" class="com.study.spring.beans.MyBeanLifeCycle" lazy-init="false"/>-->
 
-  <bean id="myAspect" class="com.study.spring.aop.MyAspect"/>
+  <!--<bean id="myAspect" class="com.study.spring.aop.MyAspect"/>-->
 
-  <!-- 这种需要自己写带注解的Java类 -->
-  <!--<aop:aspectj-autoproxy/>-->
-  <aop:config>
-    <!-- 第2步：配置一个切面 -->
-    <aop:aspect id="logAspect" ref="myAspect">
-      <!-- 第3步：定义切入点,指定切入点表达式 -->
-      <aop:pointcut id="allMethod"
-        expression="execution(* com.study.spring.service.*.*(..))"/>
-      <!-- 第4步：应用前置通知 -->
-      <aop:before method="beforeWay" pointcut-ref="allMethod" />
-      <!-- 第4步：应用后置通知 -->
-      <!--<aop:after-returning method="afterWay" pointcut-ref="allMethod"/>-->
-      <!-- 第4步：应用最终通知 -->
-      <aop:after method="afterWay" pointcut-ref="allMethod"/>
-      <!-- 第4步：应用抛出异常后通知 -->
-      <!--<aop:after-throwing method="afterThrowing" pointcut-ref="allMethod"/>-->
-      <!-- 第4步：应用环绕通知 -->
-      <aop:around method="aroundWay" pointcut-ref="allMethod" />
-    </aop:aspect>
-  </aop:config>
+  <!--&lt;!&ndash; 这种需要自己写带注解的Java类 &ndash;&gt;-->
+  <!--&lt;!&ndash;<aop:aspectj-autoproxy/>&ndash;&gt;-->
+  <!--<aop:config>-->
+    <!--&lt;!&ndash; 第2步：配置一个切面 &ndash;&gt;-->
+    <!--<aop:aspect id="logAspect" ref="myAspect">-->
+      <!--&lt;!&ndash; 第3步：定义切入点,指定切入点表达式 &ndash;&gt;-->
+      <!--<aop:pointcut id="allMethod"-->
+        <!--expression="execution(* com.study.spring.service.*.*(..))"/>-->
+      <!--&lt;!&ndash; 第4步：应用前置通知 &ndash;&gt;-->
+      <!--<aop:before method="beforeWay" pointcut-ref="allMethod" />-->
+      <!--&lt;!&ndash; 第4步：应用后置通知 &ndash;&gt;-->
+      <!--&lt;!&ndash;<aop:after-returning method="afterWay" pointcut-ref="allMethod"/>&ndash;&gt;-->
+      <!--&lt;!&ndash; 第4步：应用最终通知 &ndash;&gt;-->
+      <!--<aop:after method="afterWay" pointcut-ref="allMethod"/>-->
+      <!--&lt;!&ndash; 第4步：应用抛出异常后通知 &ndash;&gt;-->
+      <!--&lt;!&ndash;<aop:after-throwing method="afterThrowing" pointcut-ref="allMethod"/>&ndash;&gt;-->
+      <!--&lt;!&ndash; 第4步：应用环绕通知 &ndash;&gt;-->
+      <!--<aop:around method="aroundWay" pointcut-ref="allMethod" />-->
+    <!--</aop:aspect>-->
+  <!--</aop:config>-->
 
 </beans>

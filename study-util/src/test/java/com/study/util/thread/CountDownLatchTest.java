@@ -1,4 +1,4 @@
-package com.study.util.other;
+package com.study.util.thread;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.LinkedBlockingDeque;

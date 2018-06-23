@@ -25,6 +25,7 @@ public class GCDetailTest {
         gcDetailTest2 = null;
 
         System.gc();
+        System.out.println("hello ...");
 
     }
 }

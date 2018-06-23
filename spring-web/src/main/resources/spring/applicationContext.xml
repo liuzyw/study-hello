@@ -58,7 +58,7 @@
   <!-- mail config -->
   <import resource="classpath:mail/spring-mail.xml"/>
   <!-- 调度任务 -->
-  <import resource="classpath:quartz/spring-quartz.xml"/>
+  <!--<import resource="classpath:quartz/spring-quartz.xml"/>-->
 
 
   <!--<?xml version="1.0" encoding="UTF-8"?>-->

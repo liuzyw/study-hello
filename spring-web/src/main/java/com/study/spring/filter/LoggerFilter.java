@@ -24,15 +24,15 @@ public class LoggerFilter extends OncePerRequestFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggerFilter.class);
 
-    @Autowired
-    private FruitService fruitService;
+//    @Autowired
+//    private FruitService fruitService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
         FilterChain filterChain) throws ServletException, IOException {
 
-        Fruit fruit = fruitService.getFruitById(2);
-        LOGGER.info("LoggerFilter get fruit:{}", fruit);
+//        Fruit fruit = fruitService.getFruitById(2);
+//        LOGGER.info("LoggerFilter get fruit:{}", fruit);
 
         String url = request.getServletPath();
         if ("/goFilter".equals(url)) {

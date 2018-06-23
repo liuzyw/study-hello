@@ -1,32 +1,53 @@
 package com.study.spring.aop;
 
+import java.util.Arrays;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 
 /**
  * Created on 2017-09-27
  *
  * @author liuzhaoyuan
  */
-
+@Aspect
 public class MyAspect {
 
+    public static final String POINT = "execution(* com.study.spring.service.*.*(..)) || execution(* com.study.spring.beans.*.*(..))";
 
-    public void beforeWay(){
-        System.out.println("before way...");
+    @Before(POINT)
+    public void beforeWay(JoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
+        System.out.println("before way... " + joinPoint.getSignature().getName() + ": " + Arrays.toString(args));
     }
 
-    public void afterWay(){
+    @After(POINT)
+    public void afterWay(JoinPoint joinPoint) {
         System.out.println("after way...");
     }
 
-    public void aroundWay(ProceedingJoinPoint jp){
+    public void aroundWay(ProceedingJoinPoint jp) {
         try {
             System.out.println("aroundWay before ....");
             jp.proceed();
             System.out.println("aroundWay after ....");
-        } catch (Throwable e){
+        } catch (Throwable e) {
 
         }
+    }
+
+    @AfterReturning(value = POINT, returning = "result")
+    public void afterReturn(Object result) {
+        System.out.println("after return .... result: " + result);
+    }
+
+    @AfterThrowing(value = POINT, throwing = "ex")
+    public void exception(Exception ex) {
+        System.out.println("exception ... ex:" + ex);
     }
 
 }

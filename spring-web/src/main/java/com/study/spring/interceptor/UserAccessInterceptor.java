@@ -21,8 +21,8 @@ public class UserAccessInterceptor extends HandlerInterceptorAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserAccessInterceptor.class);
 
-    @Autowired
-    private FruitService fruitService;
+//    @Autowired
+//    private FruitService fruitService;
 
     /**
      * 在 controller 方法之前执行，若是返回 false 这整个请求结束
@@ -33,8 +33,8 @@ public class UserAccessInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
         throws Exception {
         // 获取用户信息
-        Fruit fruit = fruitService.getFruitById(2);
-        LOGGER.info("UserAccessInterceptor get fruit:{}", fruit);
+//        Fruit fruit = fruitService.getFruitById(2);
+//        LOGGER.info("UserAccessInterceptor get fruit:{}", fruit);
         // 权限校验
         String url = request.getServletPath();
         if ("/goInter".equals(url)) {

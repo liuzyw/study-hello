@@ -9,4 +9,6 @@ public interface HelloService {
 
     void sayHello();
 
+    int div(int a, int b);
+
 }

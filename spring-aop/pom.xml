@@ -9,13 +9,15 @@
 
   <groupId>com.study.spring</groupId>
   <artifactId>spring-aop</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>spring-aop</name>
   <url>http://maven.apache.org</url>
 
   <properties>
     <spring.version>4.2.9.RELEASE</spring.version>
+    <mybatis.version>3.4.4</mybatis.version>
+    <mybatis.spring.framework.version>1.3.1</mybatis.spring.framework.version>
   </properties>
 
   <dependencies>
@@ -39,12 +41,6 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
       <version>${spring.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -91,5 +87,23 @@
       <artifactId>spring-test</artifactId>
       <version>${spring.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>${mybatis.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>${mybatis.spring.framework.version}</version>
+    </dependency>
+    <!-- mybatis 需要，有时候可能不需要，仅为解决冲突 -->
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.8.11</version>
+    </dependency>
+
   </dependencies>
 </project>

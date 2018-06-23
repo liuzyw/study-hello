@@ -1,4 +1,4 @@
-package com.study.spring.mapper;
+package com.study.spring.service;
 
 import com.study.spring.entity.Book;
 import org.junit.Test;
@@ -8,27 +8,32 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * Created on 2017-11-30
+ * Created on 2018-05-23
  *
  * @author liuzhaoyuan
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
     "classpath:spring/applicationContext.xml"})
-public class BookDaoTest {
+public class BookServiceTest {
 
     @Autowired
-    private BookDao bookDao;
+    private BookService bookService;
 
     @Test
-    public void testSave() {
+    public void testTx1() {
         Book book = new Book();
-        book.setName("java优化3");
-        book.setPrice(45);
-        book.setType("java");
 
-        int re = bookDao.saveBook(book);
-        System.out.println(book.getId());
+        book.setName("java高并发设计2");
+        book.setType("java");
+        book.setPrice(48);
+
+//        bookService.saveBook(book);
+//        System.out.println(bookService.getBookById(book.getId()));
+
+        bookService.testBookBy1(book);
+
+//        bookService.saveBookBy1(book);
     }
 
 }

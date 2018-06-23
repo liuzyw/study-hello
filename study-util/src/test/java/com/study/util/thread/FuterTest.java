@@ -1,4 +1,4 @@
-package com.study.util.other;
+package com.study.util.thread;
 
 import java.util.ArrayList;
 import java.util.List;

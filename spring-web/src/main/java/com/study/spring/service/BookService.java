@@ -12,4 +12,14 @@ public interface BookService {
     Book getBookById(Integer id);
 
     Integer saveBook(Book book);
+
+    Integer testBookBy1(Book book);
+
+    Integer testBookBy2(Book book);
+
+
+    Integer saveBookBy1(Book book);
+
+    Integer saveBookBy2(Book book);
+
 }
