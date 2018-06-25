@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * Created on 2018-06-14
- *
+ * <p>
  * <p>作为spring的根容器，不扫描web相关类</>
  *
  * @author liuzhaoyuan
@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAspectJAutoProxy
 @Configuration
 @ComponentScan(basePackages = {"com.study.spring.aop", "com.study.spring.service", "com.study.spring.etc"},
-    excludeFilters = {@Filter(type = FilterType.ANNOTATION, classes = Controller.class)})
+    excludeFilters = {@Filter(type = FilterType.ANNOTATION, classes = Controller.class)}, useDefaultFilters = false)
 public class MyConfig {
 
 

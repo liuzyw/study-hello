@@ -82,11 +82,7 @@
             </tr>
             <tr class="grade">
                 <td><<a href="/goJavaJVM">跳转到JVM页面</a>></td>
-                <td><<a href=""></a>></td>
-            </tr>
-            <tr class="grade">
                 <td><<a href="/goStock">跳转到抢购页面</a>></td>
-                <td><<a href=""></a>></td>
             </tr>
 
 

@@ -3,6 +3,7 @@ package com.study.spring.controller;
 import com.google.common.util.concurrent.RateLimiter;
 import com.study.spring.entity.Stock;
 import com.study.spring.service.StockService;
+import com.study.spring.vo.Result;
 import java.util.concurrent.TimeUnit;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -50,7 +51,7 @@ public class StockController {
 
     @RequestMapping(value = "/addStock", method = RequestMethod.POST)
     @ResponseBody
-    public String addProduct(@RequestBody Stock stock) {
+    public Result<Boolean> addProduct(@RequestBody Stock stock) {
 
         LOGGER.info("save stock: " + stock);
         stockService.saveStock(stock);
@@ -58,37 +59,43 @@ public class StockController {
         redisTemplate.opsForValue().set(stock.getProductId().toString(), stock.getCount());
         LOGGER.info("save stock success " + stock);
 
-        return "success";
+        return new Result<>(true, 200);
     }
 
 
+    /**
+     * ajax 返回string 对象，前端不能正常解析，所以需要包装一下 大坑
+     * @param stock
+     * @return
+     */
     @RequestMapping(value = "/buy", method = RequestMethod.POST)
     @ResponseBody
-    public String buy(@RequestBody Stock stock) {
+    public Result<String> buy(@RequestBody Stock stock) {
 
-        System.out.println(request.getParameter("count") + "---------" + stock);
+        LOGGER.info("buy product: " + stock);
 
         if (stock.getProductId() == null) {
-            return "fail";
+            return new Result<>("productId is empty", 201);
         }
 
         // 性能不行
-        rateLimiter.acquire(1);
+//        rateLimiter.acquire(1);
         if (!rateLimiter.tryAcquire(200, TimeUnit.MILLISECONDS)) {
             LOGGER.warn("too many request ... ");
-            return "fail";
+            return new Result<>("request time out", 201);
         }
 
         LOGGER.info("update product: " + stock);
         Integer count = (Integer) redisTemplate.opsForValue().get(stock.getProductId().toString());
 
         if (count == null || count < 1) {
-            return "fail";
+            return new Result<>("stock is not enough", 201);
         }
 
         Long result = redisTemplate.opsForValue().increment(stock.getProductId().toString(), Long.valueOf(stock.getCount() * -1));
+        LOGGER.info("redis result count:" + result);
         if (result > 0) {
-            return "success";
+            return new Result<>("success", 200);
         } else if (result == 0) {
             threadPoolTaskExecutor.execute(() -> {
                 Stock originStock = stockService.getStockByProductId(stock.getProductId());
@@ -96,11 +103,10 @@ public class StockController {
                     stockService.updateStockByProductId(stock.getProductId(), originStock.getCount(), 0);
                 }
             });
-            return "success";
+            return new Result<>("success", 200);
         } else {
-            return "fail";
+            return new Result<>("concurrency fail", 201);
         }
-
     }
 
 
