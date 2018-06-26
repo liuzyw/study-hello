@@ -2,8 +2,8 @@ package com.study.spring;
 
 import com.study.spring.beans.Blue;
 import com.study.spring.beans.Hourse;
-import com.study.spring.etc.MyFactoryBean;
 import com.study.spring.config.MyConfig;
+import com.study.spring.etc.MyFactoryBean;
 import com.study.spring.service.HelloService;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -34,7 +34,19 @@ public class Test1 {
         Blue blue = (Blue) applicationContext.getBean("myFactoryBean");
         blue.say();
 
-
         applicationContext.close();
+    }
+
+    @Test
+    public void tr2() {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MyConfig.class);
+
+        Hourse hourse = (Hourse) applicationContext.getBean(Hourse.class);
+        hourse.say();
+
+//        hourse = (Hourse) applicationContext.getBean("hourse02");
+//        hourse.say();
+
+
     }
 }

@@ -24,8 +24,8 @@ public class Hourse {
         this.name = name;
     }
 
-    public void  say(){
-        System.out.println("hourse say ...");
+    public void say() {
+        System.out.println(name + " hourse say ...");
     }
 
     public void init() {

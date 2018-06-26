@@ -18,4 +18,6 @@ public interface StockDao {
 
     Stock getStockByProductId(Long productId);
 
+    int updateReduceStockByProductId(@Param("productId") Long productId, @Param("reduceCount") int reduceCount);
+
 }

@@ -50,5 +50,10 @@ public class StockDaoTest {
         System.out.println(stockDao.getStockByProductId(100L));
     }
 
+    @Test
+    public void updateReduceStockByProductId(){
+        stockDao.updateReduceStockByProductId(100L,2);
+    }
+
 
 }

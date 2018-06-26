@@ -18,6 +18,9 @@
     UPDATE stock SET count = #{toCount} WHERE product_id = #{productId} AND count=#{fromCount}
   </update>
 
+  <update id="updateReduceStockByProductId" parameterType="map">
+    UPDATE stock SET count = count-#{reduceCount} WHERE product_id = #{productId}
+  </update>
 
   <select id="getStockByProductId" parameterType="java.lang.Long" resultMap="stockMap">
     SELECT id, product_id, count FROM stock WHERE product_id = #{productId}

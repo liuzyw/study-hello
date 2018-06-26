@@ -36,4 +36,9 @@ public class StockServiceImpl implements StockService {
     public Stock getStockByProductId(Long productId) {
         return stockDao.getStockByProductId(productId);
     }
+
+    @Override
+    public int updateReduceStockByProductId(Long productId, int reduceCount) {
+        return stockDao.updateReduceStockByProductId(productId, reduceCount);
+    }
 }

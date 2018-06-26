@@ -18,4 +18,6 @@ public interface StockService {
     int updateStockByProductId(Long productId, int fromCount, int toCount);
 
     Stock getStockByProductId(Long productId);
+
+    int updateReduceStockByProductId(Long productId, int reduceCount);
 }
