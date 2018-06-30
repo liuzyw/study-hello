@@ -4,6 +4,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -18,9 +19,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @author liuzhaoyuan
  */
 @Configuration
-@ComponentScan(basePackages = {"com.study.spring.controller"},
-    includeFilters = {@Filter(type = FilterType.ANNOTATION, classes = Controller.class)},
-    useDefaultFilters = false)
+@ComponentScan(basePackages = {"com.study.spring.controller"}
+    /*includeFilters = {@Filter(type = FilterType.ANNOTATION, classes = Controller.class)},
+    useDefaultFilters = false*/)
 @EnableWebMvc
 public class MyAppConfig extends WebMvcConfigurerAdapter {
 

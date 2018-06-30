@@ -6,6 +6,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
@@ -30,6 +31,12 @@ public class MyAspect {
         System.out.println("after way...");
     }
 
+    /**
+     * 利用了动态代理，手动推进方法运行
+     *
+     * @param jp
+     */
+//    @Around(POINT)
     public void aroundWay(ProceedingJoinPoint jp) {
         try {
             System.out.println("aroundWay before ....");

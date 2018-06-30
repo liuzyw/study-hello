@@ -1,7 +1,9 @@
 package com.study.spring;
 
 import com.study.spring.beans.Blue;
+import com.study.spring.beans.Dog;
 import com.study.spring.beans.Hourse;
+import com.study.spring.beans.MyEnv;
 import com.study.spring.config.MyConfig;
 import com.study.spring.etc.MyFactoryBean;
 import com.study.spring.service.HelloService;
@@ -47,6 +49,46 @@ public class Test1 {
 //        hourse = (Hourse) applicationContext.getBean("hourse02");
 //        hourse.say();
 
+    }
 
+    @Test
+    public void testProperties() {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MyConfig.class);
+        printBean(applicationContext);
+        Dog bean = (Dog) applicationContext.getBean("dog01");
+        System.out.println(bean.getName());
+
+    }
+
+    /**
+     * 1. 命令行参数激活
+     */
+    @Test
+    public void testProfile() {
+        // 1. 创建 applicationContext
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
+
+        // 2. 设置激活的环境
+        applicationContext.getEnvironment().setActiveProfiles("test");
+
+        // 3. 注册配置类
+        applicationContext.register(MyConfig.class);
+
+        // 4. 刷新容器
+        applicationContext.refresh();
+
+        printBean(applicationContext);
+        MyEnv bean = applicationContext.getBean(MyEnv.class);
+
+        System.out.println("----------------------------------------");
+        System.out.println(bean.getEnv());
+
+    }
+
+    private void printBean(AnnotationConfigApplicationContext applicationContext) {
+        String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
+        for (String definitionName : beanDefinitionNames) {
+            System.out.println("-->  " + definitionName);
+        }
     }
 }

@@ -1,8 +1,10 @@
 package com.study.spring.config;
 
 import com.study.spring.aop.MyAspect;
+import com.study.spring.beans.Book;
 import com.study.spring.beans.Hourse;
 import com.study.spring.etc.MyCondition;
+import com.study.spring.etc.MyImportSelector;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
@@ -10,6 +12,8 @@ import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -23,8 +27,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
 @Configuration
-@ComponentScan(basePackages = {"com.study.spring.aop", "com.study.spring.service", "com.study.spring.etc"},
-    excludeFilters = {@Filter(type = FilterType.ANNOTATION, classes = Controller.class)}, useDefaultFilters = false)
+@ComponentScan(basePackages = {"com.study.spring.aop", "com.study.spring.service", "com.study.spring.etc"}/*,
+    excludeFilters = {@Filter(type = FilterType.ANNOTATION, classes = Controller.class)}, useDefaultFilters = false*/)
+@Import({Book.class, MyImportSelector.class,MyImportBeanDefinitionRegistrar.class,MyProperties.class,MyProfile.class})
+
 public class MyConfig {
 
 
@@ -40,6 +46,10 @@ public class MyConfig {
         return new Hourse(14, "linux");
     }
 
+    /**
+     * 把切面类加入容器
+     * @return
+     */
     @Bean
     public MyAspect myAspect() {
         return new MyAspect();

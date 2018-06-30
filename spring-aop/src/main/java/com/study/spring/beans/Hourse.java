@@ -29,7 +29,7 @@ public class Hourse {
     }
 
     public void init() {
-        System.out.println("init...");
+        System.out.println(name + " Hourse init...");
     }
 
     public void destory() {

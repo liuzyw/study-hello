@@ -45,14 +45,7 @@ public class MyCondition implements Condition {
 
         // mac 操作系统
         if (property.contains("Mac OS X")) {
-            Hourse bean = null;
-            try {
-                bean = beanFactory.getBean(Hourse.class);
-                return false;
-            } catch (Exception e) {
-                e.printStackTrace();
-                return true;
-            }
+           return true;
         }
 
         return false;
