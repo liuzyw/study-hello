@@ -282,6 +282,14 @@
       <version>4.5.5</version>
     </dependency>
 
+    <!-- 基准测试 -->
+    <dependency>
+      <groupId>org.openjdk.jmh</groupId>
+      <artifactId>jmh-core</artifactId>
+      <version>1.21</version>
+    </dependency>
+
+
 
   </dependencies>
 
