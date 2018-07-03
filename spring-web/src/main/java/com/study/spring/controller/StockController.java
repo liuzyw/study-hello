@@ -44,7 +44,7 @@ public class StockController {
     @Autowired
     private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
-    private static final int partition = 2;
+    private static final int partition = 10;
 
 
     @RequestMapping(value = "/goStock", method = RequestMethod.GET)
@@ -103,10 +103,10 @@ public class StockController {
 
         // 性能不行
 //        rateLimiter.acquire(1);
-        if (!rateLimiter.tryAcquire(200, TimeUnit.MILLISECONDS)) {
-            LOGGER.warn("too many request ... ");
-            return new Result<>("request time out", 201);
-        }
+//        if (!rateLimiter.tryAcquire(200, TimeUnit.MILLISECONDS)) {
+//            LOGGER.warn("too many request ... ");
+//            return new Result<>("request time out", 201);
+//        }
 
         long timeMillis = System.currentTimeMillis();
 

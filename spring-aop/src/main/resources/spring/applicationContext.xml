@@ -19,7 +19,7 @@
 
   <context:annotation-config/>
 
-<aop:aspectj-autoproxy/>
+  <aop:aspectj-autoproxy/>
 
 
   <!--<bean class="com.study.spring.service.impl.HelloServiceImpl" id="helloService"/>-->
