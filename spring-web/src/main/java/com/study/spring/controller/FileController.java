@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -145,16 +146,23 @@ public class FileController {
         sub.add("22");
         list.add(sub);
 
-//        String filename = "aaa.xlsx";
-        String filename = "bbb.xls";
-        response.setHeader("Content-disposition", filename);
-        response.setContentType("application/vnd.ms-excel");
-        response.setHeader("Content-disposition", "attachment;filename=" + filename);
-        response.setHeader("Pragma", "No-cache");
+        List<Object> sub2 = new ArrayList<>();
+        sub2.add("张三");
+        sub2.add("34");
+        list.add(sub2);
+
         try {
+             String filename = "aaa张三.xlsx";
+//            String filename = "bbb张三.xls";
+            response.setHeader("Content-disposition", filename);
+            response.setContentType("application/vnd.ms-excel;charset=UTF-8");
+            response.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode(filename, "utf-8"));
+            response.setHeader("Pragma", "No-cache");
+            response.setCharacterEncoding("UTF-8");
+
             OutputStream ouputStream = response.getOutputStream();
-//            ExcelXlsxUtils.writeToStream(ouputStream, title, list);
-            ExcelXlsUtils.writeToStream(ouputStream, title, list);
+              ExcelXlsxUtils.writeToStream(ouputStream, title, list);
+//            ExcelXlsUtils.writeToStream(ouputStream, title, list);
         } catch (IOException e) {
             logger.error("down excel fail", e);
         }
