@@ -1,11 +1,14 @@
 package com.study.spring.controller;
 
 import com.study.spring.dto.FileImage;
+import com.study.util.excel.ExcelXlsUtils;
+import com.study.util.excel.ExcelXlsxUtils;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -128,5 +131,33 @@ public class FileController {
         }
 
         return null;
+    }
+
+    @RequestMapping(value = "/downExcel")
+    public void downExcel(HttpServletRequest request, HttpServletResponse response) {
+
+        List<String> title = new ArrayList<>();
+        title.add("name");
+        title.add("age");
+        List<List<Object>> list = new ArrayList<>();
+        List<Object> sub = new ArrayList<>();
+        sub.add("Tom");
+        sub.add("22");
+        list.add(sub);
+
+//        String filename = "aaa.xlsx";
+        String filename = "bbb.xls";
+        response.setHeader("Content-disposition", filename);
+        response.setContentType("application/vnd.ms-excel");
+        response.setHeader("Content-disposition", "attachment;filename=" + filename);
+        response.setHeader("Pragma", "No-cache");
+        try {
+            OutputStream ouputStream = response.getOutputStream();
+//            ExcelXlsxUtils.writeToStream(ouputStream, title, list);
+            ExcelXlsUtils.writeToStream(ouputStream, title, list);
+        } catch (IOException e) {
+            logger.error("down excel fail", e);
+        }
+
     }
 }
