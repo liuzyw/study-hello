@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -61,6 +63,7 @@ public class ExcelXlsxUtils {
 
         try {
             workbook.write(outputStream);
+            outputStream.flush();
         } catch (IOException e) {
             return false;
         } finally {
@@ -138,11 +141,11 @@ public class ExcelXlsxUtils {
         DecimalFormat df2 = new DecimalFormat("0.00");  //格式化数字
         cell.getCellTypeEnum();
 
-        switch (cell.getCellType()) {
-            case XSSFCell.CELL_TYPE_STRING:
+        switch (cell.getCellTypeEnum()) {
+            case STRING:
                 value = cell.getRichStringCellValue().getString();
                 break;
-            case XSSFCell.CELL_TYPE_NUMERIC:
+            case NUMERIC:
                 if ("General".equals(cell.getCellStyle().getDataFormatString())) {
                     value = df.format(cell.getNumericCellValue());
                 } else if ("m/d/yy".equals(cell.getCellStyle().getDataFormatString())) {
@@ -151,10 +154,10 @@ public class ExcelXlsxUtils {
                     value = df2.format(cell.getNumericCellValue());
                 }
                 break;
-            case XSSFCell.CELL_TYPE_BOOLEAN:
+            case BOOLEAN:
                 value = cell.getBooleanCellValue();
                 break;
-            case XSSFCell.CELL_TYPE_BLANK:
+            case BLANK:
                 value = "";
                 break;
             default:

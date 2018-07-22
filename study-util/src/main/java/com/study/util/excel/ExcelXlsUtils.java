@@ -66,6 +66,7 @@ public class ExcelXlsUtils {
 
         try {
             workbook.write(outputStream);
+            outputStream.flush();
         } catch (IOException e) {
             return false;
         } finally {

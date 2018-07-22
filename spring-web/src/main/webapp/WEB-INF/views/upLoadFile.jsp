@@ -14,15 +14,16 @@
 单个文件上传
 <br/>
 <form action="/fileUpload" method="post" enctype="multipart/form-data">
-    <h2>文件上传</h2>
-    文件:<input type="file" name="uploadFile"/>
+    <h2>多个文件上传</h2>
+    <!-- 多个文件比单个文件多个 multiple -->
+    文件:<input type="file" name="uploadFiles" multiple/>
     <br/>
     <br/>
     <input type="submit" value="上传"/>
 </form>
 <br/>
 <br/>
-多文件上传
+多图片上传
 <form action="/fileUploadList" method="post" enctype="multipart/form-data">
     <h2>文件上传</h2>
     name:<input type="text" name="name"/><br/>

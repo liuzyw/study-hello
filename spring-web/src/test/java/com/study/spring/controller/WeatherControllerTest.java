@@ -41,12 +41,6 @@ public class WeatherControllerTest {
     public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();   //构造MockMvc
 
-        request = new MockHttpServletRequest();
-        request.setCharacterEncoding("UTF-8");
-        // 利用contextholder将被测试文件的request锁定到测试文件mock的request
-        RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-        response = new MockHttpServletResponse();
-
     }
 
 
@@ -58,7 +52,6 @@ public class WeatherControllerTest {
 //            .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
 //            .andExpect(jsonPath("$.code").value(20000))
 //            .andExpect(jsonPath("$.demoList").exists())
-            .andDo(MockMvcResultHandlers.print())
             .andReturn();
 
     }

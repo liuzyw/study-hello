@@ -40,16 +40,18 @@ public class ExcelXlsTest {
         List<String> titles = new ArrayList<>();
         titles.add("idaaaaaa");
         titles.add("name");
+        titles.add("age");
 
         List<List<Object>> data = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             List<Object> row = new ArrayList<>();
             row.add((i + 1) + "");
             row.add((i + 1) + "name");
+            row.add(i+100);
             data.add(row);
         }
 
-        File file = new File("/Users/liuzhaoyuan/Desktop/aaa.xlsx");
+        File file = new File("/Users/liuzhaoyuan/Desktop/aaba.xlsx");
 
         ExcelXlsxUtils.writeToStream(new FileOutputStream(file), titles, data);
     }

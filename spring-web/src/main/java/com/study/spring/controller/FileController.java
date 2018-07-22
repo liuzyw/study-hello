@@ -34,27 +34,29 @@ public class FileController {
     private static final Logger logger = LoggerFactory.getLogger(FileController.class);
 
     @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
-    public String fileUpload(@RequestParam("uploadFile") MultipartFile multipartFile, HttpServletRequest request) {
+    public String fileUpload(@RequestParam("uploadFiles") MultipartFile[] multipartFiles, HttpServletRequest request) {
         System.out.println("--------  start fileUpload  ----------");
-        if (!multipartFile.isEmpty()) {
-            int pre = (int) System.currentTimeMillis();
-            //重命名上传的文件
+        for (MultipartFile multipartFile : multipartFiles) {
+            if (!multipartFile.isEmpty()) {
+                int pre = (int) System.currentTimeMillis();
+                //重命名上传的文件
 //            File newFile = new File(
 //                "/Users/liuzhaoyuan/gitwork/study-hello/spring-web/upload", multipartFile.getOriginalFilename());
-            File newFile = new File(request.getServletContext().getRealPath("/WEB-INF/upload"),
-                multipartFile.getOriginalFilename());
+                File newFile = new File(request.getServletContext().getRealPath("/WEB-INF/upload"),
+                    multipartFile.getOriginalFilename());
 
-            System.out.println("upLoadFile newName: " + newFile.getAbsolutePath());
-            try {
-                multipartFile.transferTo(newFile);
-                logger.info("upload file to upload dir, file name: " + newFile.getAbsolutePath());
-            } catch (IOException e) {
-                logger.error("uploadFile fail file name: " + multipartFile.getOriginalFilename() + ", error: " + e);
-                return "error";
+                System.out.println("upLoadFile newName: " + newFile.getAbsolutePath());
+                try {
+                    multipartFile.transferTo(newFile);
+                    logger.info("upload file to upload dir, file name: " + newFile.getAbsolutePath());
+                } catch (IOException e) {
+                    logger.error("uploadFile fail file name: " + multipartFile.getOriginalFilename() + ", error: " + e);
+                    return "error";
+                }
+
+                int finalTime = (int) System.currentTimeMillis();
+                System.out.println("uploadFile use time: " + (finalTime - pre));
             }
-
-            int finalTime = (int) System.currentTimeMillis();
-            System.out.println("uploadFile use time: " + (finalTime - pre));
         }
 
         return "success";
@@ -110,6 +112,7 @@ public class FileController {
                     os.write(bytes, 0, len);
                     len = bis.read(bytes);
                 }
+                os.flush();
             } catch (IOException e) {
                 logger.error("down file error:", e);
             } finally {
