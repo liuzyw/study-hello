@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @param <T>
  */
-public class Task<T extends Consumer<Boolean>> implements Delayed {
+public class DelayTask<T extends Consumer<Boolean>> implements Delayed {
 
     private long id;
 
@@ -37,7 +37,7 @@ public class Task<T extends Consumer<Boolean>> implements Delayed {
     public static final int TIME_OUT = 10000;
 
 
-    public Task (long id, long timeout, T task) {
+    public DelayTask (long id, long timeout, T task) {
         this.id = id;
         this.timeout = System.currentTimeMillis() + timeout;
         this.task = task;
@@ -67,7 +67,7 @@ public class Task<T extends Consumer<Boolean>> implements Delayed {
 
     @Override
     public String toString () {
-        return "Task{" +
+        return "DelayTask{" +
                 "id=" + id +
                 ", timeout=" + timeout +
                 ", task=" + task +
@@ -91,7 +91,7 @@ public class Task<T extends Consumer<Boolean>> implements Delayed {
     public int compareTo (Delayed other) {
         if (other == this)
             return 0;
-        if (other instanceof Task) {
+        if (other instanceof DelayTask) {
             Task x = (Task) other;
             long diff = this.timeout - x.getTimeout();
             if (diff < 0)
