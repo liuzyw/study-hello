@@ -32,7 +32,7 @@ public class AsyncController {
 
         Callable<String> callable = () -> {
             Thread.sleep(time);
-            model.addAttribute("name", "aysc1");
+            model.addAttribute("name", "aysc1 展示");
             model.addAttribute("desc", "call with view");
             model.addAttribute("time", DateUtils.getCurTimeStr());
             return "async/async";
@@ -46,7 +46,7 @@ public class AsyncController {
 
         Callable<String> callable = () -> {
             Thread.sleep(time);
-            model.addAttribute("name", "aysc2");
+            model.addAttribute("name", "aysc2 张三");
             model.addAttribute("desc", "call with timeout");
             model.addAttribute("time", DateUtils.getCurTimeStr());
             return "async/async";
@@ -66,13 +66,13 @@ public class AsyncController {
         return webAsyncTask;
     }
 
-    @RequestMapping("/async3")
+    @RequestMapping(value = "/async3", produces = {"text/html;charset=UTF-8", "application/json;charset=UTF-8"})
     @ResponseBody
     public DeferredResult<String> quotes(@RequestParam("time") int time, HttpServletResponse response) throws Exception {
         TimeUnit.MILLISECONDS.sleep(time);
         deferredResult.onTimeout(() -> {
             LOGGER.info("我超时啦!");
-            deferredResult.setErrorResult("time out");
+            deferredResult.setErrorResult("time out 超时");
         });
         deferredResult.onCompletion(() -> {
             if (!deferredResult.isSetOrExpired()) {
@@ -87,7 +87,7 @@ public class AsyncController {
 
     @RequestMapping("/async3set")
     public String setDeferredResult(final Model model) {
-        deferredResult.setResult("Test result!");
+        deferredResult.setResult("Test result! 成功");
         model.addAttribute("name", "async3set");
         model.addAttribute("desc", "set deferredResult value");
         model.addAttribute("time", DateUtils.getCurTimeStr());

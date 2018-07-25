@@ -2,6 +2,7 @@ package com.study.spring.controller;
 
 import com.study.spring.entity.Bus;
 import com.study.spring.entity.Tree;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,6 +10,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,9 +59,9 @@ public class AjaxController {
 
     /**
      * ajax post 单个请求
-     *
+     * <p>
      * application/x-www-form-urlencoded
-     *
+     * <p>
      * produces 防止返回给前端中文乱码
      *
      * @return
@@ -125,5 +128,10 @@ public class AjaxController {
         LOGGER.info("response ajax get: " + buses);
         System.out.println(buses);
         return buses;
+    }
+
+    @RequestMapping(value = "/respEntity", produces = {"text/html;charset=UTF-8", "application/json;charset=UTF-8"})
+    public ResponseEntity<String> download(HttpServletRequest request) throws IOException {
+        return new ResponseEntity<>("213展示", HttpStatus.OK);
     }
 }
