@@ -92,7 +92,7 @@ public class DelayTask<T extends Consumer<Boolean>> implements Delayed {
         if (other == this)
             return 0;
         if (other instanceof DelayTask) {
-            Task x = (Task) other;
+            DelayTask x = (DelayTask) other;
             long diff = this.timeout - x.getTimeout();
             if (diff < 0)
                 return -1;
