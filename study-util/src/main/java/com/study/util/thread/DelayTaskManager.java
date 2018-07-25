@@ -62,7 +62,7 @@ public class DelayTaskManager {
                                         // 重新调度
                                         if (t1.getCount() < DelayTask.MAX_TIME) {
                                             t1.setCount(t1.getCount() + 1);
-                                            t1.setTimeout(System.currentTimeMillis() + t1.getCount() * Task.TIME_OUT);
+                                            t1.setTimeout(System.currentTimeMillis() + t1.getCount() * DelayTask.TIME_OUT);
                                             queue.put(t1);
                                         } else {
                                             System.out.println("多次调度也不成功 task no:" + t1.getId());
@@ -72,7 +72,7 @@ public class DelayTaskManager {
                             });
                         }
                     } catch (Exception e) {
-                        System.out.println("[error count:" + atomic.get() + "]", e);
+                        System.out.println("[error count:" + atomic.get() + "]" + e);
                     }
                 }
             }
