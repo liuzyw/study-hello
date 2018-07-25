@@ -1,8 +1,5 @@
 package com.study.util.thread;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -12,8 +9,6 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class DelayTaskManager {
-
-    private static final Logger logger = LoggerFactory.getLogger(DelayTaskManager.class);
 
     /**
      * 创建一个最初为空的新 DelayQueue
@@ -58,26 +53,26 @@ public class DelayTaskManager {
                             if (task == null) {
                                 continue;
                             }
-                            logger.info("[at task:" + task + "] [Time:" + System.currentTimeMillis() + "] [task id:" + t1.getId() + "]");
+                            System.out.println("[at task:" + task + "] [Time:" + System.currentTimeMillis() + "] [task id:" + t1.getId() + "]");
                             executor.submit(new Runnable() {
                                 @Override
                                 public void run () {
                                     Boolean result = task.consume();
                                     if (!result) {
                                         // 重新调度
-                                        if (t1.getCount() < Task.MAX_TIME) {
+                                        if (t1.getCount() < DelayTask.MAX_TIME) {
                                             t1.setCount(t1.getCount() + 1);
                                             t1.setTimeout(System.currentTimeMillis() + t1.getCount() * Task.TIME_OUT);
                                             queue.put(t1);
                                         } else {
-                                            logger.info("多次调度也不成功 task no:" + t1.getId());
+                                            System.out.println("多次调度也不成功 task no:" + t1.getId());
                                         }
                                     }
                                 }
                             });
                         }
                     } catch (Exception e) {
-                        logger.error("[error count:" + atomic.get() + "]", e);
+                        System.out.println("[error count:" + atomic.get() + "]", e);
                     }
                 }
             }
@@ -99,7 +94,7 @@ public class DelayTaskManager {
     public synchronized long put (long time, Consumer<Boolean> task) {
 
         if (queue.size() > MAX_QUEUE_SIZE) {
-            logger.error("refund queue is too big, queue size:" + queue.size());
+            System.out.println("refund queue is too big, queue size:" + queue.size());
             return 0L;
         }
 
@@ -107,7 +102,7 @@ public class DelayTaskManager {
         //创建一个任务
         DelayTask k = new DelayTask(no, time, task);
         //将任务放在延迟的队列中
-        logger.info("put task into queue, task:" + k);
+        System.out.println("put task into queue, task:" + k);
         queue.put(k);
         return no;
     }
