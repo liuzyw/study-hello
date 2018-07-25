@@ -116,7 +116,7 @@ public class DelayTask<T extends Consumer<Boolean>> implements Delayed {
 
     @Override
     public boolean equals (Object object) {
-        if (object instanceof Task) {
+        if (object instanceof DelayTask) {
             return object.hashCode() == hashCode() ? true : false;
         }
         return false;
