@@ -35,6 +35,7 @@
   <filter>
     <filter-name>DelegatingFilterProxy</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    <async-supported>true</async-supported>
     <init-param>
       <param-name>targetBeanName</param-name>
       <param-value>loggerFilter</param-value>
@@ -68,6 +69,7 @@
   <filter>
     <filter-name>log4jServletFilter</filter-name>
     <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
+    <async-supported>true</async-supported>
   </filter>
   <filter-mapping>
     <filter-name>log4jServletFilter</filter-name>
@@ -76,6 +78,7 @@
     <dispatcher>FORWARD</dispatcher>
     <dispatcher>INCLUDE</dispatcher>
     <dispatcher>ERROR</dispatcher>
+    <!--<dispatcher>ASYNC</dispatcher>-->
   </filter-mapping>
 
   <!-- Spring MVC servlet -->
