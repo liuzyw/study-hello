@@ -18,7 +18,7 @@ public class DelayTaskManager {
     /**
      * 创建一个最初为空的新 DelayQueue
      */
-    private static final DelayQueue<Task> queue = new DelayQueue<>();
+    private static final DelayQueue<DelayTask> queue = new DelayQueue<>();
 
     // 自增序列号
     private static final AtomicLong atomic = new AtomicLong(0);
@@ -51,7 +51,7 @@ public class DelayTaskManager {
                 while (true) {
                     try {
                         //从延迟队列中取值,如果没有对象过期则队列一直等待，
-                        final Task t1 = queue.take();
+                        final DelayTask t1 = queue.take();
                         if (t1 != null) {
                             //修改问题的状态
                             final Consumer<Boolean> task = t1.getTask();
@@ -105,7 +105,7 @@ public class DelayTaskManager {
 
         long no = atomic.incrementAndGet();
         //创建一个任务
-        Task k = new Task(no, time, task);
+        DelayTask k = new DelayTask(no, time, task);
         //将任务放在延迟的队列中
         logger.info("put task into queue, task:" + k);
         queue.put(k);
