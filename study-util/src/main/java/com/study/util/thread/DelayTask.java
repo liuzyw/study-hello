@@ -37,45 +37,45 @@ public class DelayTask<T extends Consumer<Boolean>> implements Delayed {
     public static final int TIME_OUT = 10000;
 
 
-    public DelayTask (long id, long timeout, T task) {
+    public DelayTask(long id, long timeout, T task) {
         this.id = id;
         this.timeout = System.currentTimeMillis() + timeout;
         this.task = task;
         this.count = 0;
     }
 
-    public long getId () {
+    public long getId() {
         return id;
     }
 
-    public void setId (long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public long getTimeout () {
+    public long getTimeout() {
         return timeout;
     }
 
-    public void setTimeout (long timeout) {
+    public void setTimeout(long timeout) {
         this.timeout = timeout;
     }
 
 
-    public int getCount () {
+    public int getCount() {
         return count;
     }
 
     @Override
-    public String toString () {
+    public String toString() {
         return "DelayTask{" +
-                "id=" + id +
-                ", timeout=" + timeout +
-                ", task=" + task +
-                ", count=" + count +
-                '}';
+            "id=" + id +
+            ", timeout=" + timeout +
+            ", task=" + task +
+            ", count=" + count +
+            '}';
     }
 
-    public void setCount (int count) {
+    public void setCount(int count) {
         this.count = count;
     }
 
@@ -83,39 +83,41 @@ public class DelayTask<T extends Consumer<Boolean>> implements Delayed {
      * 返回与此对象相关的剩余延迟时间，以给定的时间单位表示
      */
     @Override
-    public long getDelay (TimeUnit unit) {
+    public long getDelay(TimeUnit unit) {
         return unit.convert(this.timeout - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
     }
 
     @Override
-    public int compareTo (Delayed other) {
-        if (other == this)
+    public int compareTo(Delayed other) {
+        if (other == this) {
             return 0;
+        }
         if (other instanceof DelayTask) {
             DelayTask x = (DelayTask) other;
             long diff = this.timeout - x.getTimeout();
-            if (diff < 0)
+            if (diff < 0) {
                 return -1;
-            else if (diff > 0)
+            } else if (diff > 0) {
                 return 1;
-            else
+            } else {
                 return 0;
+            }
         }
         long d = (getDelay(TimeUnit.MILLISECONDS) - other.getDelay(TimeUnit.MILLISECONDS));
         return (d == 0) ? 0 : ((d < 0) ? -1 : 1);
     }
 
-    public T getTask () {
+    public T getTask() {
         return this.task;
     }
 
     @Override
-    public int hashCode () {
+    public int hashCode() {
         return task.hashCode();
     }
 
     @Override
-    public boolean equals (Object object) {
+    public boolean equals(Object object) {
         if (object instanceof DelayTask) {
             return object.hashCode() == hashCode() ? true : false;
         }

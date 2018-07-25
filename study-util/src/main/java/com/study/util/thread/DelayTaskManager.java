@@ -26,9 +26,9 @@ public class DelayTaskManager {
 
 
     private static ExecutorService executor = new ThreadPoolExecutor(1, 3, 2000L, TimeUnit.MILLISECONDS,
-            new LinkedBlockingQueue<Runnable>());
+        new LinkedBlockingQueue<Runnable>());
 
-    public DelayTaskManager () {
+    public DelayTaskManager() {
     }
 
     /**
@@ -39,10 +39,10 @@ public class DelayTaskManager {
     /**
      * 初始化守护线程
      */
-    public void init () {
+    public void init() {
         daemonThread = new Thread(new Runnable() {
             @Override
-            public void run () {
+            public void run() {
                 while (true) {
                     try {
                         //从延迟队列中取值,如果没有对象过期则队列一直等待，
@@ -56,7 +56,7 @@ public class DelayTaskManager {
                             System.out.println("[at task:" + task + "] [Time:" + System.currentTimeMillis() + "] [task id:" + t1.getId() + "]");
                             executor.submit(new Runnable() {
                                 @Override
-                                public void run () {
+                                public void run() {
                                     Boolean result = task.consume();
                                     if (!result) {
                                         // 重新调度
@@ -91,7 +91,7 @@ public class DelayTaskManager {
      * task 任务
      * 用户为问题设置延迟时间
      */
-    public synchronized long put (long time, Consumer<Boolean> task) {
+    public synchronized long put(long time, Consumer<Boolean> task) {
 
         if (queue.size() > MAX_QUEUE_SIZE) {
             System.out.println("refund queue is too big, queue size:" + queue.size());
