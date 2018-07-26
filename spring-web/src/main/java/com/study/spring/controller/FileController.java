@@ -1,16 +1,17 @@
 package com.study.spring.controller;
 
 import com.study.spring.dto.FileImage;
-import com.study.util.excel.ExcelXlsUtils;
 import com.study.util.excel.ExcelXlsxUtils;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.collections4.CollectionUtils;
@@ -94,7 +95,7 @@ public class FileController {
     @RequestMapping("/fileDownload")
     public String fileDownload(HttpServletRequest request, HttpServletResponse response) {
         File file = new File(request.getServletContext().getRealPath("/WEB-INF/upload"),
-            "testDownload.pdf");
+            "MyBatis从入门到精通.pdf");
 
         if (file.exists()) {
             response.setContentType("application/pdf");
@@ -155,7 +156,7 @@ public class FileController {
         list.add(sub2);
 
         try {
-             String filename = "aaa张三.xlsx";
+            String filename = "aaa张三.xlsx";
 //            String filename = "bbb张三.xls";
             response.setHeader("Content-disposition", filename);
             response.setContentType("application/vnd.ms-excel;charset=UTF-8");
@@ -164,11 +165,66 @@ public class FileController {
             response.setCharacterEncoding("UTF-8");
 
             OutputStream ouputStream = response.getOutputStream();
-              ExcelXlsxUtils.writeToStream(ouputStream, title, list);
+            ExcelXlsxUtils.writeToStream(ouputStream, title, list);
 //            ExcelXlsUtils.writeToStream(ouputStream, title, list);
         } catch (IOException e) {
             logger.error("down excel fail", e);
         }
 
+    }
+
+    @RequestMapping(value = "/downBigFile")
+    public void downBigFile(HttpServletRequest request, HttpServletResponse response) {
+        InputStream inputStream = null;
+        ServletOutputStream out = null;
+        try {
+            File file = new File(request.getServletContext().getRealPath("/WEB-INF/upload"),
+                "MyBatis从入门到精通.pdf");
+
+            String filename = "mybatis入门.pdf";
+
+            int fSize = Integer.parseInt(String.valueOf(file.length()));
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/x-download");
+            response.setHeader("Accept-Ranges", "bytes");
+            response.setHeader("Content-Length", String.valueOf(fSize));
+            response.setHeader("Content-Disposition", "attachment;fileName=" + filename);
+            inputStream = new FileInputStream(file);
+            long pos = 0;
+            if (null != request.getHeader("Range")) {
+                // 断点续传
+                response.setStatus(HttpServletResponse.SC_PARTIAL_CONTENT);
+                try {
+                    pos = Long.parseLong(request.getHeader("Range").replaceAll(
+                        "bytes=", "").replaceAll("-", ""));
+                } catch (NumberFormatException e) {
+                    pos = 0;
+                }
+            }
+            out = response.getOutputStream();
+            String contentRange = new StringBuffer("bytes ").append(pos + "").append(
+                "-").append((fSize - 1) + "").append("/").append(fSize + "").toString();
+            response.setHeader("Content-Range", contentRange);
+            inputStream.skip(pos);
+            byte[] buffer = new byte[1024 * 10];
+            int length = 0;
+            while ((length = inputStream.read(buffer, 0, buffer.length)) != -1) {
+                out.write(buffer, 0, length);
+                Thread.sleep(100);
+            }
+            out.flush();
+        } catch (Exception e) {
+            logger.error("软件下载异常：" + e);
+        } finally {
+            try {
+                if (null != out) {
+                    out.close();
+                }
+                if (null != inputStream) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+            }
+        }
     }
 }

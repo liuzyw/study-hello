@@ -72,11 +72,19 @@
     <property name="supportedMediaTypes" value="text/html;charset=UTF-8">
     </property>
   </bean>
+  <bean class="org.springframework.http.converter.FormHttpMessageConverter" id="formHttpMessageConverter">
+    <property name="supportedMediaTypes">
+      <list>
+        <value>application/x-www-form-urlencoded;charset=UTF-8</value>
+      </list>
+    </property>
+  </bean>
   <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
     <property name="messageConverters">
       <list>
         <ref bean="jsonHttpMessageConverter"/>
         <ref bean="stringHttpMessageConverter"/>
+        <ref bean="formHttpMessageConverter"/>
       </list>
     </property>
   </bean>
