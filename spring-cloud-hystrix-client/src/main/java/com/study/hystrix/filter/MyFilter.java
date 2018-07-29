@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebFilter;
 @WebFilter(urlPatterns = "/*", filterName = "hystrixFilter")
 public class MyFilter implements Filter {
 
+    @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("MyFilter init ... ");
     }
@@ -27,6 +28,7 @@ public class MyFilter implements Filter {
      * @throws IOException
      * @throws ServletException
      */
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
         FilterChain chain) throws IOException, ServletException {
         System.out.println("MyFilter doFilter ... ");
@@ -41,6 +43,7 @@ public class MyFilter implements Filter {
         }
     }
 
+    @Override
     public void destroy() {
         System.out.println("MyFilter destroy ... ");
     }

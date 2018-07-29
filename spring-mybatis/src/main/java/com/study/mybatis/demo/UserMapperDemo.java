@@ -26,7 +26,7 @@ public class UserMapperDemo {
             user.setPass(MyUtils.getRandomString(6));
             user.setAge(MyUtils.getRandomInteger(60));
             user.setAddress(MyUtils.getRandomString(6));
-            user.setSex(Sex.FEMALE.FEMALE);
+            user.setSex(Sex.FEMALE);
             int c = userMapper.saveUser(user);
 //      userMapper.deleteUser(9);
 

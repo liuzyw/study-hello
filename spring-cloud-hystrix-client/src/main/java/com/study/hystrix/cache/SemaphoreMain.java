@@ -13,7 +13,8 @@ public class SemaphoreMain {
 		for(int i = 0; i < 6; i++) {
 			final int index = i;
 			Thread t = new Thread() {
-				public void run() {
+				@Override
+                public void run() {
 					MyCommand c = new MyCommand(index);
 					c.execute();
 				}

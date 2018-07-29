@@ -35,6 +35,7 @@ public class MyClient implements Client {
             final String method = request.method();
             // 创建一个HttpClient的HttpRequest
             HttpRequestBase httpRequest = new HttpRequestBase() {
+                @Override
                 public String getMethod() {
                     return method;
                 }

@@ -28,6 +28,7 @@ public class TimeBasedAccessInterceptor extends HandlerInterceptorAdapter {
         this.closingTime = closingTime;
     }
 
+    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);

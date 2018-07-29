@@ -190,17 +190,17 @@ public class RoomResources {
                     RoomPair first = freeRooms.get(0);
                     if (first.getBeginDate() > pair.getEndDate()) {
                         freeRooms.add(pair);
-                    } else if (first.getBeginDate() == pair.getEndDate()) {
+                    } else if (first.getBeginDate().equals(pair.getEndDate())) {
                         first.setBeginDate(pair.getBeginDate());
                     } else {
                         int p = 0;
                         outer:
                         for (RoomPair free : freeRooms) {
-                            if (free.getEndDate() == pair.getBeginDate()) {
+                            if (free.getEndDate().equals(pair.getBeginDate())) {
                                 if (freeRooms.size() - 1 > p) {
                                     if (freeRooms.get(p + 1).getBeginDate() > pair.getEndDate()) {
                                         free.setEndDate(pair.getEndDate());
-                                    } else if (freeRooms.get(1).getBeginDate() == pair.getEndDate()) {
+                                    } else if (freeRooms.get(1).getBeginDate().equals(pair.getEndDate())) {
                                         freeRooms.get(p + 1).setBeginDate(free.getBeginDate());
                                         freeRooms.remove(p);
                                     }
@@ -213,7 +213,7 @@ public class RoomResources {
                                 if (freeRooms.size() - 1 > p) {
                                     if (freeRooms.get(p + 1).getBeginDate() > pair.getEndDate()) {
                                         freeRooms.add(pair);
-                                    } else if (freeRooms.get(1).getBeginDate() == pair.getEndDate()) {
+                                    } else if (freeRooms.get(1).getBeginDate().equals(pair.getEndDate())) {
                                         freeRooms.get(p + 1).setBeginDate(pair.getBeginDate());
                                     }
                                 } else {

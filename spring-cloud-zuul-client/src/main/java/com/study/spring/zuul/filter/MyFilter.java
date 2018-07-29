@@ -7,10 +7,12 @@ import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 
 public class MyFilter extends ZuulFilter {
 
+    @Override
     public boolean shouldFilter() {
         return true;
     }
 
+    @Override
     public Object run() {
         System.out.println("执行 MyFilter 过滤器");
 
