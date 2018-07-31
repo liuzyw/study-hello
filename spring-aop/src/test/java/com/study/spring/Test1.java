@@ -1,9 +1,12 @@
 package com.study.spring;
 
 import com.study.spring.beans.Blue;
+import com.study.spring.beans.Book;
 import com.study.spring.beans.Dog;
 import com.study.spring.beans.Hourse;
 import com.study.spring.beans.MyEnv;
+import com.study.spring.beans.PAD;
+import com.study.spring.beans.Pean;
 import com.study.spring.config.MyConfig;
 import com.study.spring.etc.MyFactoryBean;
 import com.study.spring.service.HelloService;
@@ -57,6 +60,22 @@ public class Test1 {
         printBean(applicationContext);
         Dog bean = (Dog) applicationContext.getBean("dog01");
         System.out.println(bean.getName());
+
+    }
+
+    @Test
+    public void testPean() {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MyConfig.class);
+        printBean(applicationContext);
+        Pean bean1 = (Pean) applicationContext.getBean("pean");
+        Pean bean2 = (Pean) applicationContext.getBean("pean");
+        System.out.println(bean1);
+        System.out.println(bean2);
+
+        PAD hourse1 = (PAD) applicationContext.getBean("pad");
+        PAD hourse2 = (PAD) applicationContext.getBean("pad");
+        System.out.println(hourse1);
+        System.out.println(hourse2);
 
     }
 
