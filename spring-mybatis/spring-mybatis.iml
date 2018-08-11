@@ -47,6 +47,7 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.2.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-test:4.2.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.38" level="project" />
+    <orderEntry type="library" name="Maven: com.github.shyiko:mysql-binlog-connector-java:0.16.1" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.4.4" level="project" />
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:5.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:1.0" level="project" />
