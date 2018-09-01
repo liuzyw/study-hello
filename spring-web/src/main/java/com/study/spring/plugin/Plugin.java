@@ -24,5 +24,7 @@ public class Plugin {
 
     private String version;
 
+    private byte[] content;
+
 
 }

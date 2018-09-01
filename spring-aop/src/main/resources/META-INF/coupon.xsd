@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="http://www.liu.com/schema/coupon"
+  targetNamespace="http://www.liu.com/schema/coupon"
+  elementFormDefault="qualified">
+
+<element name="coupon">
+  <complexType>
+    <attribute name="id" type="string"/>
+    <attribute name="value" type="string"/>
+    <attribute name="orderId" type="string"/>
+  </complexType>
+</element>
+
+
+</schema>

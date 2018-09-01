@@ -38,7 +38,12 @@ public class DefaultPluginFactory implements PluginFactory {
 
     private static Map<String, Plugin> configs = new HashMap<>();
 
+    // 已经激活的插件
     private static Map<String, Advice> adviceCache = new HashMap<>();
+
+    // 已经安装的插件
+    private static Map<String, Advice> installCache = new HashMap<>();
+
 
     private static String BASE_DIR = "/Users/liuzhaoyuan/gitwork/study-hello/logs/";
 
