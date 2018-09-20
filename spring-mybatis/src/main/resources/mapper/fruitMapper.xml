@@ -10,9 +10,11 @@
     <result column="price" property="price"/>
     <result column="weight" property="weight"/>
   </resultMap>
+  
+  <sql id="sel" >SELECT name, price, weight FROM fruit</sql>
 
   <select id="getFruitById" parameterType="java.lang.Integer" resultMap="fruitMap">
-    SELECT name, price, weight FROM fruit WHERE id = #{id}
+    <include refid="sel"/> WHERE id = #{id}
   </select>
 
   <select id="findFruitsByPrice" parameterType="java.math.BigDecimal" resultMap="fruitMap">
