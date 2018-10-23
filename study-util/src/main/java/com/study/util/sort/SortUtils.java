@@ -10,6 +10,39 @@ public class SortUtils {
     private SortUtils() {
     }
 
+
+    /**
+     * 二分查找
+     *
+     * @param arr
+     * @param from
+     * @param to
+     * @param num
+     * @param <T>
+     *
+     * @return
+     */
+    public static <T extends Comparable<? super T>> int binaryFind(T[] arr, int from, int to, T num) {
+
+        if (to == from && to == 0) {
+            return -1;
+        }
+
+        if (to == from) {
+            return -from;
+        }
+
+        int mid = (from + to) / 2;
+        if (arr[mid].compareTo(num) == 0) {
+            return mid;
+        } else if (arr[mid].compareTo(num) > 0) {
+            return binaryFind(arr, from, mid, num);
+        } else {
+            return binaryFind(arr, mid + 1, to, num);
+        }
+    }
+
+
     /**
      * 插入排序
      *
