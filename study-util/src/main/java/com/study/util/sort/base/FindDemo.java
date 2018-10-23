@@ -11,9 +11,9 @@ public class FindDemo {
 
 
     public static void main(String[] args) {
-        Integer[] arr = new Integer[]{0, 1, 7, 8, 22, 26, 30, 37, 38, 40, 51, 52, 55, 57, 69, 80, 81, 85, 93, 94};
+        Integer[] arr = new Integer[]{1, 2, 7, 8, 22, 26, 30, 37, 38, 40, 51, 52, 55, 57, 69, 80, 81, 85, 93, 94};
 
-        int re = binaryFind(arr, 0, arr.length, 40);
+        int re = binaryFind(arr, 0, arr.length, 1);
 
         System.out.println(re);
 
@@ -21,7 +21,7 @@ public class FindDemo {
 
         System.out.println(re);
 
-        re = binaryFind(arr, 0, arr.length, 53);
+        re = binaryFind(arr, 0, arr.length, 2);
 
         System.out.println(re);
 
@@ -42,6 +42,10 @@ public class FindDemo {
         System.out.println(re);
 
         re = binaryFind(arr, 0, arr.length, 94);
+
+        System.out.println(re);
+
+        re = binaryFind(arr, 0, arr.length, 93);
 
         System.out.println(re);
 

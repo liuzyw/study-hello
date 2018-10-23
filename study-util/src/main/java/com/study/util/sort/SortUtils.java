@@ -206,4 +206,54 @@ public class SortUtils {
 
     }
 
+
+    /**
+     * 快速排序
+     *
+     * @param arr
+     * @param fromIndex
+     * @param toIndex
+     * @param <T>
+     */
+    public static <T extends Comparable<? super T>> void fastSort(T[] arr, int fromIndex, int toIndex) {
+
+        if (fromIndex < toIndex - 1) {
+
+            int right = toIndex - 1;
+            int left = fromIndex;
+
+            int mid = (right + left) / 2;
+
+            T key = arr[mid];
+
+            while (left < right) {
+                while (left < mid && arr[left].compareTo(key) <= 0) {
+                    left++;
+                }
+
+                T temp = arr[mid];
+                arr[mid] = arr[left];
+                arr[left] = temp;
+
+                mid = left;
+
+                while (mid < right && arr[right].compareTo(key) >= 0) {
+                    right--;
+                }
+                temp = arr[mid];
+                arr[mid] = arr[right];
+                arr[right] = temp;
+
+                mid = right;
+            }
+
+            fastSort(arr, fromIndex, mid);
+
+            fastSort(arr, mid + 1, toIndex);
+
+        }
+
+
+    }
+
 }

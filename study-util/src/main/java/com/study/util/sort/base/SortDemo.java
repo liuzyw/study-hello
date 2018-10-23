@@ -1,6 +1,7 @@
 package com.study.util.sort.base;
 
 import com.study.util.sort.RandomUtils;
+import com.study.util.sort.SortUtils;
 import java.util.Arrays;
 
 /**
@@ -15,7 +16,8 @@ public class SortDemo {
         for (int i = 0; i < 10; i++) {
             Integer[] array = RandomUtils.generateIntegerArray(100, 20);
 
-            shellSort(array, 0, array.length);
+//            Integer[] array = new Integer[]{20, 24, 46, 11, 49, 98, 33, 46, 37, 13, 50, 52, 8, 74, 9, 33, 84, 29, 41, 56};
+            SortUtils.fastSort(array, 0, array.length);
 
             System.out.println(RandomUtils.isSort(array, true));
 
@@ -130,10 +132,134 @@ public class SortDemo {
         }
     }
 
-    public static void mergeSort(Integer[] arr, int fromIndex, int toIndex) {
+
+    /**
+     * pass
+     *
+     * @param arr
+     * @param fromIndex
+     * @param toIndex
+     */
+    public static void fastSort(Integer[] arr, int fromIndex, int toIndex) {
+
+        int pivot = 0;
+
+        if (fromIndex < toIndex - 1) {
+
+//            pivot = partition1(arr, fromIndex, toIndex);
+
+            int right = toIndex - 1;
+            int left = fromIndex;
+
+            int mid = (right + left) / 2;
+
+            int key = arr[mid];
+
+            while (left < right) {
+
+                while (left < mid && arr[left] <= key) {
+
+                    left++;
+
+                }
+
+                swap(arr, left, mid);
+                mid = left;
+
+                while (mid < right && arr[right] >= key) {
+
+                    right--;
+
+                }
+                swap(arr, mid, right);
+                mid = right;
+
+
+            }
+
+            pivot = mid;
+
+            fastSort(arr, fromIndex, pivot);
+
+            fastSort(arr, pivot + 1, toIndex);
+
+        }
+
 
     }
 
+    private static int partition(Integer[] arr, int left, int right) {
+
+        int key = arr[left];
+
+        while (left < right) {
+
+            while (left < right && arr[right] >= key) {
+
+                right--;
+
+            }
+
+            arr[left] = arr[right];
+
+            while (left < right && arr[left] <= key) {
+
+                left++;
+
+            }
+
+            arr[right] = arr[left];
+
+        }
+
+        arr[left] = key;
+
+        return left;
+    }
+
+    /**
+     * pass
+     *
+     * @param arr
+     * @param left
+     * @param right
+     *
+     * @return
+     */
+    private static int partition1(Integer[] arr, int left, int right) {
+
+        int mid = (right + left) / 2;
+
+        int key = arr[mid];
+
+        while (left < right) {
+
+            while (left < mid && arr[left] <= key) {
+
+                left++;
+
+            }
+
+            swap(arr, left, mid);
+            mid = left;
+
+            while (mid < right && arr[right] >= key) {
+
+                right--;
+
+            }
+            swap(arr, mid, right);
+            mid = right;
+
+
+        }
+
+        return mid;
+    }
+
+    public static void mergeSort(Integer[] arr, int fromIndex, int toIndex) {
+
+    }
 
 
 }
