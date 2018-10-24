@@ -1,7 +1,6 @@
 package com.study.util.sort.base;
 
 import com.study.util.sort.RandomUtils;
-import com.study.util.sort.SortUtils;
 import java.util.Arrays;
 
 /**
@@ -17,7 +16,7 @@ public class SortDemo {
             Integer[] array = RandomUtils.generateIntegerArray(100, 20);
 
 //            Integer[] array = new Integer[]{20, 24, 46, 11, 49, 98, 33, 46, 37, 13, 50, 52, 8, 74, 9, 33, 84, 29, 41, 56};
-            SortUtils.fastSort(array, 0, array.length);
+            heapSort(array, 0, array.length);
 
             System.out.println(RandomUtils.isSort(array, true));
 
@@ -257,8 +256,143 @@ public class SortDemo {
         return mid;
     }
 
+    /**
+     * pass
+     *
+     * @param arr
+     * @param fromIndex
+     * @param toIndex
+     */
     public static void mergeSort(Integer[] arr, int fromIndex, int toIndex) {
 
+        if (toIndex - fromIndex == 1) {
+            if (arr[fromIndex] > arr[toIndex]) {
+                swap(arr, fromIndex, toIndex);
+            }
+            return;
+        }
+
+        int mid = (fromIndex + toIndex) / 2;
+
+        mergeSort(arr, fromIndex, mid);
+        mergeSort(arr, mid, toIndex);
+
+        merge(arr, fromIndex, mid, toIndex);
+
+    }
+
+    private static void merge(Integer[] arr, int left, int mid, int right) {
+        Integer[] temp = new Integer[right - left];
+
+        int leftIndex = left;
+        int rightIndex = mid;
+
+        int t = 0;
+        while (leftIndex < mid && rightIndex < right) {
+            if (arr[leftIndex] <= arr[rightIndex]) {
+                temp[t++] = arr[leftIndex++];
+            } else {
+                temp[t++] = arr[rightIndex++];
+            }
+        }
+
+        if (leftIndex < mid) {
+
+            for (; leftIndex < mid; ) {
+                temp[t++] = arr[leftIndex++];
+            }
+
+        }
+
+        if (rightIndex < right) {
+
+            for (; rightIndex < right; ) {
+                temp[t++] = arr[rightIndex++];
+            }
+
+        }
+
+        for (int i = 0; i < t; i++) {
+            arr[left + i] = temp[i];
+        }
+    }
+
+
+    public static void heapSort(Integer[] arr, int fromIndex, int toIndex) {
+
+        int mid = fromIndex + (toIndex - fromIndex) / 2 - 1;
+
+        for (int i = mid; i >= fromIndex; i--) {
+            just(arr, i, toIndex);
+        }
+
+        for (int i = fromIndex; i < toIndex; i++) {
+            swap(arr, fromIndex, toIndex - i - 1);
+            just(arr, fromIndex, toIndex - i - 1);
+        }
+
+    }
+
+    private static void just1(Integer[] arr, int from, int to) {
+        for (int i = from; i * 2 + 1 < to; ) {
+
+            int left = i * 2 + 1;
+            int right = i * 2 + 2;
+            if (right < to) {
+                if (arr[i] < arr[left]) {
+                    if (arr[left] < arr[right]) {
+                        swap(arr, i, right);
+                        i = right;
+                    } else {
+                        swap(arr, i, left);
+                        i = left;
+
+                    }
+                } else {
+                    if (arr[i] < arr[right]) {
+                        swap(arr, i, right);
+                        i = right;
+                    } else {
+                        return;
+                    }
+                }
+            } else {
+                if (arr[i] < arr[left]) {
+                    swap(arr, i, left);
+                    i = left;
+                } else {
+                    return;
+                }
+            }
+
+
+        }
+    }
+
+
+    /**
+     * pass
+     *
+     * @param arr
+     * @param from
+     * @param to
+     */
+    private static void just(Integer[] arr, int from, int to) {
+        for (int i = from; i * 2 + 1 < to; ) {
+
+            int left = i * 2 + 1;
+            int right = i * 2 + 2;
+            int next = left;
+            if (right < to && arr[right] > arr[left]) {
+                next = right;
+            }
+
+            if (arr[i] < arr[next]) {
+                swap(arr, i, next);
+            }
+            i = next;
+
+        }
     }
 
 
