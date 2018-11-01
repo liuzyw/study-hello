@@ -1,5 +1,7 @@
 package com.study.util.sort;
 
+import org.apache.poi.ss.formula.functions.T;
+
 /**
  * Created on 2017-12-08
  *
@@ -252,8 +254,26 @@ public class SortUtils {
             fastSort(arr, mid + 1, toIndex);
 
         }
+    }
 
+    public static void swap(T[] arr, int a, int b) {
+        if (a == b) {
+            return;
+        }
 
+        T t = arr[a];
+        arr[a] = arr[b];
+        arr[b] = t;
+    }
+
+    public static void swap(int[] arr, int a, int b) {
+        if (a == b) {
+            return;
+        }
+
+        int t = arr[a];
+        arr[a] = arr[b];
+        arr[b] = t;
     }
 
 }

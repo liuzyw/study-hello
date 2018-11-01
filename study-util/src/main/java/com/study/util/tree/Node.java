@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author liuzhaoyuan
  */
-public class Node<T> {
+public class Node<T extends Comparable<? super T>> {
 
     /**
      * 数据域

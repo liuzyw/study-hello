@@ -14,7 +14,7 @@ import java.util.Stack;
  *
  * @author liuzhaoyuan
  */
-public class BinaryTree<T> {
+public class BinaryTree<T extends Comparable<? super T>> {
 
     /**
      * 根节点
