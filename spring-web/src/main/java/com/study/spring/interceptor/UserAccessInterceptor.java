@@ -1,12 +1,9 @@
 package com.study.spring.interceptor;
 
-import com.study.spring.entity.Fruit;
-import com.study.spring.service.FruitService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -42,7 +39,8 @@ public class UserAccessInterceptor extends HandlerInterceptorAdapter {
             response.sendRedirect(contextPath + "/home.jsp");
             return false;
         }
-
+        ValueThreadLocal.set("threadLocal");
+        request.setAttribute("localValue", "Tom");
         return super.preHandle(request, response, handler);
     }
 
@@ -63,6 +61,7 @@ public class UserAccessInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
         throws Exception {
+        ValueThreadLocal.remove();
         LOGGER.info("interceptor completion");
         super.afterCompletion(request, response, handler, ex);
     }
