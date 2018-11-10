@@ -11,16 +11,13 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class NIOServer implements Runnable {
+public class NIOServer {
 
     // 多路复用器， 选择器。 用于注册通道的。
     private Selector selector;
-    // 定义了两个缓存。分别用于读和写。 初始化空间大小单位为字节。
-    private ByteBuffer readBuffer = ByteBuffer.allocate(1024);
-    private ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
 
     public static void main(String[] args) {
-        new Thread(new NIOServer(9999)).start();
+        new NIOServer(9999).start();
     }
 
     public NIOServer(int port) {
@@ -54,7 +51,7 @@ public class NIOServer implements Runnable {
         }
     }
 
-    public void run() {
+    public void start() {
         while (true) {
             try {
                 // 阻塞方法，当至少一个通道被选中，此方法返回。
@@ -103,7 +100,10 @@ public class NIOServer implements Runnable {
     }
 
     private void write(SelectionKey key) {
-        this.writeBuffer.clear();
+
+        ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
+
+//        writeBuffer.clear();
         SocketChannel channel = (SocketChannel) key.channel();
         Scanner reader = new Scanner(System.in);
         try {
@@ -122,8 +122,10 @@ public class NIOServer implements Runnable {
 
     private void read(SelectionKey key) {
         try {
+            ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+
             // 清空读缓存。
-            this.readBuffer.clear();
+//            readBuffer.clear();
             // 获取通道
             SocketChannel channel = (SocketChannel) key.channel();
             // 将通道中的数据读取到缓存中。通道中的数据，就是客户端发送给服务器的数据。
@@ -141,7 +143,7 @@ public class NIOServer implements Runnable {
              * Buffer中有一个游标。游标信息在操作后不会归零，如果直接访问Buffer的话，数据有不一致的可能。
              * flip是重置游标的方法。NIO编程中，flip方法是常用方法。
              */
-            this.readBuffer.flip();
+            readBuffer.flip();
             // 字节数组，保存具体数据的。 Buffer.remaining() -> 是获取Buffer中有效数据长度的方法。
             byte[] datas = new byte[readBuffer.remaining()];
             // 是将Buffer中的有效数据保存到字节数组中。
@@ -151,7 +153,6 @@ public class NIOServer implements Runnable {
             // 注册通道， 标记为写操作。
             channel.register(this.selector, SelectionKey.OP_WRITE);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             try {
                 key.channel().close();
