@@ -37,6 +37,7 @@
     <module>study-redis</module>
     <module>spring-sub-database-table</module>
     <module>spring-boot-sharding-jdbc</module>
+    <module>web-server</module>
   </modules>
 
   <!-- archetypeCatalog=internal -->

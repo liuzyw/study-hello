@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dogs>
+
+  <dog>
+    <name>Tom</name>
+    <age>8</age>
+  </dog>
+  <dog>
+    <name>Jeck</name>
+    <age>9</age>
+  </dog>
+
+</dogs>
