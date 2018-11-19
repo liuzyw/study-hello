@@ -221,6 +221,38 @@ public class BinaryTree<T extends Comparable<? super T>> {
         }
     }
 
+    public void postOrderUnrec2(Node<T> root) {
+
+        Stack<Node<T>> stack = new Stack<Node<T>>();
+        Node<T> p = root;
+        // pre标记最近出栈的节点，用于判断是否是p节点的右孩子，如果是的话，就可以访问p节点
+        Node<T> pre = p;
+        // flag标记是出栈还是继续将左孩子进栈
+        boolean flag = true;
+        while (p != null || !stack.isEmpty()) {
+            while (p != null && flag) {
+                stack.push(p);
+                p = p.getLeftChild();
+            }
+            if (stack.isEmpty()) {
+                return;
+            } else {
+                p = stack.peek();
+                if (p.getRightChild() != null && p.getRightChild() != pre) {
+                    p = p.getRightChild();
+                    flag = true;
+                } else {
+                    // 若没有右孩子，或者右孩子已经出栈，则可访问
+                    p = stack.pop();
+                    System.out.print(p.getData() + ",  ");
+                    pre = p;
+                    flag = false;
+                }
+            }
+        }
+
+    }
+
     /**
      * 层次遍历
      */

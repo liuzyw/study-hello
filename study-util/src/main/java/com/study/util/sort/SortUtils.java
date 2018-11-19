@@ -1,7 +1,5 @@
 package com.study.util.sort;
 
-import org.apache.poi.ss.formula.functions.T;
-
 /**
  * Created on 2017-12-08
  *
@@ -130,8 +128,8 @@ public class SortUtils {
             percDown(arr, i, toIndex + 1);
         }
         for (int i = toIndex; i > fromIndex; i--) {
-            T temp = arr[0];
-            arr[0] = arr[i];
+            T temp = arr[fromIndex];
+            arr[fromIndex] = arr[i];
             arr[i] = temp;
             percDown(arr, fromIndex, i);
         }
@@ -149,12 +147,11 @@ public class SortUtils {
                 child++;
             }
             if (temp.compareTo(arr[child]) < 0) {
-                arr[fromIndex] = arr[child];
+                swap(arr, fromIndex, child);
             } else {
-                break;
+                return;
             }
         }
-        arr[fromIndex] = temp;
     }
 
     /**
@@ -256,7 +253,7 @@ public class SortUtils {
         }
     }
 
-    public static void swap(T[] arr, int a, int b) {
+    public static <T extends Comparable<? super T>> void swap(T[] arr, int a, int b) {
         if (a == b) {
             return;
         }

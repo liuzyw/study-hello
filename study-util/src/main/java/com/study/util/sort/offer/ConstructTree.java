@@ -22,6 +22,7 @@ public class ConstructTree {
         System.out.println();
 
         binaryTree.postOrderTraverse(root);
+        binaryTree.postOrderUnrec2(root);
 
     }
 

@@ -1,6 +1,7 @@
 package com.study.util.sort.base;
 
 import com.study.util.sort.RandomUtils;
+import com.study.util.sort.SortUtils;
 import java.util.Arrays;
 
 /**
@@ -13,10 +14,10 @@ public class SortDemo {
     public static void main(String[] args) {
 
         for (int i = 0; i < 10; i++) {
-            Integer[] array = RandomUtils.generateIntegerArray(100, 20);
+            Integer[] array = RandomUtils.generateIntegerArray(100, 40);
 
 //            Integer[] array = new Integer[]{20, 24, 46, 11, 49, 98, 33, 46, 37, 13, 50, 52, 8, 74, 9, 33, 84, 29, 41, 56};
-            heapSort(array, 0, array.length);
+            SortUtils.heapSort(array, 0, array.length-1);
 
             System.out.println(RandomUtils.isSort(array, true));
 
