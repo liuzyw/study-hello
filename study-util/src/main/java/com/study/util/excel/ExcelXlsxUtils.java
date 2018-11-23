@@ -10,7 +10,10 @@ import java.util.Collections;
 import java.util.List;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -40,11 +43,11 @@ public class ExcelXlsxUtils {
             }
         }
 
-        XSSFWorkbook workbook = new XSSFWorkbook();
-        XSSFSheet sheet = workbook.createSheet();
-        XSSFRow row = sheet.createRow(0);
+        Workbook workbook = new SXSSFWorkbook();
+        Sheet sheet = workbook.createSheet();
+        Row row = sheet.createRow(0);
 
-        XSSFCell cell = null;
+        Cell cell = null;
         for (int i = 0; i < titles.size(); i++) {
             cell = row.createCell(i);
             cell.setCellValue(titles.get(i));
