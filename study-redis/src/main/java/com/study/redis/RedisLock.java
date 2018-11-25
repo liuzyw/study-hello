@@ -1,194 +1,98 @@
 package com.study.redis;
 
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisCluster;
-import redis.clients.jedis.JedisCommands;
 
+/**
+ * Created on 2018-11-23
+ *
+ * @author liuzhaoyuan
+ */
 public class RedisLock {
 
-
-    private static final String LOCK_MSG = "OK";
-
-    private static final Long UNLOCK_MSG = 1L;
+    private static final String LOCK_PREFIX = "lock_";
 
     private static final String SET_IF_NOT_EXIST = "NX";
     private static final String SET_WITH_EXPIRE_TIME = "PX";
+    private static final String LOCK_MSG = "OK";
+    private static final Long UNLOCK_MSG = 1L;
 
 
-    private String lockPrefix;
+    private static final String UNLOCK_LUA = "if redis.call('get', KEYS[1]) == ARGV[1] then\n"
+        + "    return redis.call('del', KEYS[1])\n"
+        + "else\n"
+        + "    return 0\n"
+        + "end";
 
 
-    private int sleepTime;
+    private Jedis jedis;
 
-
-    private JedisCommands jedis;
-
-    /**
-     * time millisecond
-     */
-    private static final int TIME = 1000;
-
-    /**
-     * lua script
-     */
-    private String script;
-
-    private RedisLock(Builder builder) {
-        this.jedis = builder.jedis;
-        this.lockPrefix = builder.lockPrefix;
-        this.sleepTime = builder.sleepTime;
-
-        buildScript();
+    public RedisLock(Jedis jedis) {
+        this.jedis = jedis;
     }
 
-    /**
-     * Non-blocking lock
-     *
-     * @param key lock business type
-     * @param request value
-     *
-     * @return true lock success false lock fail
-     */
-    public boolean tryLock(String key, String request) {
-        String result = this.jedis.set(lockPrefix + key, request, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, 10 * TIME);
 
-        if (LOCK_MSG.equals(result)) {
-            return true;
-        } else {
-            return false;
+    public void lock(String key, String value, int time) {
+        while (true) {
+            boolean tryLock = tryLock(key, value, time);
+            if (tryLock) {
+                return;
+            }
         }
     }
 
-    /**
-     * blocking lock
-     */
-    public void lock(String key, String request) throws InterruptedException {
-
-        for (; ; ) {
-            String result = this.jedis
-                .set(lockPrefix + key, request, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, 10 * TIME);
-            if (LOCK_MSG.equals(result)) {
-                break;
+    public void lock(String key, String value, int time, int sleep) {
+        while (true) {
+            boolean tryLock = tryLock(key, value, time);
+            if (tryLock) {
+                return;
             }
 
-            Thread.sleep(sleepTime);
+            try {
+                TimeUnit.MILLISECONDS.sleep(sleep);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-
     }
 
     /**
-     * blocking lock,custom time
+     * 时间是毫秒
      *
-     * @param blockTime custom time
+     * @param key
+     * @param value
+     * @param time
      *
      * @return
      */
-    public boolean lock(String key, String request, int blockTime) throws InterruptedException {
+    public boolean tryLock(String key, String value, int time) {
 
-        while (blockTime >= 0) {
+        try {
+            String msg = jedis.set(key, value, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, time);
 
-            String result = this.jedis
-                .set(lockPrefix + key, request, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, 10 * TIME);
-            if (LOCK_MSG.equals(result)) {
+            if (LOCK_MSG.equals(msg)) {
                 return true;
             }
-            blockTime -= sleepTime;
 
-            Thread.sleep(sleepTime);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean unlock(String key, String value) {
+        try {
+            Object result = jedis.eval(UNLOCK_LUA, Collections.singletonList(key), Collections.singletonList(value));
+            if (UNLOCK_MSG.equals(result)) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
 
 
-    /**
-     * Non-blocking lock
-     *
-     * @param key lock business type
-     * @param request value
-     * @param expireTime custom expireTime
-     *
-     * @return true lock success false lock fail
-     */
-    public boolean tryLock(String key, String request, int expireTime) {
-        String result = this.jedis.set(lockPrefix + key, request, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);
-
-        if (LOCK_MSG.equals(result)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-    /**
-     * unlock
-     *
-     * @param request request must be the same as lock request
-     *
-     * @return
-     */
-    public boolean unlock(String key, String request) {
-        //lua script
-
-        Object result = null;
-        if (jedis instanceof Jedis) {
-            result = ((Jedis) this.jedis)
-                .eval(script, Collections.singletonList(lockPrefix + key), Collections.singletonList(request));
-        } else if (jedis instanceof JedisCluster) {
-            result = ((JedisCluster) this.jedis)
-                .eval(script, Collections.singletonList(lockPrefix + key), Collections.singletonList(request));
-        } else {
-            //throw new RuntimeException("instance is error") ;
-            return false;
-        }
-
-        if (UNLOCK_MSG.equals(result)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
-    /**
-     * read lua script
-     */
-    private void buildScript() {
-        script = ScriptUtil.getScript("lock.lua");
-    }
-
-
-    public static class Builder<T extends JedisCommands> {
-
-        private static final String DEFAULT_LOCK_PREFIX = "lock_";
-        /**
-         * default sleep time
-         */
-        private static final int DEFAULT_SLEEP_TIME = 100;
-
-        private T jedis;
-
-        private String lockPrefix = DEFAULT_LOCK_PREFIX;
-        private int sleepTime = DEFAULT_SLEEP_TIME;
-
-        public Builder(T jedis) {
-            this.jedis = jedis;
-        }
-
-        public Builder lockPrefix(String lockPrefix) {
-            this.lockPrefix = lockPrefix;
-            return this;
-        }
-
-        public Builder sleepTime(int sleepTime) {
-            this.sleepTime = sleepTime;
-            return this;
-        }
-
-        public RedisLock build() {
-            return new RedisLock(this);
-        }
-
-    }
 }

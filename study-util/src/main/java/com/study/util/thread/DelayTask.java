@@ -1,5 +1,6 @@
 package com.study.util.thread;
 
+import java.util.Objects;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
@@ -27,21 +28,52 @@ public class DelayTask<T extends Consumer<Boolean>> implements Delayed {
      */
     private int count;
 
+    /**
+     * 间隔时间
+     */
+    private long intervalTime;
+
+    /**
+     * 最大循环次数
+     */
+    private int maxCount;
+
 
     /**
      * 队列中最大执行次数
      */
-    public static final int MAX_TIME = 5;
+    public static final int DEFAULT_MAX_TIME = 5;
 
     // 默认是 10s
-    public static final int TIME_OUT = 10000;
+    public static final int DEFAULT_INTERVAL_TIME = 10000;
 
+    public DelayTask() {
+        this.id = 1L;
+        this.timeout = System.currentTimeMillis() + 1000;
+        this.task = null;
+        this.count = 0;
+        this.maxCount = DEFAULT_MAX_TIME;
+        this.intervalTime = DEFAULT_INTERVAL_TIME;
+    }
 
-    public DelayTask(long id, long timeout, T task) {
+    public DelayTask(long id, long timeout, int maxCount, int intervalTime, T task) {
         this.id = id;
         this.timeout = System.currentTimeMillis() + timeout;
         this.task = task;
         this.count = 0;
+        this.maxCount = maxCount;
+        this.intervalTime = intervalTime;
+    }
+
+    public DelayTask(long id, T task, DelayEnum delayEnum) {
+        this.id = id;
+        this.task = task;
+        this.timeout = System.currentTimeMillis() + delayEnum.time;
+        this.maxCount = delayEnum.count;
+        this.intervalTime = delayEnum.time;
+        this.count = 0;
+
+
     }
 
     public long getId() {
@@ -57,27 +89,61 @@ public class DelayTask<T extends Consumer<Boolean>> implements Delayed {
     }
 
     public void setTimeout(long timeout) {
-        this.timeout = timeout;
+        this.timeout = System.currentTimeMillis() + timeout;
     }
 
+    public T getTask() {
+        return this.task;
+    }
+
+
+    public void setTask(T task) {
+        this.task = task;
+    }
 
     public int getCount() {
         return count;
     }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+
+    public long getIntervalTime() {
+        return intervalTime;
+    }
+
+    public void setIntervalTime(long intervalTime) {
+        this.intervalTime = intervalTime;
+    }
+
+    public int getMaxCount() {
+        return maxCount;
+    }
+
+    public void setMaxCount(int maxCount) {
+        this.maxCount = maxCount;
+    }
+
+
+    public void setNextTask() {
+        this.setCount(count + 1);
+        this.setTimeout(intervalTime);
+    }
+
 
     @Override
     public String toString() {
         return "DelayTask{" +
             "id=" + id +
             ", timeout=" + timeout +
-            ", task=" + task +
             ", count=" + count +
+            ", intervalTime=" + intervalTime +
+            ", maxCount=" + maxCount +
             '}';
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
 
     /**
      * 返回与此对象相关的剩余延迟时间，以给定的时间单位表示
@@ -107,22 +173,21 @@ public class DelayTask<T extends Consumer<Boolean>> implements Delayed {
         return (d == 0) ? 0 : ((d < 0) ? -1 : 1);
     }
 
-    public T getTask() {
-        return this.task;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof DelayTask)) {
+            return false;
+        }
+        DelayTask<?> delayTask = (DelayTask<?>) o;
+        return getId() == delayTask.getId();
     }
 
     @Override
     public int hashCode() {
-        return task.hashCode();
+
+        return Objects.hash(getId());
     }
-
-    @Override
-    public boolean equals(Object object) {
-        if (object instanceof DelayTask) {
-            return object.hashCode() == hashCode() ? true : false;
-        }
-        return false;
-    }
-
-
 }

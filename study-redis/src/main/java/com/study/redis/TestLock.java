@@ -21,21 +21,21 @@ public class TestLock {
         System.out.println("连接成功");
         System.out.println("服务正在运行: " + jedis.ping());
 
-        LockU lockU = new LockU(jedis);
+        RedisLock redisLock = new RedisLock(jedis);
 
-        boolean tryLock = lockU.tryLock("aaa", "dd", 20000);
+        boolean tryLock = redisLock.tryLock("aaa", "dd", 20000);
 
         System.out.println(tryLock);
 
-        boolean tryLock2 = lockU.tryLock("aaa", "dddd", 20000);
+        boolean tryLock2 = redisLock.tryLock("aaa", "dddd", 20000);
         System.out.println(tryLock2);
 
 //        TimeUnit.SECONDS.sleep(10);
 
-        boolean unlock = lockU.unlock("aaa", "dddd");
+        boolean unlock = redisLock.unlock("aaa", "dddd");
 
         System.out.println(unlock);
-        unlock = lockU.unlock("aaa", "dd");
+        unlock = redisLock.unlock("aaa", "dd");
 
         System.out.println(unlock);
 
@@ -55,9 +55,9 @@ public class TestLock {
         System.out.println(key);
         Runnable runnable = () -> {
             Jedis jedis = new Jedis("localhost", 6379);
-            LockU lockU = new LockU(jedis);
+            RedisLock redisLock = new RedisLock(jedis);
             for (int i = 0; i < 10000; i++) {
-                incr(lockU, key);
+                incr(redisLock, key);
             }
         };
 
@@ -70,10 +70,10 @@ public class TestLock {
     }
 
 
-    private static void incr(LockU lockU, String key) {
+    private static void incr(RedisLock redisLock, String key) {
         UUID uuid = UUID.randomUUID();
         while (true) {
-            boolean lock = lockU.tryLock(key, uuid.toString(), 5000);
+            boolean lock = redisLock.tryLock(key, uuid.toString(), 5000);
             if (lock) {
                 System.out.println(Thread.currentThread().getId() + " --> " + uuid.toString());
                 num++;
@@ -82,7 +82,7 @@ public class TestLock {
 
         }
 
-        boolean unlock = lockU.unlock(key, uuid.toString());
+        boolean unlock = redisLock.unlock(key, uuid.toString());
         System.out.println(uuid + " -- " + unlock);
 
 
