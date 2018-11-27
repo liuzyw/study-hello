@@ -1,5 +1,6 @@
 package com.study.spring.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,16 @@ public class BaseController {
 
         return "log";
     }
+
+    @RequestMapping("/go2")
+    public String goAjaxReq22(HttpServletRequest request) throws Exception{
+        String name = request.getParameter("name");
+        System.out.println(name);
+        name = new String(name.getBytes("iso8859-1"), "UTF-8");
+        System.out.println(name);
+        return "ajax";
+    }
+
 
     @RequestMapping("/goAjaxReq")
     public String goAjaxReq() {

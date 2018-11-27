@@ -38,7 +38,7 @@ test ajax
   });
 </script>
 <br/><input id="click" type="button" value="post bus"/>
-/getAjaxMessage post bus by jq param
+/getAjaxMessage (jq post request param:{bus})
 <div id="aaa"></div>
 <br/>
 
@@ -66,7 +66,7 @@ test ajax
 
 </script>
 <br/><input id="clickc" type="button" value="get bus"/>
-/getAjaxMessage get bus by jq param
+/getAjaxMessage1 (jq get request param:{bus})
 <div id="adaa"></div>
 <br/>
 
@@ -93,7 +93,7 @@ test ajax
   });
 </script>
 <br/><input id="click1" type="button" value="get jquery"/>
-/getbuss1 get bus by jq
+/getBuss1 (jq get requset param:{})
 <div id="bbb"></div>
 <br/>
 
@@ -116,7 +116,7 @@ test ajax
   });
 </script>
 <br/><input id="click111" type="button" value="get jquery post"/>
-/get one post by jq
+/postOne (jq post request param{string})
 <div id="bbb11"></div>
 <br/>
 
@@ -144,7 +144,7 @@ test ajax
   }
 </script>
 <br/><input type="button" value="submit1" onclick="doTestJson('/getAjaxMessage')"/>
-/getAjaxMessage post by Jq2 param
+/getAjaxMessage (origin post request param:{bus})
 <div id="ccc"></div>
 <br/>
 
@@ -184,7 +184,7 @@ test ajax
   }
 </script>
 <br/><input type="button" value="getBuss" onclick="getBuss()"/>
-/getbuss post origin
+/getBuss (origin post request param:{bus})
 <div id="ddd"></div>
 <br/>
 
@@ -224,7 +224,7 @@ test ajax
   }
 </script>
 <br/><input type="button" value="getBuss1" onclick="getBuss1()"/>
-/getbuss get origin
+/getBuss1 (origin get request param:{})
 <div id="eee"></div>
 <br/>
 
@@ -254,7 +254,7 @@ test ajax
   });
 </script>
 <br/><input id="postTree" type="button" value="postTree" onclick="postTree()"/>
-/postTree list
+/postTree (jq post request param:{tree})
 <div id="fff"></div>
 <br/>
 

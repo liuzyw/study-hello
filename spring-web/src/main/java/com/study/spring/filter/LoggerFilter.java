@@ -1,7 +1,5 @@
 package com.study.spring.filter;
 
-import com.study.spring.entity.Fruit;
-import com.study.spring.service.FruitService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.FilterChain;
@@ -10,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -33,7 +30,14 @@ public class LoggerFilter extends OncePerRequestFilter {
 
 //        Fruit fruit = fruitService.getFruitById(2);
 //        LOGGER.info("LoggerFilter get fruit:{}", fruit);
+        System.out.println("-----------request params-----------");
+//        for (Entry<String, String[]> entry : request.getParameterMap().entrySet()) {
+//            System.out.println(entry.getKey() + "=" + Arrays.toString(entry.getValue()));
+//        }
 
+//        MyRequestWrapper myRequestWrapper = new MyRequestWrapper((HttpServletRequest) request);
+//        String body = myRequestWrapper.getBody();
+//        System.out.println(body);
         String url = request.getServletPath();
         if ("/goFilter".equals(url)) {
             request.setCharacterEncoding("UTF-8");

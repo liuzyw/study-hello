@@ -3,7 +3,7 @@ package com.study.spring.controller;
 import com.study.spring.entity.Bus;
 import com.study.spring.entity.Tree;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -80,7 +80,7 @@ public class AjaxController {
      *
      * @return
      */
-    @RequestMapping(value = "/getAjaxMessage", method = RequestMethod.POST)
+    @RequestMapping(value = "/getAjaxMessage", method = RequestMethod.POST, produces = {"text/html;charset=UTF-8", "application/json;charset=UTF-8"})
     @ResponseBody
     public List<Bus> ajaxMessage(@RequestBody Bus bus) {
         System.out.println("----------jaxa----" + bus);
@@ -95,13 +95,24 @@ public class AjaxController {
      *
      * @return
      */
-    @RequestMapping(value = "/getAjaxMessage1", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAjaxMessage1", method = RequestMethod.GET, consumes = {"application/json;charset=UTF-8"}, produces = {"text/html;charset=UTF-8",
+        "application/json;charset=UTF-8"})
     @ResponseBody
-    public List<Bus> ajaxMessage1(Bus bus) {
+    public List<Bus> ajaxMessage1(HttpServletRequest request, Bus bus) {
         System.out.println("----------ajaxa----" + bus);
+        System.out.println(request.getParameter("name"));
+
         try {
-            bus.setName(new String(bus.getName().getBytes("iso8859-1"), "UTF-8"));
-        } catch (UnsupportedEncodingException e) {
+            String keyword = URLDecoder.decode(request.getParameter("name"), "UTF-8");
+
+            System.out.println(keyword);
+
+            String s = new String(bus.getName().getBytes("iso8859-1"), "UTF-8");
+            System.out.println(s);
+            String s2 = new String(bus.getName().getBytes("UTF-8"), "UTF-8");
+            System.out.println(s2);
+            bus.setName(s);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         buses.add(bus);
