@@ -56,6 +56,7 @@
             <option>广州</option>
             <option>合肥</option>
             <option>北京</option>
+            <option>扬州</option>
         </select>
         <br/>
         <br/>

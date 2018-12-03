@@ -216,7 +216,7 @@ public class SortUtils {
      */
     public static <T extends Comparable<? super T>> void fastSort(T[] arr, int fromIndex, int toIndex) {
 
-        if (fromIndex < toIndex - 1) {
+        if (fromIndex < toIndex) {
 
             int right = toIndex - 1;
             int left = fromIndex;

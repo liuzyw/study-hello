@@ -17,7 +17,7 @@ public class SortDemo {
             Integer[] array = RandomUtils.generateIntegerArray(100, 40);
 
 //            Integer[] array = new Integer[]{20, 24, 46, 11, 49, 98, 33, 46, 37, 13, 50, 52, 8, 74, 9, 33, 84, 29, 41, 56};
-            SortUtils.heapSort(array, 0, array.length-1);
+            SortUtils.fastSort(array, 0, array.length);
 
             System.out.println(RandomUtils.isSort(array, true));
 
