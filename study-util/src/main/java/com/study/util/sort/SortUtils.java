@@ -47,16 +47,16 @@ public class SortUtils {
      * 插入排序
      *
      * @param arr
-     * @param fromIndex
-     * @param toIndex
+     * @param from
+     * @param to
      * @param <T>
      */
-    public static <T extends Comparable<? super T>> void insertSort(T[] arr, int fromIndex, int toIndex) {
+    public static <T extends Comparable<? super T>> void insertSort(T[] arr, int from, int to) {
         int j;
-        for (int i = fromIndex + 1; i < toIndex + 1; i++) {
+        for (int i = from + 1; i < to; i++) {
             // 一次插入过程
             T temp = arr[i];
-            for (j = i; (j >= fromIndex + 1 && temp.compareTo(arr[j - 1]) < 0); j--) {
+            for (j = i; (j >= from + 1 && temp.compareTo(arr[j - 1]) < 0); j--) {
                 arr[j] = arr[j - 1];
             }
             // 指定位置插入
@@ -68,15 +68,13 @@ public class SortUtils {
     /**
      * 冒泡排序
      */
-    public static <T extends Comparable<? super T>> void bubbleSort(T[] arr, int fromIndex, int toIndex) {
+    public static <T extends Comparable<? super T>> void bubbleSort(T[] arr, int from, int to) {
 
-        for (int i = fromIndex + 1; i < toIndex + 1; i++) {
+        for (int i = from + 1; i < to; i++) {
             // 比较相邻元素，大的向后冒泡
-            for (int j = fromIndex; j < toIndex + 1 - i; j++) {
+            for (int j = from; j < to - i + from; j++) {
                 if (arr[j].compareTo(arr[j + 1]) > 0) {
-                    T temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                    swap(arr, j, j + 1);
                 }
             }
         }
@@ -85,19 +83,17 @@ public class SortUtils {
     /**
      * 选择排序
      */
-    public static <T extends Comparable<? super T>> void selectSort(T[] arr, int fromIndex, int toIndex) {
+    public static <T extends Comparable<? super T>> void selectSort(T[] arr, int from, int to) {
 
-        for (int i = fromIndex; i < toIndex; i++) {
-            int index = fromIndex;
-            for (int j = fromIndex + 1; j < toIndex + 1 - i; j++) {
+        for (int i = from; i < to - 1; i++) {
+            int index = from;
+            for (int j = from + 1; j < to - i + from; j++) {
                 if (arr[j].compareTo(arr[index]) > 0) {
                     // 查找最大元素
                     index = j;
                 }
             }
-            T temp = arr[toIndex - i];
-            arr[toIndex - i] = arr[index];
-            arr[index] = temp;
+            swap(arr, index, to - i + from - 1);
         }
     }
 
@@ -105,13 +101,13 @@ public class SortUtils {
     /**
      * 希尔排序
      */
-    public static <T extends Comparable<? super T>> void shellSort(T[] arr, int fromIndex, int toIndex) {
-        for (int step = (toIndex - fromIndex) / 2; step > 0; step /= 2) {
+    public static <T extends Comparable<? super T>> void shellSort(T[] arr, int from, int to) {
+        for (int step = (to - from) / 2; step > 0; step /= 2) {
             // 根据步长进行一次插入排序
             int j;
-            for (int i = fromIndex + step; i < toIndex + 1; i++) {
+            for (int i = from + step; i < to; i++) {
                 T temp = arr[i];
-                for (j = i; (j >= fromIndex + step) && temp.compareTo(arr[j - step]) < 0; j -= step) {
+                for (j = i; (j >= from + step) && temp.compareTo(arr[j - step]) < 0; j -= step) {
                     arr[j] = arr[j - step];
                 }
                 arr[j] = temp;
@@ -122,32 +118,31 @@ public class SortUtils {
     /**
      * 堆排序
      */
-    public static <T extends Comparable<? super T>> void heapSort(T[] arr, int fromIndex, int toIndex) {
+    public static <T extends Comparable<? super T>> void heapSort(T[] arr, int from, int to) {
 
-        for (int i = (toIndex + fromIndex) / 2; i >= fromIndex; i--) {
-            percDown(arr, i, toIndex + 1);
+        for (int i = (to - from - 1) / 2 + from; i >= from; i--) {
+            adjustDown(arr, i, to);
         }
-        for (int i = toIndex; i > fromIndex; i--) {
-            T temp = arr[fromIndex];
-            arr[fromIndex] = arr[i];
-            arr[i] = temp;
-            percDown(arr, fromIndex, i);
+        for (int i = to - 1; i > from; i--) {
+            swap(arr, from, i);
+            adjustDown(arr, from, i);
         }
     }
+
 
     /**
      * 一次向下调整过程
      */
-    private static <T extends Comparable<? super T>> void percDown(T[] arr, int fromIndex, int toIndex) {
-        T temp;
+    private static <T extends Comparable<? super T>> void adjustDown(T[] arr, int from, int to) {
+
         int child;
-        for (temp = arr[fromIndex]; 2 * fromIndex + 1 < toIndex; fromIndex = child) {
-            child = 2 * fromIndex + 1;
-            if (child != toIndex - 1 && arr[child].compareTo(arr[child + 1]) < 0) {
+        for (; 2 * from + 1 < to; from = child) {
+            child = 2 * from + 1;
+            if (child + 1 < to && arr[child].compareTo(arr[child + 1]) < 0) {
                 child++;
             }
-            if (temp.compareTo(arr[child]) < 0) {
-                swap(arr, fromIndex, child);
+            if (arr[from].compareTo(arr[child]) < 0) {
+                swap(arr, from, child);
             } else {
                 return;
             }
@@ -155,54 +150,51 @@ public class SortUtils {
     }
 
     /**
+     * 闭区间
+     *
+     * <p>不能做部分排序， 因为 顺序变了， 不满足 2* from < to</>
+     * <p>
      * 归并排序
      */
-    public static <T extends Comparable<? super T>> void mergeSort(T[] arr, int left, int right) {
+    public static <T extends Comparable<? super T>> void mergeSort(T[] arr, int from, int to) {
 
-        if (left >= right) {
-            return;
+        if (from < to) {
+            int mid = (from + to) / 2;
+            mergeSort(arr, from, mid);
+            mergeSort(arr, mid + 1, to);
+            merge(arr, from, mid, to);
         }
-        int center = (left + right) / 2;
-        mergeSort(arr, left, center);
-        mergeSort(arr, center + 1, right);
-        // 合并结果
-        merge(arr, left, center, right);
 
     }
 
     /**
      * 一次归并结果
      */
-    private static <T extends Comparable<? super T>> void merge(T[] arr, int left, int center, int right) {
-        T[] tempArr = (T[]) new Comparable[arr.length];
-        // 右数据第一个元素
-        int rightIndex = center + 1;
-        // 左数据第一个元素
-        int leftIndex = left;
-        // 临时数据索引
-        int third = left;
-
-        while (left <= center && rightIndex <= right) {
-            if (arr[left].compareTo(arr[rightIndex]) < 0) {
-                tempArr[third++] = arr[left++];
+    private static <T extends Comparable<? super T>> void merge(T[] arr, int from, int mid, int to) {
+        T[] temp = (T[]) new Comparable[to - from + 1];
+        int left = from;
+        int right = mid + 1;
+        int k = 0;
+        // 把较小的数先移到新数组中
+        while (left <= mid && right <= to) {
+            if (arr[left].compareTo(arr[right]) < 0) {
+                temp[k++] = arr[left++];
             } else {
-                tempArr[third++] = arr[rightIndex++];
+                temp[k++] = arr[right++];
             }
         }
-
-        // 剩余部分
-        while (rightIndex <= right) {
-            tempArr[third++] = arr[rightIndex++];
+        // 把左边剩余的数移入数组
+        while (left <= mid) {
+            temp[k++] = arr[left++];
         }
-        while (left <= center) {
-            tempArr[third++] = arr[left++];
+        // 把右边边剩余的数移入数组
+        while (right <= to) {
+            temp[k++] = arr[right++];
         }
-
-        while (leftIndex <= right) {
-            arr[leftIndex] = tempArr[leftIndex];
-            leftIndex++;
+        // 把新数组中的数覆盖nums数组
+        for (int x = 0; x < temp.length; x++) {
+            arr[x + from] = temp[x];
         }
-
     }
 
 
@@ -210,16 +202,16 @@ public class SortUtils {
      * 快速排序
      *
      * @param arr
-     * @param fromIndex
-     * @param toIndex
+     * @param from
+     * @param to
      * @param <T>
      */
-    public static <T extends Comparable<? super T>> void fastSort(T[] arr, int fromIndex, int toIndex) {
+    public static <T extends Comparable<? super T>> void fastSort(T[] arr, int from, int to) {
 
-        if (fromIndex < toIndex) {
+        if (from < to) {
 
-            int right = toIndex - 1;
-            int left = fromIndex;
+            int right = to - 1;
+            int left = from;
 
             int mid = (right + left) / 2;
 
@@ -230,47 +222,40 @@ public class SortUtils {
                     left++;
                 }
 
-                T temp = arr[mid];
-                arr[mid] = arr[left];
-                arr[left] = temp;
-
+                swap(arr, mid, left);
                 mid = left;
 
                 while (mid < right && arr[right].compareTo(key) >= 0) {
                     right--;
                 }
-                temp = arr[mid];
-                arr[mid] = arr[right];
-                arr[right] = temp;
-
+                swap(arr, mid, right);
                 mid = right;
             }
 
-            fastSort(arr, fromIndex, mid);
+            fastSort(arr, from, mid);
 
-            fastSort(arr, mid + 1, toIndex);
-
+            fastSort(arr, mid + 1, to);
         }
     }
 
-    public static <T extends Comparable<? super T>> void swap(T[] arr, int a, int b) {
-        if (a == b) {
+    public static <T extends Comparable<? super T>> void swap(T[] arr, int from, int to) {
+        if (from == to) {
             return;
         }
 
-        T t = arr[a];
-        arr[a] = arr[b];
-        arr[b] = t;
+        T t = arr[from];
+        arr[from] = arr[to];
+        arr[to] = t;
     }
 
-    public static void swap(int[] arr, int a, int b) {
-        if (a == b) {
+    public static void swap(int[] arr, int from, int to) {
+        if (from == to) {
             return;
         }
 
-        int t = arr[a];
-        arr[a] = arr[b];
-        arr[b] = t;
+        int t = arr[from];
+        arr[from] = arr[to];
+        arr[to] = t;
     }
 
 }

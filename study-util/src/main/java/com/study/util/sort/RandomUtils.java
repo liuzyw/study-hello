@@ -24,7 +24,7 @@ public class RandomUtils {
             arr[i] = anInt;
         }
 
-        System.out.println(Arrays.toString(arr));
+//        System.out.println(Arrays.toString(arr));
 
         return arr;
 
@@ -33,6 +33,19 @@ public class RandomUtils {
 
     public static <T extends Comparable<? super T>> boolean isSort(T[] arr, boolean asc) {
         for (int i = 1; i < arr.length; i++) {
+            if (asc && arr[i].compareTo(arr[i - 1]) < 0) {
+                return false;
+            }
+            if (!asc && arr[i].compareTo(arr[i - 1]) >= 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static <T extends Comparable<? super T>> boolean isSort(T[] arr, boolean asc, int from, int to) {
+        for (int i = from + 1; i < to; i++) {
             if (asc && arr[i].compareTo(arr[i - 1]) < 0) {
                 return false;
             }

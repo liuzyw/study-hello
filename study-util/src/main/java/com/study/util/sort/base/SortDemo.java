@@ -266,17 +266,15 @@ public class SortDemo {
      */
     public static void mergeSort(Integer[] arr, int fromIndex, int toIndex) {
 
-        if (toIndex - fromIndex == 1) {
-            if (arr[fromIndex] > arr[toIndex]) {
-                swap(arr, fromIndex, toIndex);
-            }
+        if (toIndex - fromIndex < 1) {
+
             return;
         }
 
         int mid = (fromIndex + toIndex) / 2;
 
         mergeSort(arr, fromIndex, mid);
-        mergeSort(arr, mid, toIndex);
+        mergeSort(arr, mid + 1, toIndex);
 
         merge(arr, fromIndex, mid, toIndex);
 
@@ -314,7 +312,7 @@ public class SortDemo {
         }
 
         for (int i = 0; i < t; i++) {
-            arr[left + i] = temp[i];
+            arr[left++] = temp[i];
         }
     }
 
