@@ -16,7 +16,6 @@
   <version>1.0.0-SNAPSHOT</version>
 
   <name>study-kafka</name>
-  <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
   <properties>
