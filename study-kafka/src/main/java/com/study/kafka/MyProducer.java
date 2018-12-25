@@ -1,10 +1,13 @@
 package com.study.kafka;
 
 import com.study.util.tool.RandomUtil;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.slf4j.Logger;
@@ -18,7 +21,7 @@ public class MyProducer {
 
     public static void main(String[] args) throws Exception {
         //Assign topicName to string variable
-        String topicName = "Hello-Kafka";
+        String topicName = "topTest2";
 
         // create instance for properties to access producer configs
         Properties props = new Properties();
@@ -38,11 +41,17 @@ public class MyProducer {
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
+        List<String> interectors = new ArrayList<>();
+        interectors.add("com.study.kafka.intercetor.TimeIntercetor");
+        interectors.add("com.study.kafka.intercetor.CountIntercetor");
+
+        props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, interectors);
+
         Producer<String, String> producer = new KafkaProducer<>(props);
 
         boolean isAsync = true;
 
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 30; i++) {
             ProducerRecord<String, String> producerRecord = new ProducerRecord<>(topicName,
                 RandomUtil.randomString(6),
                 "MessageNo: " + Integer.toString(i) + " " + RandomUtil.randomString(10));
@@ -64,7 +73,7 @@ public class MyProducer {
             }
 
         }
-        System.out.println("Message sent successfully");
+        System.out.println("Message send successfully");
         producer.close();
     }
 }

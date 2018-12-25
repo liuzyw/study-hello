@@ -16,7 +16,7 @@ public class MyConsumer {
 
     public static void main(String[] args) throws Exception {
         //Kafka consumer configuration settings
-        String topicName = "Hello-Kafka";
+        String topicName = "topTest2";
         Properties props = new Properties();
 
         props.put("bootstrap.servers", "localhost:9092");
