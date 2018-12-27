@@ -12,6 +12,10 @@ import org.I0Itec.zkclient.serialize.SerializableSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+/**
+ * 不支持重入
+ */
 public class ZookeeperImproveLock implements Lock {
 
     private static final String LOCK_PATH = "/LOCK";
@@ -101,6 +105,8 @@ public class ZookeeperImproveLock implements Lock {
     public void unlock() {
         // 删除当前临时节点
         client.delete(currentPath);
+        currentPath = null;
+        client.close();
 
     }
 
