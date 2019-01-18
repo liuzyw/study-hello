@@ -111,6 +111,9 @@ public class NIOServer {
             ByteBuffer buffer = ByteBuffer.allocate(512);
 
             SocketChannel channel = (SocketChannel) key.channel();
+
+            channel.configureBlocking(false);
+
             channel.read(buffer);
 
             buffer.flip();
@@ -143,6 +146,7 @@ public class NIOServer {
             ByteBuffer buffer = ByteBuffer.allocate(512);
 
             SocketChannel channel = (SocketChannel) key.channel();
+            channel.configureBlocking(false);
 
             Scanner scanner = new Scanner(System.in);
 

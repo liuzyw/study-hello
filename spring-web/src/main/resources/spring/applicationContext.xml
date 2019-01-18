@@ -22,6 +22,8 @@
   <context:component-scan base-package="com.study.spring.mapper"/>
   <context:component-scan base-package="com.study.spring.service"/>
   <context:component-scan base-package="com.study.spring.filter"/>
+  <context:component-scan base-package="com.study.spring.listener"/>
+
 
   <!-- 引入配置文件 -->
   <!--如果有多个配置需要通过<context:property-placeholder管理，一定要加上ignore-unresolvable=“true"-->

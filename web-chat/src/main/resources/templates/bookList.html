@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>BookList</title>
+</head>
+<body>
+<p align="center"> thymeleaf study </p>
+<br/>
+<p align="center" th:text="'count:' + ${count} "></p>
+<br/>
+<table>
+  <tr>
+    ${books}<b/>
+    <p align="center" th:text=" ${books} "></p>
+
+  </tr>
+</table>
+</body>
+</html>
