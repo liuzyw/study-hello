@@ -19,6 +19,7 @@ spring-cloud-feign-producer/logs/*
 **/.classpath
 **/.eclipse
 **/.project
+**/.metadata
 **/target
 **/bin
 .idea/workspace.xml
