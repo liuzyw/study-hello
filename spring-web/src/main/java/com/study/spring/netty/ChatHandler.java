@@ -1,5 +1,6 @@
 package com.study.spring.netty;
 
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -7,7 +8,6 @@ import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import java.io.Serializable;
-import org.joda.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,11 +31,14 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
         String text = msg.text();
         LOGGER.info("receive msg: " + text);
 
-        users.forEach(channel -> {
-
-            channel.writeAndFlush(new TextWebSocketFrame("server receive msg: " + LocalDateTime.now() + " " + text));
-
-        });
+        Channel incoming = ctx.channel();
+        for (Channel channel : users) {
+            if (channel != incoming) {
+                channel.writeAndFlush(new TextWebSocketFrame("[" + incoming.remoteAddress() + "]" + msg.text()));
+            } else {
+                channel.writeAndFlush(new TextWebSocketFrame("[you]" + msg.text()));
+            }
+        }
 
     }
 
@@ -45,7 +48,14 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
         String channelId = ctx.channel().id().asLongText();
         LOGGER.info("客户端 " + ctx.channel().remoteAddress() + " 加入 channelId 为:" + channelId);
 
-        users.add(ctx.channel());
+        Channel incoming = ctx.channel();
+
+        // Broadcast a message to multiple Channels
+        users.writeAndFlush(new TextWebSocketFrame("[SERVER] - " + incoming.remoteAddress() + " 加入"));
+
+        users.add(incoming);
+
+        System.out.println("Client:" + incoming.remoteAddress() + "加入");
     }
 
     @Override
@@ -55,7 +65,27 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
         LOGGER.info("客户端 " + ctx.channel().remoteAddress() + " 被移除 channelId 为:" + channelId);
 
         // 当触发handlerRemoved，ChannelGroup会自动移除对应客户端的channel
-        users.remove(ctx.channel());
+
+        Channel incoming = ctx.channel();
+
+        users.remove(incoming);
+
+        // Broadcast a message to multiple Channels
+        users.writeAndFlush(new TextWebSocketFrame("[SERVER] - " + incoming.remoteAddress() + " 离开"));
+
+        System.out.println("Client:" + incoming.remoteAddress() + "离开");
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception { // (5)
+        Channel incoming = ctx.channel();
+        System.out.println("Client:" + incoming.remoteAddress() + "在线");
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception { // (6)
+        Channel incoming = ctx.channel();
+        System.out.println("Client:" + incoming.remoteAddress() + "掉线");
     }
 
     @Override

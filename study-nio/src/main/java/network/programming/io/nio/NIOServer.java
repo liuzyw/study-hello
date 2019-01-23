@@ -100,13 +100,16 @@ public class NIOServer {
     }
 
     private void write(SelectionKey key) {
-
-        ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
+        try {
+            ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
 
 //        writeBuffer.clear();
-        SocketChannel channel = (SocketChannel) key.channel();
-        Scanner reader = new Scanner(System.in);
-        try {
+            SocketChannel channel = (SocketChannel) key.channel();
+
+            channel.configureBlocking(false);
+
+            Scanner reader = new Scanner(System.in);
+
             System.out.print("put message for send to client > ");
             String line = reader.nextLine();
             // 将控制台输入的字符串写入Buffer中。 写入的数据是一个字节数组。
@@ -128,6 +131,7 @@ public class NIOServer {
 //            readBuffer.clear();
             // 获取通道
             SocketChannel channel = (SocketChannel) key.channel();
+            channel.configureBlocking(false);
             // 将通道中的数据读取到缓存中。通道中的数据，就是客户端发送给服务器的数据。
             int readLength = channel.read(readBuffer);
             // 检查客户端是否写入数据。
