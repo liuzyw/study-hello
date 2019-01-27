@@ -27,11 +27,13 @@ public class MyProducer {
         Properties props = new Properties();
         //Assign localhost id
         props.put("bootstrap.servers", "localhost:9092");
+
+        // 识别来源
         props.put("client.id", "myProducer");
-        //Set acknowledgements for producer requests.
+        //Set acknowledgements for producer requests. 指定认为至少有多少个副本写成功，才认为写成功了
         props.put("acks", "all");
         //If the request fails, the producer can automatically retry,
-        props.put("retries", 0);
+        props.put("retries", 1);
         //Specify buffer size in config
         props.put("batch.size", 16384);
         //Reduce the no of requests less than 0
