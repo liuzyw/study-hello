@@ -7,6 +7,8 @@
 <head>
     <title>Book</title>
 </head>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+
 <body>
 <br/>
 <p>查找书籍</p>
@@ -42,5 +44,42 @@
 <br/>
 <<a href="/showBook/2">通过路径参数接受输入/showBook/{bookId}</a>>
 
+<br/>
+
+
+<div>
+    <input type="button" value="修改" onclick="modify();"/><br>
+    <input type="button" value="删除" onclick="del();"/><br>
+</div>
+
 </body>
+
+<script type="text/javascript">
+
+
+  function modify() {
+    $.ajax({
+      url: '/book/puttRestful',
+      type: 'put',
+      data: JSON.stringify({id: 1, name: 'dasd', type: 'java', price: 23}),
+      contentType: 'application/json;charset=UTF-8',
+      dataType: "json",
+      success: function (data) {
+        alert(data.name + "_" + data.type);
+      }
+    });
+  }
+
+  function del() {
+    $.ajax({
+      url: '/book?id=3',
+      type: 'delete',
+      success: function (data) {
+        alert(data);
+      }
+    });
+  }
+
+
+</script>
 </html>

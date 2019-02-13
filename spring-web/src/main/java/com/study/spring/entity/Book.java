@@ -1,5 +1,6 @@
 package com.study.spring.entity;
 
+import java.io.Serializable;
 import lombok.Data;
 
 /**
@@ -9,7 +10,7 @@ import lombok.Data;
  */
 
 @Data
-public class Book {
+public class Book implements Serializable {
 
     private Integer id;
     private String name;
