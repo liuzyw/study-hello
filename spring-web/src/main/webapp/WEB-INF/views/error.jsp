@@ -9,5 +9,8 @@
 </head>
 <body>
 ERROR
+
+<br/>
+${msg}
 </body>
 </html>

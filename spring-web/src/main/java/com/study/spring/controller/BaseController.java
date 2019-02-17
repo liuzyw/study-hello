@@ -42,7 +42,7 @@ public class BaseController {
     }
 
     @RequestMapping("/go2")
-    public String goAjaxReq22(HttpServletRequest request) throws Exception{
+    public String goAjaxReq22(HttpServletRequest request) throws Exception {
         String name = request.getParameter("name");
         System.out.println(name);
         name = new String(name.getBytes("iso8859-1"), "UTF-8");
@@ -57,37 +57,39 @@ public class BaseController {
     }
 
     @RequestMapping("/goUser")
-    public String goUser(){
+    public String goUser() {
         return "user/user";
     }
 
     @RequestMapping("/goFruit")
-    public String goFruit(){
+    public String goFruit() {
         return "fruit/fruit";
     }
 
     @RequestMapping("/goBook")
-    public String goBook(){
+    public String goBook() {
         return "book/book";
     }
 
     @RequestMapping("/goUploadFile")
-    public String goUploadFile(){
+    public String goUploadFile() {
         return "upLoadFile";
     }
 
     @RequestMapping("/goRedis")
-    public String goRedis(){
+    public String goRedis() {
         return "redis/redis";
     }
 
     @RequestMapping("/goFilter")
-    public String goFilter(){
+    public String goFilter() {
         return "success";
     }
+
     @RequestMapping("/goInter")
-    public String goIntec(){
+    public String goIntec() {
         return "success";
     }
+
 
 }

@@ -1,0 +1,54 @@
+<beans:beans
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.springframework.org/schema/security"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/security
+              http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+  <context:component-scan base-package="org.springframework.security.web"/>
+
+
+  <http pattern="/upload/**" security="none"/>
+  <http pattern="/WEB-INF/image/**" security="none"/>
+  <http pattern="/WEB-INF/css/**" security="none"/>
+  <http pattern="/WEB-INF/js/**" security="none"/>
+  <http pattern="/WEB-INF/upload/**" security="none"/>
+
+  <http pattern="/home.jsp" security="none"/>
+  <http pattern="/index.jsp" security="none"/>
+  <http pattern="/logout" security="none"/>
+  <http pattern="/login.jsp" security="none"/>
+  <http pattern="/login" security="none"/>
+  <http pattern="/favicon.ico" security="none"/>
+
+
+  <http auto-config="true" use-expressions="false">
+    <!-- 所有 security 请求的都需要 admin 权限-->
+    <intercept-url access="ROLE_ADMIN" pattern="/security/**"/>
+
+    <form-login always-use-default-target="true" authentication-failure-url="/loginFail" default-target-url="/goBook"
+      login-page="/toLogin"/>
+
+    <logout invalidate-session="true" logout-success-url="/" logout-url="/logout"/>
+    <csrf disabled="true"/>
+
+  </http>
+
+  <!-- 授权认证管理器 -->
+  <authentication-manager>
+    <authentication-provider>
+      <user-service>
+        <user authorities="ROLE_ADMIN" name="liu" password="123"/>
+      </user-service>
+    </authentication-provider>
+
+  </authentication-manager>
+
+
+</beans:beans>

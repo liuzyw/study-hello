@@ -49,6 +49,17 @@
     <dispatcher>ERROR</dispatcher>
     <!--<dispatcher>ASYNC</dispatcher>-->
   </filter-mapping>
+
+  <!--配置SpringSecurity过滤器-->
+  <filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/security/*</url-pattern>
+  </filter-mapping>
+
   <!-- filter 有依赖注入需要使用这种方式 -->
   <filter>
     <filter-name>DelegatingFilterProxy</filter-name>

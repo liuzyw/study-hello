@@ -67,6 +67,9 @@
   <import resource="classpath:mail/spring-mail.xml"/>
   <!-- 调度任务 -->
   <!--<import resource="classpath:quartz/spring-quartz.xml"/>-->
+  <!-- spring-security -->
+  <import resource="classpath:security/spring-security.xml"/>
+
 
 
   <!--<?xml version="1.0" encoding="UTF-8"?>-->

@@ -21,7 +21,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 
 <br/>
-<form action="/login" method="post">
+<form action="/logincode" method="post">
     <table width="207" border="0" align="center">
         <tr>
             <td colspan="2" align="center" nowrap="nowrap">用户注册</td>
