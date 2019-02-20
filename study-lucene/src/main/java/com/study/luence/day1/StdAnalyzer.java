@@ -4,6 +4,12 @@ import java.io.Serializable;
 import java.io.StringReader;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.analysis.cjk.CJKAnalyzer;
+import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
+import org.apache.lucene.analysis.core.KeywordAnalyzer;
+import org.apache.lucene.analysis.core.SimpleAnalyzer;
+import org.apache.lucene.analysis.core.StopAnalyzer;
+import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
 
@@ -24,8 +30,13 @@ public class StdAnalyzer implements Serializable {
 
 
     public static void main(String[] args) throws Exception {
+//        variousAnalyzer();
 
-        Analyzer analyzer = new StandardAnalyzer();
+        iKAnalyzer6x();
+
+    }
+
+    private static void printResult(Analyzer analyzer) throws Exception {
 
         StringReader reader = new StringReader(srtCh);
 
@@ -35,14 +46,53 @@ public class StdAnalyzer implements Serializable {
 
         CharTermAttribute termAttribute = stream.getAttribute(CharTermAttribute.class);
 
-        System.out.println("分词结果：");
-
         while (stream.incrementToken()) {
             System.out.println(termAttribute.toString());
         }
-
+        System.out.println("-----------------> ");
         analyzer.close();
+    }
 
+    private static void variousAnalyzer() throws Exception {
+        Analyzer analyzer = new StandardAnalyzer();
+        System.out.println("标准分词结果：");
+        printResult(analyzer);
+
+        analyzer = new WhitespaceAnalyzer();
+        System.out.println("空格分词结果：");
+        printResult(analyzer);
+
+        analyzer = new SimpleAnalyzer();
+        System.out.println("简单分词结果：");
+        printResult(analyzer);
+
+        analyzer = new CJKAnalyzer();
+        System.out.println("二分分词结果：");
+        printResult(analyzer);
+
+        analyzer = new KeywordAnalyzer();
+        System.out.println("关键字分词结果：");
+        printResult(analyzer);
+
+        analyzer = new StopAnalyzer();
+        System.out.println("停用分词结果：");
+        printResult(analyzer);
+
+        analyzer = new SmartChineseAnalyzer();
+        System.out.println("中文分词结果：");
+        printResult(analyzer);
+
+
+    }
+
+    private static void iKAnalyzer6x() throws Exception {
+        Analyzer analyzer = new IKAnalyzer6x();
+        System.out.println("分词结果：");
+        printResult(analyzer);
+
+        analyzer = new IKAnalyzer6x(true);
+        System.out.println("分词结果：");
+        printResult(analyzer);
     }
 
 
