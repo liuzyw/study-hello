@@ -21,7 +21,7 @@ public class IKAnalyzer6x extends Analyzer implements Serializable {
     }
 
     public IKAnalyzer6x() {
-        this(false);
+        this(true);
     }
 
     public boolean isUseSmart() {
