@@ -71,7 +71,40 @@
       <version>${tika.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.elasticsearch</groupId>
+      <artifactId>elasticsearch</artifactId>
+      <version>${elasticsearch.version}</version>
+    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.elasticsearch.client</groupId>-->
+      <!--<artifactId>elasticsearch-rest-client</artifactId>-->
+      <!--<version>${elasticsearch.version}</version>-->
+    <!--</dependency>-->
+    <dependency>
+      <groupId>org.elasticsearch</groupId>
+      <artifactId>elasticsearch-core</artifactId>
+      <version>${elasticsearch.version}</version>
+    </dependency>
 
+    <dependency>
+      <groupId>org.elasticsearch.client</groupId>
+      <artifactId>transport</artifactId>
+      <version>${elasticsearch.version}</version>
+    </dependency>
+
+
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${apache.log4j2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${apache.log4j2.version}</version>
+    </dependency>
 
 
   </dependencies>
