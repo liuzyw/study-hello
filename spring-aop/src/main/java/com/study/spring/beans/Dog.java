@@ -49,6 +49,19 @@ public class Dog {
         this.age = age;
     }
 
+    public void say() {
+        System.out.println(name + " dog say ...");
+    }
+
+
+    public void init() {
+        System.out.println(name + " dog init...");
+    }
+
+    public void destory() {
+        System.out.println("dog destory..");
+    }
+
     @Override
     public String toString() {
         return "Dog{" +

@@ -1,7 +1,6 @@
 package com.study.spring;
 
 import com.study.spring.beans.Blue;
-import com.study.spring.beans.Book;
 import com.study.spring.beans.Dog;
 import com.study.spring.beans.Hourse;
 import com.study.spring.beans.MyEnv;
@@ -52,29 +51,6 @@ public class Test1 {
 
         Hourse hourse = (Hourse) applicationContext.getBean(Hourse.class);
         hourse.say();
-        
-        ConfigurableListableBeanFactory factory = ((ConfigurableApplicationContext) applicationContext).getBeanFactory();
-
-        BeanDefinitionRegistry beanDefinitionRegistry = (DefaultListableBeanFactory) factory;
-
-        // 后端的单例都由它管理，这里是获取一个单例 bean
-        Hourse aa = (Hourse) applicationContext.getBean("hourse");
-
-        // 使用
-        hourse.say();
-
-
-        // 手动销毁
-        beanDefinitionRegistry.removeBeanDefinition("hourse");
-
-
-        Hourse aa2 = applicationContext.getBean("hourse", Hourse.class);
-
-        if (aa2 == null) {
-            System.out.println("已经销毁");
-        } else {
-            System.out.println("没有销毁");
-        }
 
 //        hourse = (Hourse) applicationContext.getBean("hourse02");
 //        hourse.say();
@@ -86,6 +62,27 @@ public class Test1 {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MyConfig.class);
         printBean(applicationContext);
         Dog bean = (Dog) applicationContext.getBean("dog01");
+
+        ConfigurableListableBeanFactory factory = ((ConfigurableApplicationContext) applicationContext).getBeanFactory();
+
+        BeanDefinitionRegistry beanDefinitionRegistry = (DefaultListableBeanFactory) factory;
+
+        // 后端的单例都由它管理，这里是获取一个单例 bean
+
+        // 使用
+        bean.say();
+
+        // 手动销毁
+        beanDefinitionRegistry.removeBeanDefinition("dog01");
+
+        Dog aa2 = applicationContext.getBean("dog01", Dog.class);
+
+        if (aa2 == null) {
+            System.out.println("已经销毁");
+        } else {
+            System.out.println("没有销毁");
+        }
+
         System.out.println(bean.getName());
 
     }

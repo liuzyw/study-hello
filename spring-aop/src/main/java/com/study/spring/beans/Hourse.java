@@ -33,6 +33,6 @@ public class Hourse {
     }
 
     public void destory() {
-        System.out.println("destory..");
+        System.out.println("Hourse destory..");
     }
 }

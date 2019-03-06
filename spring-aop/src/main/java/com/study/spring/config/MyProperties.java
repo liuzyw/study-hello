@@ -16,7 +16,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 public class MyProperties {
 
 
-    @Bean(name = "dog01")
+    @Bean(name = "dog01", initMethod = "init", destroyMethod = "destory")
     public Dog dog01() {
         return new Dog();
     }
