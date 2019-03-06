@@ -48,6 +48,29 @@ public class Test1 {
 
         Hourse hourse = (Hourse) applicationContext.getBean(Hourse.class);
         hourse.say();
+        
+        ConfigurableListableBeanFactory factory = ((ConfigurableApplicationContext) applicationContext).getBeanFactory();
+
+        BeanDefinitionRegistry beanDefinitionRegistry = (DefaultListableBeanFactory) factory;
+
+        // 后端的单例都由它管理，这里是获取一个单例 bean
+        Hourse aa = (Hourse) applicationContext.getBean("hourse");
+
+        // 使用
+        hourse.say();
+
+
+        // 手动销毁
+        beanDefinitionRegistry.removeBeanDefinition("hourse");
+
+
+        Hourse aa2 = applicationContext.getBean("hourse", Hourse.class);
+
+        if (aa2 == null) {
+            System.out.println("已经销毁");
+        } else {
+            System.out.println("没有销毁");
+        }
 
 //        hourse = (Hourse) applicationContext.getBean("hourse02");
 //        hourse.say();
