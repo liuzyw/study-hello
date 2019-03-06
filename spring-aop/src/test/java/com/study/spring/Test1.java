@@ -11,6 +11,10 @@ import com.study.spring.config.MyConfig;
 import com.study.spring.etc.MyFactoryBean;
 import com.study.spring.service.HelloService;
 import org.junit.Test;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
