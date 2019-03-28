@@ -61,10 +61,7 @@ public class RpcServer {
             });
 
 
-        } catch (
-            Exception e)
-
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

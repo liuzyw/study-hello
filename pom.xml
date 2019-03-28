@@ -41,6 +41,7 @@
     <module>web-chat</module>
     <module>study-lucene</module>
     <module>study-drools</module>
+    <module>study-crawler</module>
   </modules>
 
   <!-- archetypeCatalog=internal -->
