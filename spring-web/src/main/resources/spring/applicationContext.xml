@@ -70,6 +70,7 @@
   <!-- spring-security -->
   <import resource="classpath:security/spring-security.xml"/>
 
+  <import resource="classpath:spring/application-aop.xml"/>
 
 
   <!--<?xml version="1.0" encoding="UTF-8"?>-->

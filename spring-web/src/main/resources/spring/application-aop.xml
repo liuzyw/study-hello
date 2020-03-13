@@ -21,10 +21,20 @@
   <bean class="com.study.spring.plugin.DefaultPluginFactory" id="pluginFactory"/>
   <aop:config>
     <aop:aspect id="aspectPlugin" ref="pluginFactory">
-      <aop:pointcut id="pluginPointcut" expression="execution(* com.study.spring.controller.*(..))"/>
+      <aop:pointcut id="pluginPointcut" expression="execution(* com.study.spring.controller..*.*(..))"/>
       <aop:before method="doBefore" pointcut-ref="pluginPointcut"/>
     </aop:aspect>
   </aop:config>
+
+
+  <bean class="com.study.spring.logger.aop.DaoMonitorInterceptor" id="daoMonitorInterceptor"/>
+  <aop:config>
+    <!--切入点,controlller -->
+    <aop:pointcut id="daoPointcut" expression="execution(* com.study.spring.mapper..*.*(..))"/>
+    <!--在该切入点使用自定义拦截器 ,按照先后顺序执行 -->
+    <aop:advisor pointcut-ref="daoPointcut" advice-ref="daoMonitorInterceptor" />
+  </aop:config>
+
 
 
 </beans>
