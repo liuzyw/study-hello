@@ -8,5 +8,6 @@ import com.study.spring.entity.Fruit;
  * @author liuzhaoyuan
  */
 public interface FruitService {
+
     Fruit getFruitById(Integer id);
 }

@@ -34,8 +34,8 @@ public class DaoMonitorInterceptor implements MethodInterceptor {
             return methodInvocation.proceed();
         } catch (Exception e) {
             success = "N";
-            LoggerUtil.error(LoggerConstant.DAO_DIGEST_LOG, e, "DAO invoke", methodName, " exception,[param=",
-                JSON.toJSONString(methodInvocation.getArguments()), "]");
+            LoggerUtil.error("DAO invoke", methodName, " exception,[param=",
+                JSON.toJSONString(methodInvocation.getArguments()), "]", e);
 
             throw e;
         } finally {

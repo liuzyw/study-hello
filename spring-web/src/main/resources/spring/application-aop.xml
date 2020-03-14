@@ -29,10 +29,19 @@
 
   <bean class="com.study.spring.logger.aop.DaoMonitorInterceptor" id="daoMonitorInterceptor"/>
   <aop:config>
-    <!--切入点,controlller -->
+    <!--切入点,dao -->
     <aop:pointcut id="daoPointcut" expression="execution(* com.study.spring.mapper..*.*(..))"/>
     <!--在该切入点使用自定义拦截器 ,按照先后顺序执行 -->
     <aop:advisor pointcut-ref="daoPointcut" advice-ref="daoMonitorInterceptor" />
+  </aop:config>
+
+
+  <bean class="com.study.spring.logger.aop.ServiceMonitorInterceptor" id="serviceMonitorInterceptor"/>
+  <aop:config>
+    <!--切入点,service -->
+    <aop:pointcut id="servicePointcut" expression="execution(* com.study.spring.service..*.*(..))"/>
+    <!--在该切入点使用自定义拦截器 ,按照先后顺序执行 -->
+    <aop:advisor pointcut-ref="servicePointcut" advice-ref="serviceMonitorInterceptor" />
   </aop:config>
 
 

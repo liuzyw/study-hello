@@ -42,6 +42,20 @@ public final class LoggerUtil {
     }
 
 
+    public static void info(Object... objects) {
+        info(LoggerConstant.APP_DEFAULT, objects);
+    }
+
+
+    public static void warn(Object... objects) {
+        warn(LoggerConstant.APP_ALERT, objects);
+    }
+
+    public static void error(Object... objects) {
+        error(LoggerConstant.APP_ERROR, objects);
+    }
+
+
     private static String getLoggerStr(Object... objects) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(LEFT_TAG).append(Thread.currentThread().getId()).append(RIGHT_TAG)
