@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+
+  <bean class="com.study.spring.state.actionitem.InitOrder" id="initOrder"/>
+  <bean class="com.study.spring.state.actionitem.UpdateOrder" id="updateOrder"/>
+  <bean class="com.study.spring.state.actionitem.CompleteOrder" id="completeOrder"/>
+
+
+  <!-- actionItemRegistry -->
+  <bean class="com.study.spring.state.action.ActionItemRegistryImpl" id="actionItemRegistry">
+    <property name="actionItemMap">
+      <map>
+        <entry key="initOrder" value-ref="initOrder"/>
+        <entry key="updateOrder" value-ref="updateOrder"/>
+        <entry key="completeOrder" value-ref="completeOrder"/>
+      </map>
+    </property>
+  </bean>
+
+</beans>

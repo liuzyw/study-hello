@@ -70,6 +70,8 @@
   <!-- spring-security -->
   <import resource="classpath:security/spring-security.xml"/>
 
+  <import resource="classpath:state/spring-state.xml"/>
+
   <import resource="classpath:spring/application-aop.xml"/>
 
 
