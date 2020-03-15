@@ -15,6 +15,13 @@ public class ConditionDefinition extends ToString {
 
     private List<RuleDefinition> ruleDefinitions;
 
+    public ConditionDefinition() {
+    }
+
+    public ConditionDefinition(String jexlExpression, List<RuleDefinition> ruleDefinitions) {
+        this.jexlExpression = jexlExpression;
+        this.ruleDefinitions = ruleDefinitions;
+    }
 
     public String getJexlExpression() {
         return jexlExpression;

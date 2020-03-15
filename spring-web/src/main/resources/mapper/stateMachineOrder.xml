@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.spring.mapper.StateMachineOrderDao">
+
+
+  <resultMap id="stateMachineOrderMap" type="com.study.spring.entity.StateMachineOrder">
+    <id column="id" property="id"/>
+    <result column="biz_category" property="bizCategory"/>
+    <result column="status" property="status"/>
+    <result column="order_id" property="orderId"/>
+    <result column="gmt_create" property="gmtCreate"/>
+    <result column="gmt_modified" property="gmtModified"/>
+  </resultMap>
+
+  <insert id="saveStateMachineOrder" keyProperty="id" parameterType="com.study.spring.entity.StateMachineOrder" useGeneratedKeys="true">
+    INSERT INTO statemachine_order(gmt_create, gmt_modified, biz_category, status, order_id)
+    VALUES (now(), now(), #{bizCategory}, #{status}, #{orderId})
+  </insert>
+
+
+  <select id="getStateMachineOrderByOrderId" parameterType="java.lang.String" resultMap="stateMachineOrderMap">
+    SELECT id, gmt_create, gmt_modified, biz_category, status, order_id FROM statemachine_order
+    WHERE order_id = #{orderId}
+  </select>
+
+  <update id="updateStateMachineOrderStatusByOrderId" parameterType="map">
+    UPDATE statemachine_order SET status = #{status} WHERE order_id = #{orderId}
+  </update>
+
+
+</mapper>

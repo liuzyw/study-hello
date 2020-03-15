@@ -12,7 +12,21 @@ public class StateMachineConfigDefinition extends ToString {
 
     private String bizCategory;
 
-    private StateNode stateNode;
+    private StateNodeDefinition stateNodeDefinition;
 
+    public String getBizCategory() {
+        return bizCategory;
+    }
 
+    public void setBizCategory(String bizCategory) {
+        this.bizCategory = bizCategory;
+    }
+
+    public StateNodeDefinition getStateNodeDefinition() {
+        return stateNodeDefinition;
+    }
+
+    public void setStateNodeDefinition(StateNodeDefinition stateNodeDefinition) {
+        this.stateNodeDefinition = stateNodeDefinition;
+    }
 }

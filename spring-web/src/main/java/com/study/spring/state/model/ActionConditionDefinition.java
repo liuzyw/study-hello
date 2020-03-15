@@ -11,21 +11,9 @@ import java.util.List;
  */
 public class ActionConditionDefinition extends ToString {
 
-
-    private String actionModel;
-
     private ConditionDefinition conditionDefinition;
 
     private List<ActionItemDefinition> actionItemDefinitions;
-
-
-    public String getActionModel() {
-        return actionModel;
-    }
-
-    public void setActionModel(String actionModel) {
-        this.actionModel = actionModel;
-    }
 
     public ConditionDefinition getConditionDefinition() {
         return conditionDefinition;

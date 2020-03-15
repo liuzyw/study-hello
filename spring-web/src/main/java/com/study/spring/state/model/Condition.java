@@ -1,6 +1,7 @@
 package com.study.spring.state.model;
 
 import com.study.spring.base.ToString;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.jexl2.Expression;
@@ -36,6 +37,14 @@ public class Condition extends ToString {
 
     public void setRules(List<Rule> rules) {
         this.rules = rules;
+        generateRuleMap(rules);
+    }
+
+    private void generateRuleMap(List<Rule> rules) {
+        ruleMap = new HashMap<>();
+        for (Rule rule : rules) {
+            ruleMap.put(rule.getId(), rule);
+        }
     }
 
     public Map<String, Rule> getRuleMap() {

@@ -13,6 +13,6 @@ public interface StateMachine {
     StateMachineContext init(String bizCategory, Map<String, Object> input);
 
 
-    StateMachineContext push(String bizOrderId, Map<String, Object> input);
+    StateMachineContext push(Map<String, Object> input);
 
 }

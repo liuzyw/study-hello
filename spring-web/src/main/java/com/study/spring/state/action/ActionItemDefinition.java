@@ -16,6 +16,14 @@ public class ActionItemDefinition extends ToString implements Comparable<ActionI
 
     private String desc;
 
+    public ActionItemDefinition(int order, String code, String desc) {
+        this.order = order;
+        this.code = code;
+        this.desc = desc;
+    }
+
+    public ActionItemDefinition() {
+    }
 
     public int getOrder() {
         return order;

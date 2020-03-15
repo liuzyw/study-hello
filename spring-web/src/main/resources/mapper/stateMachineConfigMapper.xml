@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.spring.mapper.StateMachineConfigDao">
+
+
+  <resultMap id="stateMachineConfigMap" type="com.study.spring.entity.StateMachineConfig">
+    <id column="id" property="id"/>
+    <result column="biz_category" property="bizCategory"/>
+    <result column="content" property="content"/>
+  </resultMap>
+
+  <select id="getStateMachineConfigByBizCategory" parameterType="java.lang.String" resultMap="stateMachineConfigMap">
+    SELECT id, biz_category, content FROM statemachine_config WHERE biz_category = #{bizCategory}
+  </select>
+</mapper>

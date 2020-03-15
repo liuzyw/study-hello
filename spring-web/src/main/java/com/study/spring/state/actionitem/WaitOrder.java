@@ -1,10 +1,9 @@
 package com.study.spring.state.actionitem;
 
-import com.study.spring.entity.StateMachineOrder;
 import com.study.spring.service.StateMachineOrderService;
 import com.study.spring.state.action.ActionItem;
+import com.study.spring.state.constant.StateConstant;
 import com.study.spring.state.enums.OrderStatusEnum;
-import com.study.spring.state.model.StateHelper;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author liuzhaoyuan
  */
-public class InitOrder implements ActionItem<String> {
+public class WaitOrder implements ActionItem<String> {
 
     private static final Long serialVersionUID = 1L;
 
@@ -24,17 +23,10 @@ public class InitOrder implements ActionItem<String> {
     @Override
     public String doBiz(Map<String, Object> input) {
 
-        System.out.println("initOrder ......");
+        System.out.println("UpdateOrder ......");
 
-        StateMachineOrder order = new StateMachineOrder();
+        stateMachineOrderService.updateStateMachineOrderStatusByOrderId((String) input.get(StateConstant.ORDER_ID), OrderStatusEnum.WAIT.code);
 
-        String orderId = StateHelper.generateOrderId();
-
-        order.setOrderId(orderId);
-        order.setStatus(OrderStatusEnum.INIT.code);
-        order.setBizCategory("RECEIPT");
-        stateMachineOrderService.saveStateMachineOrder(order);
-
-        return orderId;
+        return input.get(StateConstant.ORDER_ID).toString();
     }
 }

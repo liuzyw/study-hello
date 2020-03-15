@@ -34,6 +34,8 @@
     <mapper resource="mapper/studentMapper.xml"/>
     <mapper resource="mapper/studentSelfCardMapper.xml"/>
     <mapper resource="mapper/userMapper.xml"/>
+    <mapper resource="mapper/stateMachineConfigMapper.xml"/>
+    <mapper resource="mapper/stateMachineOrder.xml"/>
 
     <!-- 需要将mapper接口类名和mapper.xml映射文件名称保持一致且在同一个目录中，要使用的是mapper代理 -->
     <!--<package name="com.liu.mapper"/>-->

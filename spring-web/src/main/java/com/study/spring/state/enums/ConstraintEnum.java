@@ -50,4 +50,16 @@ public enum ConstraintEnum {
             return this == BIGGER || this == BIGGER_EQUALS || this == NOT_EQUALS;
         }
     }
+
+
+    public static ConstraintEnum getConstraintEnumBySymbol(String symbol) {
+        for (ConstraintEnum constraintEnum : values()) {
+
+            if (constraintEnum.symbol.equals(symbol)) {
+                return constraintEnum;
+            }
+        }
+
+        return null;
+    }
 }

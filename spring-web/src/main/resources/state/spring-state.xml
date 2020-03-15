@@ -5,9 +5,12 @@
                         http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
 
 
+  <!--  actionItems -->
   <bean class="com.study.spring.state.actionitem.InitOrder" id="initOrder"/>
-  <bean class="com.study.spring.state.actionitem.UpdateOrder" id="updateOrder"/>
-  <bean class="com.study.spring.state.actionitem.CompleteOrder" id="completeOrder"/>
+  <bean class="com.study.spring.state.actionitem.WaitOrder" id="waitOrder"/>
+  <bean class="com.study.spring.state.actionitem.FinishOrder" id="finishOrder"/>
+  <bean class="com.study.spring.state.actionitem.CloseOrder" id="closeOrder"/>
+
 
 
   <!-- actionItemRegistry -->
@@ -15,10 +18,20 @@
     <property name="actionItemMap">
       <map>
         <entry key="initOrder" value-ref="initOrder"/>
-        <entry key="updateOrder" value-ref="updateOrder"/>
-        <entry key="completeOrder" value-ref="completeOrder"/>
+        <entry key="waitOrder" value-ref="waitOrder"/>
+        <entry key="finishOrder" value-ref="finishOrder"/>
+        <entry key="closeOrder" value-ref="closeOrder"/>
       </map>
     </property>
   </bean>
+
+
+
+  <!-- runtime -->
+  <bean id="stateNodeFetcher" class="com.study.spring.state.runtime.StateNodeFetcherImpl"/>
+  <bean id="stateNodeExecutor" class="com.study.spring.state.runtime.StateNodeExecutorImpl"/>
+  <bean id="actionConditionExecutor" class="com.study.spring.state.runtime.ActionConditionExecutorImpl"/>
+  <bean id="normalAction" class="com.study.spring.state.action.NormalAction"/>
+  <bean id="stateMachine" class="com.study.spring.state.runtime.StateMachineImpl"/>
 
 </beans>

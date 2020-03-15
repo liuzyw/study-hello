@@ -23,6 +23,18 @@ public class RuleDefinition extends ToString {
 
     private String constraintValue;
 
+    public RuleDefinition() {
+    }
+
+    public RuleDefinition(String id, String type, String input, String constraint, String constraintValue) {
+        this.id = id;
+        this.type = type;
+        this.input = input;
+        this.constraint = constraint;
+        this.constraintValue = constraintValue;
+    }
+
+
 
     public String getId() {
         return id;

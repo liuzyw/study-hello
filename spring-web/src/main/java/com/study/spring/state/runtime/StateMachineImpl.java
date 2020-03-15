@@ -1,6 +1,9 @@
 package com.study.spring.state.runtime;
 
+import com.study.spring.entity.StateMachineOrder;
+import com.study.spring.service.StateMachineOrderService;
 import com.study.spring.state.action.ActionResult;
+import com.study.spring.state.constant.StateConstant;
 import com.study.spring.state.model.StateNode;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,9 @@ public class StateMachineImpl implements StateMachine {
     @Autowired
     private ActionConditionExecutor actionConditionExecutor;
 
+    @Autowired
+    private StateMachineOrderService stateMachineOrderService;
+
     @Override
     public StateMachineContext init(String bizCategory, Map<String, Object> input) {
 
@@ -37,8 +43,11 @@ public class StateMachineImpl implements StateMachine {
 
 
     @Override
-    public StateMachineContext push(String bizOrderId, Map<String, Object> input) {
-        StateNode sourceNode = stateNodeFetcher.fetchStateNode("RECEIPT", "INIT");
+    public StateMachineContext push(Map<String, Object> input) {
+
+        StateMachineOrder stateMachineOrder = stateMachineOrderService.getStateMachineOrderByOrderId(input.get(StateConstant.ORDER_ID).toString());
+
+        StateNode sourceNode = stateNodeFetcher.fetchStateNode("RECEIPT", stateMachineOrder.getStatus());
 
         StateMachineContext machineContext = new StateMachineContext();
         machineContext.setInput(input);

@@ -35,6 +35,7 @@ public class ConditionExecutor {
                     return result;
                 } catch (Exception e) {
                     conditionResult.setExMsg(e.getMessage());
+                    e.printStackTrace();
                     throw e;
                 }
             }
