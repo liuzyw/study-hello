@@ -17,7 +17,7 @@ public class FindDemo {
 
         System.out.println(re);
 
-        re = binaryFind(arr, 0, arr.length, 51);
+        re = binaryFind(arr, 4, arr.length, 51);
 
         System.out.println(re);
 
@@ -25,7 +25,7 @@ public class FindDemo {
 
         System.out.println(re);
 
-        re = binaryFind(arr, 0, arr.length, 39);
+        re = binaryFind(arr, 5, arr.length, 39);
 
         System.out.println(re);
 
@@ -41,7 +41,7 @@ public class FindDemo {
 
         System.out.println(re);
 
-        re = binaryFind(arr, 0, arr.length, 94);
+        re = binaryFind(arr, 6, arr.length, 94);
 
         System.out.println(re);
 

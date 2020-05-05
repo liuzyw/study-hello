@@ -16,10 +16,19 @@ public class Permutation {
 
         char[] chars = new char[]{'a', 'b', 'c'};
 
-        print(chars, new char[3], 0);
+//        print(chars, new char[3], 0);
+
+        print2(chars, new char[2], 0);
 
     }
 
+    /**
+     * 全排列
+     *
+     * @param arr
+     * @param print
+     * @param len
+     */
     private static void print(char[] arr, char[] print, int len) {
 
         if (len == arr.length) {
@@ -33,5 +42,27 @@ public class Permutation {
         }
 
     }
+
+    private static void print2(char[] arr, char[] pr, int len) {
+
+        if (len == pr.length) {
+            System.out.println(Arrays.toString(pr));
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            pr[len] = arr[i];
+
+            char[] arr2 = new char[arr.length - 1 - i];
+            int k = 0;
+            for (int j = i + 1; j < arr.length; j++) {
+                arr2[k++] = arr[j];
+            }
+            print2(arr2, pr, len + 1);
+        }
+
+
+    }
+
 
 }

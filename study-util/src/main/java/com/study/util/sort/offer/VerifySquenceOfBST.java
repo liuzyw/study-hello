@@ -9,7 +9,11 @@ public class VerifySquenceOfBST {
 
 
     public static void main(String[] args) {
-        int[] src = new int[]{5, 7, 6, 9, 11, 3, 10, 8};
+        int[] src = new int[]{5, 7, 6, 9, 11, 13, 10, 8};
+
+        System.out.println(isS(src, 0, src.length - 1));
+
+        src = new int[]{5, 7, 6, 9, 11, 3, 10, 8};
 
         System.out.println(isS(src, 0, src.length - 1));
     }
@@ -24,8 +28,8 @@ public class VerifySquenceOfBST {
             index++;
         }
         int t = index;
-        while (t < to){
-            if (arr[t++] < mid){
+        while (t < to) {
+            if (arr[t++] < mid) {
                 return false;
             }
         }

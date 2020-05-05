@@ -15,12 +15,12 @@ public class FindInPartiallySortedMatrix {
             {4, 7, 10, 13},
             {6, 8, 11, 15}
         };
-        System.out.println(find(matrix, 0, 4, 7));    // 要查找的数在数组中
-        System.out.println(find(matrix, 0, 4, 5));    // 要查找的数不在数组中
-        System.out.println(find(matrix, 0, 4, 1));    // 要查找的数是数组中最小的数字
-        System.out.println(find(matrix, 0, 4, 15));   // 要查找的数是数组中最大的数字
-        System.out.println(find(matrix, 0, 4, 0));    // 要查找的数比数组中最小的数字还小
-        System.out.println(find(matrix, 0, 4, 16));   // 要查找的数比数组中最大的数字还大
+        System.out.println(find2(matrix, 0, 4, 7) == true);    // 要查找的数在数组中
+        System.out.println(find2(matrix, 0, 4, 5) == false);    // 要查找的数不在数组中
+        System.out.println(find2(matrix, 0, 4, 1) == true);    // 要查找的数是数组中最小的数字
+        System.out.println(find2(matrix, 0, 4, 15) == true);   // 要查找的数是数组中最大的数字
+        System.out.println(find2(matrix, 0, 4, 0) == false);    // 要查找的数比数组中最小的数字还小
+        System.out.println(find2(matrix, 0, 4, 16) == false);   // 要查找的数比数组中最大的数字还大
     }
 
 
@@ -32,9 +32,9 @@ public class FindInPartiallySortedMatrix {
      * 如果该数字大于要查找的数字，剔除这个数字所在的列：如果该数字小于要查找的数字，剔除这个数字所在的行。
      * 也就是说如果要查找的数字不在数组的右上角，则每－次都在数组的查找范围中剔除）行或者一列，这样每一步都可以缩小
      * 查找的范围，直到找到要查找的数字，或者查找范围为空。
-     *
-     *
-     *
+     * <p>
+     * <p>
+     * <p>
      * 我们的思路是从左下角开始，递归查找
      *
      * @return 查找结果，true找到，false没有找到
@@ -60,6 +60,28 @@ public class FindInPartiallySortedMatrix {
         }
 
         return false;
+    }
+
+
+    public static boolean find2(int[][] matrix, int col, int row, int number) {
+        row--;
+
+        while (row >= 0 && col < matrix[0].length) {
+
+            if (matrix[row][col] == number) {
+                return true;
+            } else if (matrix[row][col] > number) {
+                row--;
+            } else {
+                col++;
+            }
+
+
+        }
+
+        return false;
+
+
     }
 
 }

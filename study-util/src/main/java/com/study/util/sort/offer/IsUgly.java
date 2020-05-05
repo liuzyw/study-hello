@@ -1,5 +1,7 @@
 package com.study.util.sort.offer;
 
+import java.util.Arrays;
+
 /**
  * Created on 2018-10-31
  *
@@ -8,9 +10,9 @@ package com.study.util.sort.offer;
 public class IsUgly {
 
     public static void main(String[] args) {
-        System.out.println(getUglyNumber2(1501));
+        System.out.println(getUglyNumber2(10));
 
-        System.out.println(aaa(1500));
+        System.out.println(aaa(10));
     }
 
     public static int getUglyNumber2(int index) {
@@ -44,6 +46,8 @@ public class IsUgly {
 
             nextUglyIndex++;
         }
+        System.out.println(Arrays.toString(pUglyNumbers));
+
         return pUglyNumbers[nextUglyIndex - 1];
     }
 
@@ -83,6 +87,8 @@ public class IsUgly {
             arr[i] = next;
 
         }
+
+        System.out.println(Arrays.toString(arr));
 
         return arr[n];
 

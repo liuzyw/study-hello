@@ -17,11 +17,16 @@ public class SortDemo {
             Integer[] array = RandomUtils.generateIntegerArray(100, 40);
 
 //            Integer[] array = new Integer[]{20, 24, 46, 11, 49, 98, 33, 46, 37, 13, 50, 52, 8, 74, 9, 33, 84, 29, 41, 56};
-            SortUtils.fastSort(array, 0, array.length);
+            SortUtils.selectSort(array, 0, array.length);
 
             System.out.println(RandomUtils.isSort(array, true));
 
-            print(array);
+            array = RandomUtils.generateIntegerArray(100, 40);
+
+            SortUtils.selectSort(array, 10, 30);
+
+            System.out.println(RandomUtils.isSort(array, true, 10, 30));
+
         }
 
     }
@@ -223,7 +228,6 @@ public class SortDemo {
      * @param arr
      * @param left
      * @param right
-     *
      * @return
      */
     private static int partition1(Integer[] arr, int left, int right) {

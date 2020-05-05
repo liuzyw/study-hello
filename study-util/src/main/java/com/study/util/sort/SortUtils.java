@@ -19,17 +19,12 @@ public class SortUtils {
      * @param to
      * @param num
      * @param <T>
-     *
      * @return
      */
     public static <T extends Comparable<? super T>> int binaryFind(T[] arr, int from, int to, T num) {
 
-        if (to == from && to == 0) {
+        if (to <= from) {
             return -1;
-        }
-
-        if (to == from) {
-            return -from;
         }
 
         int mid = (from + to) / 2;
