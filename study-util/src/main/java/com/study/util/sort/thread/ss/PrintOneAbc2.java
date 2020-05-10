@@ -37,11 +37,11 @@ public class PrintOneAbc2 {
 
         PrintOneAbc2 demo = new PrintOneAbc2();
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 3; i++) {
             new Thread(demo.new Consumer()).start();
         }
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 4; i++) {
             new Thread(demo.new Producer()).start();
         }
 
@@ -59,11 +59,11 @@ public class PrintOneAbc2 {
                 }
             }
 
-            System.out.println(numA++ % 3 + 1);
+            System.out.println(numA++ % 3 + 1  + "   " + Thread.currentThread().getId());
 
             no = 2;
 
-            TUt.sel(500);
+//            TUt.sel(500);
 
             notEmpty.signal();
 
@@ -86,9 +86,9 @@ public class PrintOneAbc2 {
                 }
             }
 
-            System.out.println(chars[numB++ % 3]);
+            System.out.println(chars[numB++ % 3]+ "   " + Thread.currentThread().getId());
             no = 1;
-            TUt.sel(400);
+//            TUt.sel(400);
 
             notFull.signal();
 

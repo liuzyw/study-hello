@@ -113,7 +113,7 @@
     <tx:attributes>
       <tx:method name="add*" propagation="REQUIRED"/>
       <tx:method name="append*" propagation="REQUIRED"/>
-      <tx:method name="insert*" propagation="REQUIRED"/>
+      <tx:method name="insert*" propagation="REQUIRES_NEW"/>
       <tx:method name="save*" propagation="REQUIRES_NEW"/>
       <tx:method name="update*" propagation="REQUIRED"/>
       <tx:method name="modify*" propagation="REQUIRED"/>
