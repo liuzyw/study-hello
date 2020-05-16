@@ -14,54 +14,55 @@ public class Permutation {
 
     public static void main(String[] args) {
 
-        char[] chars = new char[]{'a', 'b', 'c'};
+        char[] chars = new char[]{'a', 'b', 'c', 'd'};
 
 //        print(chars, new char[3], 0);
 
-        print2(chars, new char[2], 0);
+        /**
+         * 求子集
+         */
+        for (int i = 0; i <= chars.length; i++) {
+            print3(chars, 0, new char[i], 0);
+
+        }
+
 
     }
 
     /**
      * 全排列
      *
+     * @param src
      * @param arr
-     * @param print
      * @param len
      */
-    private static void print(char[] arr, char[] print, int len) {
+    private static void print(char[] src, char[] arr, int len) {
 
-        if (len == arr.length) {
-            System.out.println(Arrays.toString(print));
+        if (len == src.length) {
+            System.out.println(Arrays.toString(arr));
             return;
         }
 
-        for (int i = 0; i < arr.length; i++) {
-            print[len] = arr[i];
-            print(arr, print, len + 1);
+        for (int i = 0; i < src.length; i++) {
+            arr[len] = src[i];
+            print(src, arr, len + 1);
         }
 
     }
 
-    private static void print2(char[] arr, char[] pr, int len) {
+
+    private static void print3(char[] src, int begin, char[] pr, int len) {
 
         if (len == pr.length) {
             System.out.println(Arrays.toString(pr));
             return;
         }
 
-        for (int i = 0; i < arr.length; i++) {
-            pr[len] = arr[i];
+        for (int i = begin; i < src.length; i++) {
+            pr[len] = src[i];
 
-            char[] arr2 = new char[arr.length - 1 - i];
-            int k = 0;
-            for (int j = i + 1; j < arr.length; j++) {
-                arr2[k++] = arr[j];
-            }
-            print2(arr2, pr, len + 1);
+            print3(src, i + 1, pr, len + 1);
         }
-
-
     }
 
 
