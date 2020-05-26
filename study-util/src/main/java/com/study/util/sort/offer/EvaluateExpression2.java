@@ -48,40 +48,29 @@ public class EvaluateExpression2 {
                     char frontOp = opStack.peek();
 
                     if (judgeOp(currentOp, frontOp)) {
-
                         int nextNum = numStack.pop();
                         int frontNum = numStack.pop();
-
                         numStack.push(compute(frontNum, nextNum, currentOp));
-
-
                     } else {
                         opStack.push(currentOp);
                         flag = false;
                     }
-
                 }
-
             } else {
                 opStack.push(chars[i]);
             }
-
         }
 
         int result = 0;
-
         Iterator<Character> opIter = opStack.iterator();
         Iterator<Integer> numIter = numStack.iterator();
 
         int front = numIter.next();
-
         while (opIter.hasNext()) {
             result = compute(front, numIter.next(), opIter.next());
             front = result;
         }
-
         return result;
-
     }
 
 

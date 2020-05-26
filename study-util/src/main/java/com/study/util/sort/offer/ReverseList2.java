@@ -52,16 +52,11 @@ public class ReverseList2 {
         ListNode<Integer> p = head.next;
         ListNode<Integer> t;
         q.next = null;
-
         while (p != null) {
-
             t = p.next;
-
             p.next = q.next;
             q.next = p;
-
             p = t;
-
         }
 
 

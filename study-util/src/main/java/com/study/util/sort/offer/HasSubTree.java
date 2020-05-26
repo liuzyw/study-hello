@@ -52,9 +52,7 @@ public class HasSubTree {
         if (root == null && sub == null) {
             return true;
         }
-
         boolean re = false;
-
         if (root != null && sub != null) {
             if (root.getData().equals(sub.getData())) {
                 re = doseEquals(root, sub);
@@ -66,13 +64,9 @@ public class HasSubTree {
                     re = hasSubTree(root.getRightChild(), sub);
                 }
             }
-
             return re;
         }
-
         return false;
-
-
     }
 
     private static <T extends Comparable<? super T>> boolean doseEquals(Node<T> root, Node<T> sub) {
@@ -80,15 +74,12 @@ public class HasSubTree {
         if (sub == null) {
             return true;
         }
-
         if (root == null) {
             return false;
         }
-
         if (!root.getData().equals(sub.getData())) {
             return false;
         }
-
         return doseEquals(root.getRightChild(), sub.getRightChild()) && doseEquals(root.getLeftChild(), sub.getLeftChild());
     }
 

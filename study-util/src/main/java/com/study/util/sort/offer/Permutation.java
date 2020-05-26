@@ -21,8 +21,9 @@ public class Permutation {
         /**
          * 求子集
          */
+        char[] pr = new char[10];
         for (int i = 0; i <= chars.length; i++) {
-            print3(chars, 0, new char[i], 0);
+            print3(chars, 0, pr, i, 0);
 
         }
 
@@ -51,19 +52,27 @@ public class Permutation {
     }
 
 
-    private static void print3(char[] src, int begin, char[] pr, int len) {
+    private static void print3(char[] src, int begin, char[] pr, int max, int len) {
 
-        if (len == pr.length) {
-            System.out.println(Arrays.toString(pr));
+        if (len == max) {
+            shuhcu(pr, max);
             return;
         }
 
         for (int i = begin; i < src.length; i++) {
             pr[len] = src[i];
-
-            print3(src, i + 1, pr, len + 1);
+            print3(src, i + 1, pr, max, len + 1);
         }
     }
 
+
+    private static void shuhcu(char[] pr, int len) {
+        System.out.print("[");
+        for (int i = 0; i < len; i++) {
+            System.out.print(pr[i] + " ");
+        }
+        System.out.print("]");
+        System.out.print("\n");
+    }
 
 }

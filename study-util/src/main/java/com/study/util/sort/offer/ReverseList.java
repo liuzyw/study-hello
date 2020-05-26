@@ -63,26 +63,17 @@ public class ReverseList {
             t = p.next;
 
             if (q.next == null) {
-                p.next = q.next;
+                p.next = null;
                 p.pre = q;
                 q.next = p;
             } else {
                 q.next.pre = q;
-
                 p.next = q.next;
-
                 p.pre = q;
                 q.next = p;
             }
-
-
-
             p = t;
-
         }
-
-
-
     }
 
 

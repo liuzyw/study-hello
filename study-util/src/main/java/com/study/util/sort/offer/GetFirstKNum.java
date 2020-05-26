@@ -16,18 +16,11 @@ public class GetFirstKNum {
 
         int[] arr = new int[]{1, 2, 3, 3, 3, 3, 4, 5};
 
-        System.out.println(completeCount(arr, 3));
 
         System.out.println(front(arr, 0, arr.length, 3));
         System.out.println(last(arr, 0, arr.length, 3));
     }
 
-
-    private static int completeCount(int[] arr, int key) {
-        int count = 0;
-
-        return count;
-    }
 
 
     private static int front(int[] arr, int begin, int end, int key) {
@@ -41,23 +34,15 @@ public class GetFirstKNum {
             } else {
                 if (arr[mid - 1] < key) {
                     return mid;
-
                 } else {
                     return front(arr, begin, mid, key);
-
                 }
             }
-
-
         } else if (key > arr[mid]) {
-
             return front(arr, mid + 1, end, key);
-
-
         } else {
             return front(arr, begin, mid, key);
         }
-
     }
 
     private static int last(int[] arr, int begin, int end, int key) {

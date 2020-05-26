@@ -32,7 +32,7 @@ public class IsPopOrder {
             }
         }
 
-        if (index == desc.length) {
+        if (index == desc.length && stack.isEmpty()) {
             return true;
         }
 

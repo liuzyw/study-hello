@@ -13,7 +13,7 @@ public class ConstructTree {
     public static void main(String[] args) {
         int[] preorder = {1, 2, 4, 7, 3, 5, 6, 8};
         int[] inorder = {4, 7, 2, 1, 5, 3, 8, 6};
-        Node<Integer> root = constructTree(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
+        Node<Integer> root = constructTree(preorder, 0, inorder, 0, inorder.length - 1);
 
         BinaryTree<Integer> binaryTree = new BinaryTree<>(root);
         binaryTree.preOrderTraverse(root);
@@ -27,7 +27,7 @@ public class ConstructTree {
     }
 
 
-    private static Node<Integer> constructTree(int[] preorder, int beg, int end, int[] midorder, int from1, int to1) {
+    private static Node<Integer> constructTree(int[] preorder, int beg,  int[] midorder, int from1, int to1) {
         Node<Integer> root = new Node<>();
 
         if (beg >= preorder.length || from1 > to1) {
@@ -39,10 +39,10 @@ public class ConstructTree {
         int index = findIndex(midorder, from1, to1, preorder[beg]);
 
         if (index > from1) {
-            root.setLeftChild(constructTree(preorder, beg + 1, beg + index - from1, midorder, from1, index - 1));
+            root.setLeftChild(constructTree(preorder, beg + 1,  midorder, from1, index - 1));
         }
         if (index < to1) {
-            root.setRightChild(constructTree(preorder, beg + index - from1 + 1, end, midorder, index + 1, to1));
+            root.setRightChild(constructTree(preorder, beg + index - from1 + 1, midorder, index + 1, to1));
         }
         return root;
 

@@ -22,7 +22,6 @@ public class VerifySquenceOfBST {
     private static boolean isS(int[] arr, int from, int to) {
 
         int mid = arr[to];
-
         int index = from;
         while (arr[index] < mid) {
             index++;
@@ -34,21 +33,16 @@ public class VerifySquenceOfBST {
             }
         }
         index--;
-
         boolean left = true;
         if (index > from) {
             left = isS(arr, from, index);
         }
 
         boolean right = true;
-
         if (index < to - 1) {
             right = isS(arr, index + 1, to - 1);
         }
-
         return left && right;
-
-
     }
 
 }

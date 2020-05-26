@@ -32,7 +32,6 @@ public class NumberOfOne {
             if ((flag & num) > 0) {
                 result++;
             }
-
             flag = flag << 1;
         }
 

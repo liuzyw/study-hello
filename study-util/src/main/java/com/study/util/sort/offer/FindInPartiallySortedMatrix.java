@@ -75,13 +75,8 @@ public class FindInPartiallySortedMatrix {
             } else {
                 col++;
             }
-
-
         }
-
         return false;
-
-
     }
 
 }

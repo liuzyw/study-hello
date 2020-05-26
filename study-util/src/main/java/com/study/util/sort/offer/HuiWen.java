@@ -20,7 +20,7 @@ public class HuiWen {
             return 0;
         }
         if (src.length() == 2) {
-            return src.charAt(0) == src.charAt(1) ? 1 : 0;
+            return src.charAt(0) == src.charAt(1) ? 2 : 1;
         }
 
         int maxHuiWenLen = 0;
@@ -65,7 +65,7 @@ public class HuiWen {
         }
 
         if (len == 0) {
-            return 0;
+            return 1;
         }
 
         return len * 2 + 1;
@@ -92,7 +92,7 @@ public class HuiWen {
 
         }
         if (len == 0) {
-            return 0;
+            return 1;
         }
         return len * 2 + 2;
 

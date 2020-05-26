@@ -1,6 +1,5 @@
 package com.study.util.sort.thread.ss;
 
-import com.study.util.sort.thread.TUt;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -19,9 +18,9 @@ public class PrintOneAbc2 {
 
     private static ReentrantLock lock = new ReentrantLock();
 
-    private static Condition notFull = lock.newCondition();
+    private static Condition num123 = lock.newCondition();
 
-    private static Condition notEmpty = lock.newCondition();
+    private static Condition abc = lock.newCondition();
 
     private static int size = 0;
 
@@ -53,7 +52,7 @@ public class PrintOneAbc2 {
         try {
             while (no != 1) {
                 try {
-                    notFull.wait();
+                    abc.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -65,7 +64,7 @@ public class PrintOneAbc2 {
 
 //            TUt.sel(500);
 
-            notEmpty.signal();
+            num123.signal();
 
         } catch (Exception e) {
 
@@ -80,7 +79,7 @@ public class PrintOneAbc2 {
         try {
             while (no != 2) {
                 try {
-                    notEmpty.wait();
+                    num123.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -90,7 +89,7 @@ public class PrintOneAbc2 {
             no = 1;
 //            TUt.sel(400);
 
-            notFull.signal();
+            abc.signal();
 
         } catch (Exception e) {
 

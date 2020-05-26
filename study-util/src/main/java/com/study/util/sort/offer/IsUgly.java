@@ -15,35 +15,30 @@ public class IsUgly {
         System.out.println(aaa(10));
     }
 
-    public static int getUglyNumber2(int index) {
-        if (index <= 0) {
+    public static int getUglyNumber2(int n) {
+        if (n <= 0) {
             return 0;
         }
 
-        int[] pUglyNumbers = new int[index];
+        int[] pUglyNumbers = new int[n];
         pUglyNumbers[0] = 1;
         int nextUglyIndex = 1;
 
-        int p2 = 0;
-        int p3 = 0;
-        int p5 = 0;
+        int p2 = 0,p3 = 0,p5 = 0;
 
-        while (nextUglyIndex < index) {
+        while (nextUglyIndex < n) {
             int min = min(pUglyNumbers[p2] * 2, pUglyNumbers[p3] * 3, pUglyNumbers[p5] * 5);
             pUglyNumbers[nextUglyIndex] = min;
 
             while (pUglyNumbers[p2] * 2 <= pUglyNumbers[nextUglyIndex]) {
                 p2++;
             }
-
             while (pUglyNumbers[p3] * 3 <= pUglyNumbers[nextUglyIndex]) {
                 p3++;
             }
-
             while (pUglyNumbers[p5] * 5 <= pUglyNumbers[nextUglyIndex]) {
                 p5++;
             }
-
             nextUglyIndex++;
         }
         System.out.println(Arrays.toString(pUglyNumbers));
