@@ -9,6 +9,14 @@ public class BizScene extends ToString {
     private String BizScene;
 
 
+    public BizScene() {
+    }
+
+    public BizScene(Long id, String bizScene) {
+        Id = id;
+        BizScene = bizScene;
+    }
+
     public Long getId() {
         return Id;
     }
