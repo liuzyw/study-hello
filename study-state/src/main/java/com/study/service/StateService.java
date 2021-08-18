@@ -1,12 +1,11 @@
 package com.study.service;
 
+import com.study.entity.StateRequest;
 import com.study.entity.StateResult;
-
-import java.util.Map;
 
 public interface StateService {
 
-    StateResult initState(Map<String, String> params);
+    StateResult initState(StateRequest request);
 
-    StateResult pushState(Map<String, String> params);
+    StateResult pushState(StateRequest request);
 }
