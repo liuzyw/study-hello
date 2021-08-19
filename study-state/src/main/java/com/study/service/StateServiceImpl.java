@@ -44,6 +44,13 @@ public class StateServiceImpl implements StateService {
 
     @Override
     public StateResult pushState(StateRequest request) {
+        StateOrder stateOrder = stateOrderDao.getStateOrderByOutOrderId(request.getOutOrderId(), request.getBizScene());
+        if (stateOrder == null) {
+            System.out.println("订单不存在");
+        }
+
+        ServiceScene serviceScene = serviceSceneDao.getServiceScene(stateOrder.getBizScene(), stateOrder.getVersion());
+
         return null;
     }
 }
