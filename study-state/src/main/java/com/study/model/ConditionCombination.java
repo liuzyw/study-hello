@@ -9,6 +9,10 @@ public class ConditionCombination extends ToString {
 
     private String ConditionId;
 
+    private String ConditionHandler;
+
+    private String ConditionExpress;
+
 
     public Long getId() {
         return Id;
@@ -32,5 +36,21 @@ public class ConditionCombination extends ToString {
 
     public void setConditionId(String conditionId) {
         ConditionId = conditionId;
+    }
+
+    public String getConditionExpress() {
+        return ConditionExpress;
+    }
+
+    public void setConditionExpress(String conditionExpress) {
+        ConditionExpress = conditionExpress;
+    }
+
+    public String getConditionHandler() {
+        return ConditionHandler;
+    }
+
+    public void setConditionHandler(String conditionHandler) {
+        ConditionHandler = conditionHandler;
     }
 }

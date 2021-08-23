@@ -7,6 +7,13 @@ public class StateResult extends ToString {
     private boolean result;
 
 
+    public StateResult() {
+    }
+
+    public StateResult(boolean result) {
+        this.result = result;
+    }
+
     public boolean getResult() {
         return result;
     }

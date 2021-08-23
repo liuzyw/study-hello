@@ -13,6 +13,8 @@ public class Condition extends ToString {
 
     private String ConditionHandler;
 
+    private String ConditionExpress;
+
 
     public Long getId() {
         return Id;
@@ -44,5 +46,13 @@ public class Condition extends ToString {
 
     public void setConditionHandler(String conditionHandler) {
         ConditionHandler = conditionHandler;
+    }
+
+    public String getConditionExpress() {
+        return ConditionExpress;
+    }
+
+    public void setConditionExpress(String conditionExpress) {
+        ConditionExpress = conditionExpress;
     }
 }
