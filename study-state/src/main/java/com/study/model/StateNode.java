@@ -3,6 +3,7 @@ package com.study.model;
 import com.study.base.ToString;
 
 import java.util.List;
+import java.util.Map;
 
 public class StateNode extends ToString implements Comparable<StateNode> {
 
@@ -10,20 +11,14 @@ public class StateNode extends ToString implements Comparable<StateNode> {
 
     private List<String> childs;
     private String ruleId;
-    private List<String> events;
+    // 分主题
+    private Map<String, List<String>> eventMap;
     private Integer order;
 
 
     public StateNode() {
     }
 
-    public StateNode(String stateName, List<String> childs, String ruleId, List<String> events, Integer order) {
-        this.stateName = stateName;
-        this.childs = childs;
-        this.ruleId = ruleId;
-        this.events = events;
-        this.order = order;
-    }
 
     public String getStateName() {
         return stateName;
@@ -49,12 +44,12 @@ public class StateNode extends ToString implements Comparable<StateNode> {
         this.ruleId = ruleId;
     }
 
-    public List<String> getEvents() {
-        return events;
+    public Map<String, List<String>> getEventMap() {
+        return eventMap;
     }
 
-    public void setEvents(List<String> events) {
-        this.events = events;
+    public void setEventMap(Map<String, List<String>> eventMap) {
+        this.eventMap = eventMap;
     }
 
     public Integer getOrder() {

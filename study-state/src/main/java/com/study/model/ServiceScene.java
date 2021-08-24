@@ -10,21 +10,24 @@ public class ServiceScene extends ToString {
 
     private String serviceId;
 
-    private String ruleId;
-
     private Integer version;
 
     private String status;
 
     private String stateConfig;
 
-    public String getRuleId() {
-        return ruleId;
+    public ServiceScene() {
     }
 
-    public void setRuleId(String ruleId) {
-        this.ruleId = ruleId;
+    public ServiceScene(Long id, String bizScene, String serviceId, Integer version, String status, String stateConfig) {
+        this.id = id;
+        this.bizScene = bizScene;
+        this.serviceId = serviceId;
+        this.version = version;
+        this.status = status;
+        this.stateConfig = stateConfig;
     }
+
 
     public Integer getVersion() {
         return version;

@@ -11,7 +11,7 @@ import java.util.Map;
 @Service
 public class BizSceneDaoImpl implements BizSceneDao {
 
-    public static Map<String, BizScene> bizSceneMap = new HashMap<>();
+    private static Map<String, BizScene> bizSceneMap = new HashMap<>();
 
     static {
         bizSceneMap.put("COUPON", new BizScene(1L, "COUPON"));
