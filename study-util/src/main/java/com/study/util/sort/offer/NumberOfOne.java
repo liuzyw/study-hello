@@ -46,7 +46,6 @@ public class NumberOfOne {
             return 1;
         }
 
-        int flag = 1;
         int result = 0;
 // 从最右边的1开始，每一次操作都使n的最右的一个1变成了0
         int i = 0;
