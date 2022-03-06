@@ -20,7 +20,7 @@
 
   <properties>
     <spring.boot.version>1.5.7.RELEASE</spring.boot.version>
-    <spring.cloud.version>Edgware.M1</spring.cloud.version>
+    <spring.cloud.version>Greenwich.RELEASE</spring.cloud.version>
     <java.version>1.8</java.version>
   </properties>
 
@@ -30,7 +30,7 @@
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Edgware.M1</version>
+        <version>Greenwich.RELEASE</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -91,12 +91,13 @@
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-starter-eureka</artifactId>
+      <version>1.4.7.RELEASE</version>
       <!--<version>${sprcom.study.hello.cloudloud.version}</version>-->
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-stream</artifactId>
-      <version>1.3.0.M2</version>
+      <version>3.2.2</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>

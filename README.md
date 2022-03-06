@@ -4,3 +4,6 @@ study
 liuzyw@126.com
 
 welcome you join me
+
+archetypeCatalog = internal
+
