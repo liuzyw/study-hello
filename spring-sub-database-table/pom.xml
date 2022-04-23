@@ -23,7 +23,7 @@
     <apache.log4j2.version>2.7</apache.log4j2.version>
     <slf4j.version>1.7.22</slf4j.version>
     <jackson.version>2.9.3</jackson.version>
-    <spring.version>4.2.9.RELEASE</spring.version>
+    <spring.version>5.3.19</spring.version>
     <quartz.version>2.3.0</quartz.version>
   </properties>
 
