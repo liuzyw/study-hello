@@ -90,7 +90,7 @@ public class TokenBucket {
     public static void main(String[] args) throws InterruptedException {
         TokenBucket leakyBucket = new TokenBucket(2, 10);
         System.out.println(leakyBucket.allow(10));
-        System.out.println("-------------------");
+        System.out.println("--------------------");
 
         System.out.println(leakyBucket.allow(2));
         System.out.println("-------------------");
